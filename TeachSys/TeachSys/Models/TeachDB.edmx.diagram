@@ -19,12 +19,12 @@
         <AssociationConnector Association="TeachDBModel.FK_TeacherClasses_Teachers" ManuallyRouted="false" />
         <EntityTypeShape EntityType="TeachDBModel.View_TeacherClasses" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="TeachDBModel.FK_Departments_Departments" />
-        <EntityTypeShape EntityType="TeachDBModel.BookProperties" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TeachDBModel.Books" Width="1.5" PointX="10.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TeachDBModel.BookTypes" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="TeachDBModel.BookUsed" Width="1.5" PointX="2.75" PointY="10.75" />
-        <EntityTypeShape EntityType="TeachDBModel.Courses" Width="1.5" PointX="10.75" PointY="4.75" />
-        <EntityTypeShape EntityType="TeachDBModel.Terms" Width="1.5" PointX="4.75" PointY="10.75" />
+        <EntityTypeShape EntityType="TeachDBModel.BaseDataDics" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TeachDBModel.Books" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="TeachDBModel.Courses" Width="1.5" PointX="5.375" PointY="10.75" />
+        <EntityTypeShape EntityType="TeachDBModel.PartJobTeacherDocs" Width="1.5" PointX="10.375" PointY="7.75" />
+        <EntityTypeShape EntityType="TeachDBModel.PartJobTeachers" Width="1.5" PointX="7.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

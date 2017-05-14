@@ -18,7 +18,7 @@ namespace TeachSys.Models
         public string Name { get; set; }
         public int Nums { get; set; }
         public int MajorID { get; set; }
-        public int TermID { get; set; }
+        public string Term { get; set; }
         public string Memo { get; set; }
         public int Status { get; set; }
     }

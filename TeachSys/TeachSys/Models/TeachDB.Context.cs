@@ -35,12 +35,12 @@ namespace TeachSys.Models
         public DbSet<TeacherClasses> TeacherClasses { get; set; }
         public DbSet<Teachers> Teachers { get; set; }
         public DbSet<View_TeacherClasses> View_TeacherClasses { get; set; }
-        public DbSet<BookProperties> BookProperties { get; set; }
-        public DbSet<Books> Books { get; set; }
-        public DbSet<BookTypes> BookTypes { get; set; }
         public DbSet<BookUsed> BookUsed { get; set; }
+        public DbSet<BaseDataDics> BaseDataDics { get; set; }
+        public DbSet<Books> Books { get; set; }
         public DbSet<Courses> Courses { get; set; }
-        public DbSet<Terms> Terms { get; set; }
+        public DbSet<PartJobTeacherDocs> PartJobTeacherDocs { get; set; }
+        public DbSet<PartJobTeachers> PartJobTeachers { get; set; }
     
         public virtual int AddClasses(Nullable<int> majorID, string name, Nullable<int> teacherID)
         {

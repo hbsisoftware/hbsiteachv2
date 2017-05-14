@@ -12,10 +12,12 @@ namespace TeachSys.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class BookTypes
+    public partial class BaseDataDics
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public Nullable<int> IndexNo { get; set; }
+        public int TypeNo { get; set; }
         public Nullable<int> Status { get; set; }
     }
 }

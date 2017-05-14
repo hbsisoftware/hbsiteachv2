@@ -12,10 +12,22 @@ namespace TeachSys.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class BookProperties
+    public partial class PartJobTeachers
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public int TypeID { get; set; }
+        public Nullable<System.DateTime> Birthday { get; set; }
+        public bool Sex { get; set; }
+        public Nullable<int> EduID { get; set; }
+        public Nullable<int> TitleID { get; set; }
+        public System.DateTime InTime { get; set; }
+        public string Tel { get; set; }
+        public string UnitName { get; set; }
+        public string ContactName { get; set; }
+        public string JudgeText { get; set; }
+        public System.DateTime LastTime { get; set; }
+        public string Memo { get; set; }
         public Nullable<int> Status { get; set; }
     }
 }

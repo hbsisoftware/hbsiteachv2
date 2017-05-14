@@ -17,7 +17,7 @@ namespace TeachSys.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public string Author { get; set; }
-        public string Publisher { get; set; }
+        public int PublisherID { get; set; }
         public string PubYear { get; set; }
         public string ISBN { get; set; }
         public double Price { get; set; }

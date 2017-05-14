@@ -12,10 +12,13 @@ namespace TeachSys.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Terms
+    public partial class PartJobTeacherDocs
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public int Status { get; set; }
+        public int PJTeacherID { get; set; }
+        public string Url { get; set; }
+        public int DocTypeID { get; set; }
+        public System.DateTime UploadTime { get; set; }
+        public Nullable<int> Status { get; set; }
     }
 }
