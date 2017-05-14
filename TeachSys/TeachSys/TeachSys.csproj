@@ -203,13 +203,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookProperties.cs">
+    <Compile Include="Models\BaseDataDics.cs">
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Books.cs">
-      <DependentUpon>TeachDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BookTypes.cs">
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BookUsed.cs">
@@ -225,6 +222,12 @@
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Majors.cs">
+      <DependentUpon>TeachDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PartJobTeacherDocs.cs">
+      <DependentUpon>TeachDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PartJobTeachers.cs">
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Students.cs">
@@ -249,9 +252,6 @@
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Teachers.cs">
-      <DependentUpon>TeachDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Terms.cs">
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\View_TeacherClasses.cs">
