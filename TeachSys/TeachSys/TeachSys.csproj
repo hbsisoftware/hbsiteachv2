@@ -191,13 +191,14 @@
     <Compile Include="Content\Handler1.ashx.cs">
       <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\BaseDataDicsController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\MajorsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
-    <Compile Include="Controllers\TermsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1154,9 +1155,8 @@
     <Content Include="Views\Majors\Edit.cshtml" />
     <Content Include="Views\Students\Add.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
-    <Content Include="Views\Terms\Index.cshtml" />
-    <Content Include="Views\Terms\Add.cshtml" />
-    <Content Include="Views\Terms\Edit.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\BaseDataDics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
