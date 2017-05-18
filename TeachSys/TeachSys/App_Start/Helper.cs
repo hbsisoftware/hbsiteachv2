@@ -8,7 +8,7 @@ namespace TeachSys.App_Start
 {
     public class Helper
     {
-        public static Models.TeachDBEntities tdb = new Models.TeachDBEntities();
+        public static Models.TeachDBMEntities tdb = new Models.TeachDBMEntities();
         public static FormsAuthenticationTicket GetTicket(HttpContextBase context)
         {
             var t = context.Request.Cookies[FormsAuthentication.FormsCookieName].Value;

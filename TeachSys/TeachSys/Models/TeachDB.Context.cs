@@ -16,10 +16,10 @@ namespace TeachSys.Models
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class TeachDBEntities : DbContext
+    public partial class TeachDBMEntities : DbContext
     {
-        public TeachDBEntities()
-            : base("name=TeachDBEntities")
+        public TeachDBMEntities()
+            : base("name=TeachDBMEntities")
         {
         }
     
@@ -28,19 +28,19 @@ namespace TeachSys.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<BaseDataDics> BaseDataDics { get; set; }
+        public DbSet<Books> Books { get; set; }
+        public DbSet<BookUsed> BookUsed { get; set; }
         public DbSet<Classes> Classes { get; set; }
+        public DbSet<Courses> Courses { get; set; }
         public DbSet<Departments> Departments { get; set; }
         public DbSet<Majors> Majors { get; set; }
+        public DbSet<PartJobTeacherDocs> PartJobTeacherDocs { get; set; }
+        public DbSet<PartJobTeachers> PartJobTeachers { get; set; }
         public DbSet<Students> Students { get; set; }
         public DbSet<TeacherClasses> TeacherClasses { get; set; }
         public DbSet<Teachers> Teachers { get; set; }
         public DbSet<View_TeacherClasses> View_TeacherClasses { get; set; }
-        public DbSet<BookUsed> BookUsed { get; set; }
-        public DbSet<BaseDataDics> BaseDataDics { get; set; }
-        public DbSet<Books> Books { get; set; }
-        public DbSet<Courses> Courses { get; set; }
-        public DbSet<PartJobTeacherDocs> PartJobTeacherDocs { get; set; }
-        public DbSet<PartJobTeachers> PartJobTeachers { get; set; }
     
         public virtual int AddClasses(Nullable<int> majorID, string name, Nullable<int> teacherID)
         {

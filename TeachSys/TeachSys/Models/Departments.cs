@@ -24,6 +24,8 @@ namespace TeachSys.Models
         public string Name { get; set; }
         public int Status { get; set; }
     
+        public virtual Departments Departments1 { get; set; }
+        public virtual Departments Departments2 { get; set; }
         public virtual ICollection<Majors> Majors { get; set; }
         public virtual ICollection<Teachers> Teachers { get; set; }
     }

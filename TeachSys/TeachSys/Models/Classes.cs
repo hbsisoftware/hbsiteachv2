@@ -17,6 +17,7 @@ namespace TeachSys.Models
         public Classes()
         {
             this.Students = new HashSet<Students>();
+            this.TeacherClasses = new HashSet<TeacherClasses>();
         }
     
         public int ID { get; set; }
@@ -24,6 +25,8 @@ namespace TeachSys.Models
         public string Name { get; set; }
         public int Status { get; set; }
     
+        public virtual Majors Majors { get; set; }
         public virtual ICollection<Students> Students { get; set; }
+        public virtual ICollection<TeacherClasses> TeacherClasses { get; set; }
     }
 }

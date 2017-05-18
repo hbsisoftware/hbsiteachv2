@@ -27,5 +27,7 @@ namespace TeachSys.Models
         public int IsLogin { get; set; }
         public int Stauts { get; set; }
         public string Memo { get; set; }
+    
+        public virtual Classes Classes { get; set; }
     }
 }

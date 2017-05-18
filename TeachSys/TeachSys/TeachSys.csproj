@@ -311,10 +311,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Handler1.ashx" />
-    <EntityDeploy Include="Models\TeachDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TeachDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <Content Include="jquery-easyui-1.5.1\changelog.txt" />
     <Content Include="jquery-easyui-1.5.1\demo-mobile\accordion\basic.html" />
     <Content Include="jquery-easyui-1.5.1\demo-mobile\accordion\header.html" />
@@ -1088,19 +1084,6 @@
     <Content Include="jquery-easyui-1.5.1\themes\metro\validatebox.css" />
     <Content Include="jquery-easyui-1.5.1\themes\metro\window.css" />
     <Content Include="jquery-easyui-1.5.1\themes\mobile.css" />
-    <Content Include="Models\TeachDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TeachDB.edmx</DependentUpon>
-      <LastGenOutput>TeachDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\TeachDB.edmx.diagram">
-      <DependentUpon>TeachDB.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\TeachDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TeachDB.edmx</DependentUpon>
-      <LastGenOutput>TeachDB.cs</LastGenOutput>
-    </Content>
     <Content Include="jquery-easyui-1.5.1\demo\accordion\datagrid_data1.json" />
     <Content Include="jquery-easyui-1.5.1\demo\combobox\combobox_data1.json" />
     <Content Include="jquery-easyui-1.5.1\demo\combobox\combobox_data2.json" />
@@ -1124,6 +1107,23 @@
     <Content Include="jquery-easyui-1.5.1\demo\tree\tree_data1.json" />
     <Content Include="jquery-easyui-1.5.1\demo\tree\tree_data2.json" />
     <Content Include="jquery-easyui-1.5.1\themes\material\images\Thumbs.db" />
+    <EntityDeploy Include="Models\TeachDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TeachDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TeachDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TeachDB.edmx</DependentUpon>
+      <LastGenOutput>TeachDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TeachDB.edmx.diagram">
+      <DependentUpon>TeachDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\TeachDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TeachDB.edmx</DependentUpon>
+      <LastGenOutput>TeachDB.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.8.2-vsdoc.js" />
     <Content Include="Scripts\jquery-2.2.1.js" />
     <Content Include="Scripts\jquery_ext_hbsi.js" />
