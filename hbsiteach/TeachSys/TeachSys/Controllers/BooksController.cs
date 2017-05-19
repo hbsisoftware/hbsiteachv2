@@ -19,9 +19,62 @@ namespace TeachSys.Controllers
         {
             return View();
         }
-        public ActionResult Edit()
+        public ActionResult AddBooks(Models.Books bdd)
         {
-            return View();
+            try
+            {
+                var books = tdb.Books.Add(bdd);
+                tdb.SaveChanges();
+                return Content("ok");
+            }
+            catch
+            {
+                return Content("err");
+            }
+        }
+        public ActionResult EditBooks(Models.Books editbdd)
+        {
+            try
+            {
+                 var editbook = tdb.Books.First(t => t.ID == editbdd.ID);
+                editbook.ID = editbdd.ID;
+                editbook.Name = editbdd.Name;
+                editbook.Author = editbdd.Author;
+                editbook.PublisherID = editbdd.PublisherID;
+                editbook.PubYear = editbdd.PubYear;
+                editbook.ISBN = editbdd.ISBN;
+                editbook.Price = editbdd.Price;
+                editbook.BookPropertyID = editbdd.BookPropertyID;
+                editbook.BookTypeID = editbdd.BookTypeID;
+                editbook.DisabledTime = editbdd.DisabledTime;
+                editbook.LastTime = editbdd.LastTime;
+                editbook.Status = editbdd.Status;
+                tdb.SaveChanges();
+                return Content("ok");
+            }
+            catch
+            {
+                return Content("err");
+            }
+            //ID = b.ID,
+            //                Name = b.Name,
+            //                Author = b.Author,
+            //                PublisherID = b.PublisherID,
+            //                PubYear = b.PubYear,
+            //                ISBN = b.ISBN,
+            //                Price = b.Price,
+            //                BookPropertyID = b.BookPropertyID,
+            //                BookTypeID = b.BookTypeID,
+            //                LastTime = b.LastTime,
+            //                DisabledTime = b.DisabledTime,
+            //                Status = b.Status
+
+        }
+        public ActionResult Edit(int id)
+        {
+            var m = new Models.BaseDataDics();
+            m = tdb.BaseDataDics.First(t => t.ID == id);
+            return View(m);
         }
         /// <summary>
         /// 获取出版社，教材类别，教材性质
@@ -92,5 +145,6 @@ namespace TeachSys.Controllers
             }
             return Json(books, JsonRequestBehavior.AllowGet);
         }
+
     }
 }
