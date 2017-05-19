@@ -16,10 +16,10 @@ namespace TeachSys.Models
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class TeachDBEntities : DbContext
+    public partial class TeachDBEntities1 : DbContext
     {
-        public TeachDBEntities()
-            : base("name=TeachDBEntities")
+        public TeachDBEntities1()
+            : base("name=TeachDBEntities1")
         {
         }
     

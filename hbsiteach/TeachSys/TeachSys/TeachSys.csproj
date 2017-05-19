@@ -192,6 +192,7 @@
       <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\BaseDataDicsController.cs" />
+    <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
@@ -204,58 +205,58 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseDataDics.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Books.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BookUsed.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Classes.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Courses.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Departments.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Majors.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PartJobTeacherDocs.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PartJobTeachers.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Students.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeachDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeachDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeachDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeachDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeachDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeachDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\TeacherClasses.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Teachers.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\View_TeacherClasses.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1107,22 +1108,22 @@
     <Content Include="jquery-easyui-1.5.1\demo\tree\tree_data1.json" />
     <Content Include="jquery-easyui-1.5.1\demo\tree\tree_data2.json" />
     <Content Include="jquery-easyui-1.5.1\themes\material\images\Thumbs.db" />
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\TeachDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>TeachDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\TeachDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>TeachDB.edmx</DependentUpon>
+      <LastGenOutput>TeachDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\TeachDB.edmx.diagram">
+      <DependentUpon>TeachDB.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\TeachDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>TeachDB.edmx</DependentUpon>
+      <LastGenOutput>TeachDB.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.8.2-vsdoc.js" />
     <Content Include="Scripts\jquery-2.2.1.js" />
@@ -1159,6 +1160,7 @@
     <Content Include="Views\BaseDataDics\Index.cshtml" />
     <Content Include="Views\Courses\Add.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Books\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
