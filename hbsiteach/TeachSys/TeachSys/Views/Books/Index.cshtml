@@ -7,11 +7,104 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/jquery-easyui-1.5.1/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/jquery-easyui-1.5.1/themes/icon.css" rel="stylesheet" />
+    <script src="~/jquery-easyui-1.5.1/jquery.min.js"></script>
+    <script src="~/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
+    <script src="~/jquery-easyui-1.5.1/locale/easyui-lang-zh_CN.js"></script>
     <title>Index</title>
+    <script>
+        $(function () {
+            var url = '';//按钮的路径
+            //工具栏数组
+            var tb = [{
+                text: '添加',
+                iconCls: 'icon-add',
+                handler: function () {
+                    $("#books-dlg").dialog({
+                        title: '教材添加---',
+                        iconCls: 'icon-add',
+                        width: 300,
+                        height: 250,
+                        href: url,
+                        modal: true,//窗口是否可模式化
+                        buttons: [{
+                            text: '确定',
+                            iconCls: 'icon-ok',
+                            handler: function () {
+                                alert("111");
+                            }
+                        }, {
+                            text: '取消',
+                            iconCls: 'icon-no',
+                            handler: function () {
+                                $("#books-dlg").dialog("close");//关闭对话框
+                            }
+                        }]
+                    })
+                }
+            }, {
+                text: '修改',
+                iconCls: 'icon-add',
+                handler: function () {
+                    $("#books-dlg").dialog({
+                        title: '修改',
+                        iconCls: 'icon-edit',
+                        width: 300,
+                        height: 250,
+                        herf: url,
+                        modal: true,//窗口是否模式化
+                        buttons: [{
+                            text: '确定',
+                            iconCls: 'icon-ok',
+                            handler: function () {
+                                alert("111");
+                            }
+                        }, {
+                            text: '取消',
+                            iconCls: 'icon-no',
+                            handler: function () {
+                                $("#books-dlg").dialog("close");//关闭对话框
+                            }
+                        }]
+                    });
+                }
+            }, '-', {
+                text: '删除',
+                iconCls: 'icon-add',
+                handler: function () {
+                    $.messager.confirm("Tip", "您确定要删除吗？", function (r) {
+                        if (r)
+                        {
+                            alert("111");
+                        }
+                    });
+                }
+            }]
+            $("#tb").datagrid({
+                url: '',
+                queryPatams: {//向后台传递参数
+
+                },
+                width: 700,
+                singleSelect: true,//能否多选
+                fitColums: true,
+                toolbar: tb,//工具栏
+                columns: [[
+                    { field: 'Name', title: '书名', width: 150 },
+                    { field: 'Anthor', title: '作者', width: 100 },
+                    { field: 'Price', title: '价格', width: 50 },
+                    { field: 'ISBN', title: 'ISBN码', width: 100 },
+                    { field: 'PubYear', title: '出版年份', width: 100 }
+                ]]
+            });
+        });
+    </script>
 </head>
 <body>
     <div>
-        
+        <table id="tb"></table>
     </div>
+    <div id="books-dlg"></div>
 </body>
 </html>
