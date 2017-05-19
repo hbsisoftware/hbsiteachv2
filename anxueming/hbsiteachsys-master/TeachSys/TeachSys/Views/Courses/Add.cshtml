@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    <div>
+        <form id="courses-add-form">
+            <input id="courses-add-majorid" type="hidden" name="MajorID"/>
+            <div class="input_line"><label class="leftlabel">课程名称:</label><input class="easyui-validatebox textbox" name="Name" data-options="required:true"  /></div>
+            <div class="input_line"><label class="leftlabel">课时:</label><input id="courses-add-nums" class="easyui-validatebox textbox" name="Nums" data-options="required:true,validType:'integer'" /></div>
+            <div class="input_line"><label class="leftlabel">学期:</label><input id="courses-add-term" class="easyui-combobox" name="Term" /></div>
+            <div class="input_line"><label class="leftlabel">备注:</label><input class="easyui-textbox" name="Memo" /></div>
+        </form>
+    </div>
+    <script>
+        $(function () {
+            //课时验证
+            $.extend($.fn.validatebox.defaults.rules, {
+                integer: {// 验证整数
+                    validator: function (value) {
+                       return /^[+]?[1-9]+\d*$/i.test(value);
+
+                        //return /^([+]?[0-9])|([-]?[0-9])+\d*$/i.test(value);  //可正可负
+                    },
+                    message: '请输入正整数'
+                },
+            });
+            //$("#courses-add-nums").validatebox({
+                
+            //});
+            
+
+            //学期只能选择
+            $("#courses-add-term").combobox({ editable:false});
+
+            //获取当前年限
+            var myyear = new Date();
+            var year = myyear.getFullYear() - 2;
+
+            //用循环把学期放到select中
+            for (var i = 0; i <= 2; i++)
+            {
+                year += 1;
+                for (var j = 1; j <= 2; j++)
+                {
+                   
+                    $("#courses-add-term").append("<option>" + year + "-"+(year+1)+"学年第" + j + "学期</option>");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

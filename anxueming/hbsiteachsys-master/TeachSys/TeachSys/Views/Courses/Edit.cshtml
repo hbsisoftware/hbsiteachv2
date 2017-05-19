@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}
+@Model Courses;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <div>
+        <form id="courses-edit-form">
+            <input id="courses-edit-id" type="hidden" name="ID" value="@Model.ID" />
+            <input id="courses-edit-majorid" type="hidden" name="MajorID" value="@Model.MajorID" />
+            <div class="input_line"><label class="leftlabel">课程名称:</label><input class="easyui-textbox" name="Name"  value="@Model.Name" /></div>
+            <div class="input_line"><label class="leftlabel">课时:</label><input id="courses-edit-nums" class="easyui-validatebox textbox" name="Nums" data-options="validType: 'integer'" value="@Model.Nums" /></div>
+            <div class="input_line"><label class="leftlabel">学期:</label><input id="courses-edit-term" class="easyui-combobox" name="Term" value="@Model.Term" /></div>
+            <div class="input_line"><label class="leftlabel">备注:</label><input class="easyui-textbox" name="Memo" value="@Model.Memo" /></div>
+        </form>
+    </div>
+    <script>
+        $(function () {
+
+            //课时验证
+            $.extend($.fn.validatebox.defaults.rules, {
+                integer: {// 验证整数
+                    validator: function (value) {
+                        return /^[+]?[1-9]+\d*$/i.test(value);
+
+                        //return /^([+]?[0-9])|([-]?[0-9])+\d*$/i.test(value);  //可正可负
+                    },
+                    message: '请输入正整数'
+                },
+            });
+
+            //$("#courses-edit-nums").validatebox({
+            //    validType: 'integer'
+            //});
+
+            //学期只能选择
+            $("#courses-edit-term").combobox({ editable: false});
+           
+            //获取当前年限
+            var myyear = new Date();
+            var year = myyear.getFullYear() - 2;
+
+            //用循环把学期放到select中
+            for (var i = 0; i <= 2; i++) {
+                year += 1;
+                for (var j = 1; j <= 2; j++) {
+
+                    $("#courses-edit-term").append("<option>" + year + "-"+(year+1)+"学年第" + j + "学期</option>");
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
