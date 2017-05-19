@@ -56,19 +56,6 @@ namespace TeachSys.Controllers
             {
                 return Content("err");
             }
-            //ID = b.ID,
-            //                Name = b.Name,
-            //                Author = b.Author,
-            //                PublisherID = b.PublisherID,
-            //                PubYear = b.PubYear,
-            //                ISBN = b.ISBN,
-            //                Price = b.Price,
-            //                BookPropertyID = b.BookPropertyID,
-            //                BookTypeID = b.BookTypeID,
-            //                LastTime = b.LastTime,
-            //                DisabledTime = b.DisabledTime,
-            //                Status = b.Status
-
         }
         public ActionResult Edit(int id)
         {
