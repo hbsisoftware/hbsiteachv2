@@ -23,6 +23,23 @@ namespace TeachSys.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// 获取出版社，教材类别，教材性质
+        /// </summary>
+        /// <param name="typeno"></param>
+        /// <returns></returns>
+        public ActionResult Press(int typeno)
+        {
+            var press = from p in tdb.BaseDataDics
+                        where p.TypeNo == typeno
+                        select new
+                        {
+                            ID = p.ID,
+                            Name = p.Name,
+                        };
+            return Json(press, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult getBooks()
         {
             var books = from b in tdb.Books
