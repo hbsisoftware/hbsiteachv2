@@ -210,6 +210,9 @@
     <Compile Include="Models\Books.cs">
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Books_View.cs">
+      <DependentUpon>TeachDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\BookUsed.cs">
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
@@ -253,6 +256,9 @@
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Teachers.cs">
+      <DependentUpon>TeachDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_Books.cs">
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\View_TeacherClasses.cs">

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="TeachDBModel1StoreContainer" CdmEntityContainer="TeachDBEntities1">
+  <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities3">
     <EntitySetMapping Name="BaseDataDics">
-      <EntityTypeMapping TypeName="TeachDBModel1.BaseDataDics">
+      <EntityTypeMapping TypeName="TeachDBModel.BaseDataDics">
         <MappingFragment StoreEntitySet="BaseDataDics">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -13,7 +13,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Books">
-      <EntityTypeMapping TypeName="TeachDBModel1.Books">
+      <EntityTypeMapping TypeName="TeachDBModel.Books">
         <MappingFragment StoreEntitySet="Books">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -31,7 +31,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BookUsed">
-      <EntityTypeMapping TypeName="TeachDBModel1.BookUsed">
+      <EntityTypeMapping TypeName="TeachDBModel.BookUsed">
         <MappingFragment StoreEntitySet="BookUsed">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CourseID" ColumnName="CourseID" />
@@ -44,7 +44,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Classes">
-      <EntityTypeMapping TypeName="TeachDBModel1.Classes">
+      <EntityTypeMapping TypeName="TeachDBModel.Classes">
         <MappingFragment StoreEntitySet="Classes">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="MajorID" ColumnName="MajorID" />
@@ -54,7 +54,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Courses">
-      <EntityTypeMapping TypeName="TeachDBModel1.Courses">
+      <EntityTypeMapping TypeName="TeachDBModel.Courses">
         <MappingFragment StoreEntitySet="Courses">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -67,7 +67,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Departments">
-      <EntityTypeMapping TypeName="TeachDBModel1.Departments">
+      <EntityTypeMapping TypeName="TeachDBModel.Departments">
         <MappingFragment StoreEntitySet="Departments">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -76,7 +76,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Majors">
-      <EntityTypeMapping TypeName="TeachDBModel1.Majors">
+      <EntityTypeMapping TypeName="TeachDBModel.Majors">
         <MappingFragment StoreEntitySet="Majors">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
@@ -86,7 +86,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PartJobTeacherDocs">
-      <EntityTypeMapping TypeName="TeachDBModel1.PartJobTeacherDocs">
+      <EntityTypeMapping TypeName="TeachDBModel.PartJobTeacherDocs">
         <MappingFragment StoreEntitySet="PartJobTeacherDocs">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="PJTeacherID" ColumnName="PJTeacherID" />
@@ -98,7 +98,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PartJobTeachers">
-      <EntityTypeMapping TypeName="TeachDBModel1.PartJobTeachers">
+      <EntityTypeMapping TypeName="TeachDBModel.PartJobTeachers">
         <MappingFragment StoreEntitySet="PartJobTeachers">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -119,7 +119,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Students">
-      <EntityTypeMapping TypeName="TeachDBModel1.Students">
+      <EntityTypeMapping TypeName="TeachDBModel.Students">
         <MappingFragment StoreEntitySet="Students">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ClassID" ColumnName="ClassID" />
@@ -138,7 +138,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TeacherClasses">
-      <EntityTypeMapping TypeName="TeachDBModel1.TeacherClasses">
+      <EntityTypeMapping TypeName="TeachDBModel.TeacherClasses">
         <MappingFragment StoreEntitySet="TeacherClasses">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
@@ -148,7 +148,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Teachers">
-      <EntityTypeMapping TypeName="TeachDBModel1.Teachers">
+      <EntityTypeMapping TypeName="TeachDBModel.Teachers">
         <MappingFragment StoreEntitySet="Teachers">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="DeptID" ColumnName="DeptID" />
@@ -160,8 +160,42 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Books_View">
+      <EntityTypeMapping TypeName="TeachDBModel.Books_View">
+        <MappingFragment StoreEntitySet="Books_View">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="pubName" ColumnName="pubName" />
+          <ScalarProperty Name="PubYear" ColumnName="PubYear" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="propertyName" ColumnName="propertyName" />
+          <ScalarProperty Name="typename" ColumnName="typename" />
+          <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+          <ScalarProperty Name="DisabledTime" ColumnName="DisabledTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Books">
+      <EntityTypeMapping TypeName="TeachDBModel.View_Books">
+        <MappingFragment StoreEntitySet="View_Books">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="publisherName" ColumnName="publisherName" />
+          <ScalarProperty Name="PubYear" ColumnName="PubYear" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+          <ScalarProperty Name="DisabledTime" ColumnName="DisabledTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="View_TeacherClasses">
-      <EntityTypeMapping TypeName="TeachDBModel1.View_TeacherClasses">
+      <EntityTypeMapping TypeName="TeachDBModel.View_TeacherClasses">
         <MappingFragment StoreEntitySet="View_TeacherClasses">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -173,6 +207,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="AddClasses" FunctionName="TeachDBModel1.Store.AddClasses" />
+    <FunctionImportMapping FunctionImportName="AddClasses" FunctionName="TeachDBModel.Store.AddClasses" />
   </EntityContainerMapping>
 </Mapping>
