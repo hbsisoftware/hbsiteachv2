@@ -259,6 +259,9 @@
     <Compile Include="Models\View_Books.cs">
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\View_BookUsed.cs">
+      <DependentUpon>TeachDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\View_TeacherClasses.cs">
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TeachDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-  <EntityContainer Name="TeachDBEntities4" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="TeachDBEntities5" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="BaseDataDics" EntityType="TeachDBModel.BaseDataDics" />
     <EntitySet Name="Books" EntityType="TeachDBModel.Books" />
     <EntitySet Name="BookUsed" EntityType="TeachDBModel.BookUsed" />
@@ -14,6 +14,7 @@
     <EntitySet Name="TeacherClasses" EntityType="TeachDBModel.TeacherClasses" />
     <EntitySet Name="Teachers" EntityType="TeachDBModel.Teachers" />
     <EntitySet Name="View_Books" EntityType="TeachDBModel.View_Books" />
+    <EntitySet Name="View_BookUsed" EntityType="TeachDBModel.View_BookUsed" />
     <EntitySet Name="View_TeacherClasses" EntityType="TeachDBModel.View_TeacherClasses" />
     <AssociationSet Name="FK_Classes_Majors" Association="TeachDBModel.FK_Classes_Majors">
       <End Role="Majors" EntitySet="Majors" />
@@ -230,6 +231,24 @@
     <Property Name="LastTime" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
     <Property Name="DisabledTime" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
     <Property Name="ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_BookUsed">
+    <Key>
+      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="TeacherID" />
+      <PropertyRef Name="StuBookNums" />
+      <PropertyRef Name="TeaBookNums" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="BookID" Type="Int32" />
+    <Property Name="CoursesName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <Property Name="TeacherID" Type="Int32" Nullable="false" />
+    <Property Name="TeachName" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="StuBookNums" Type="Int32" Nullable="false" />
+    <Property Name="TeaBookNums" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
   </EntityType>
   <EntityType Name="View_TeacherClasses">
     <Key>

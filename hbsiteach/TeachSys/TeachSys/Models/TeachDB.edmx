@@ -33,6 +33,19 @@
       [View_Books].[ID] AS [ID]
       FROM [dbo].[View_Books] AS [View_Books]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="View_BookUsed" EntityType="TeachDBModel.Store.View_BookUsed" store:Type="Views" store:Schema="dbo" store:Name="View_BookUsed">
+            <DefiningQuery>SELECT 
+      [View_BookUsed].[BookID] AS [BookID], 
+      [View_BookUsed].[CoursesName] AS [CoursesName], 
+      [View_BookUsed].[CourseID] AS [CourseID], 
+      [View_BookUsed].[TeacherID] AS [TeacherID], 
+      [View_BookUsed].[TeachName] AS [TeachName], 
+      [View_BookUsed].[StuBookNums] AS [StuBookNums], 
+      [View_BookUsed].[TeaBookNums] AS [TeaBookNums], 
+      [View_BookUsed].[ID] AS [ID], 
+      [View_BookUsed].[Name] AS [Name]
+      FROM [dbo].[View_BookUsed] AS [View_BookUsed]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="View_TeacherClasses" EntityType="TeachDBModel.Store.View_TeacherClasses" store:Type="Views" store:Schema="dbo" store:Name="View_TeacherClasses">
             <DefiningQuery>SELECT 
       [View_TeacherClasses].[ID] AS [ID], 
@@ -245,6 +258,27 @@
           <Property Name="ID" Type="int" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
+      警告 6002: 表/视图“TeachDB.dbo.View_BookUsed”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="View_BookUsed">
+          <Key>
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="TeacherID" />
+            <PropertyRef Name="StuBookNums" />
+            <PropertyRef Name="TeaBookNums" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BookID" Type="int" />
+          <Property Name="CoursesName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="TeacherID" Type="int" Nullable="false" />
+          <Property Name="TeachName" Type="nvarchar" MaxLength="10" />
+          <Property Name="StuBookNums" Type="int" Nullable="false" />
+          <Property Name="TeaBookNums" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--生成过程中发现错误:
       警告 6002: 表/视图“TeachDB.dbo.View_TeacherClasses”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
       -->
         <EntityType Name="View_TeacherClasses">
@@ -354,7 +388,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeachDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="TeachDBEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TeachDBEntities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BaseDataDics" EntityType="TeachDBModel.BaseDataDics" />
           <EntitySet Name="Books" EntityType="TeachDBModel.Books" />
           <EntitySet Name="BookUsed" EntityType="TeachDBModel.BookUsed" />
@@ -368,6 +402,7 @@
           <EntitySet Name="TeacherClasses" EntityType="TeachDBModel.TeacherClasses" />
           <EntitySet Name="Teachers" EntityType="TeachDBModel.Teachers" />
           <EntitySet Name="View_Books" EntityType="TeachDBModel.View_Books" />
+          <EntitySet Name="View_BookUsed" EntityType="TeachDBModel.View_BookUsed" />
           <EntitySet Name="View_TeacherClasses" EntityType="TeachDBModel.View_TeacherClasses" />
           <AssociationSet Name="FK_Classes_Majors" Association="TeachDBModel.FK_Classes_Majors">
             <End Role="Majors" EntitySet="Majors" />
@@ -585,6 +620,24 @@
           <Property Name="DisabledTime" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
           <Property Name="ID" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="View_BookUsed">
+          <Key>
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="TeacherID" />
+            <PropertyRef Name="StuBookNums" />
+            <PropertyRef Name="TeaBookNums" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BookID" Type="Int32" />
+          <Property Name="CoursesName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="TeacherID" Type="Int32" Nullable="false" />
+          <Property Name="TeachName" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="StuBookNums" Type="Int32" Nullable="false" />
+          <Property Name="TeaBookNums" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
         <EntityType Name="View_TeacherClasses">
           <Key>
             <PropertyRef Name="ID" />
@@ -687,7 +740,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities4">
+        <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities5">
           <EntitySetMapping Name="BaseDataDics">
             <EntityTypeMapping TypeName="TeachDBModel.BaseDataDics">
               <MappingFragment StoreEntitySet="BaseDataDics">
@@ -861,6 +914,21 @@
                 <ScalarProperty Name="LastTime" ColumnName="LastTime" />
                 <ScalarProperty Name="DisabledTime" ColumnName="DisabledTime" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_BookUsed">
+            <EntityTypeMapping TypeName="TeachDBModel.View_BookUsed">
+              <MappingFragment StoreEntitySet="View_BookUsed">
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="CoursesName" ColumnName="CoursesName" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="TeachName" ColumnName="TeachName" />
+                <ScalarProperty Name="StuBookNums" ColumnName="StuBookNums" />
+                <ScalarProperty Name="TeaBookNums" ColumnName="TeaBookNums" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
