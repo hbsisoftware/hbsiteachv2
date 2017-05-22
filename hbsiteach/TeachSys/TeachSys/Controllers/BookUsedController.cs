@@ -15,6 +15,10 @@ namespace TeachSys.Controllers
         {
             return View();
         }
+        public ActionResult getBooksUsed()
+        {
+            return View();
+        }
 
     }
 }
