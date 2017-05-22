@@ -26,9 +26,21 @@ namespace TeachSys.Controllers
             var i = tdb.Courses.First(t => t.ID == id);
             return View(i);
         }
-        
 
-
+        /// <summary>
+        /// ***课程列表
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Courses()
+        {
+            var courses = from c in tdb.Courses
+                          select new
+                          {
+                              ID = c.ID,
+                              Name = c.Name,
+                          };
+            return Json(courses, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult getCourses(int majorid)
         {
             var maj = from m in tdb.Courses

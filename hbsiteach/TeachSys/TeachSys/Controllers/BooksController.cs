@@ -16,7 +16,10 @@ namespace TeachSys.Controllers
            
             return View();
         }
-      
+      /// <summary>
+      /// ***Books
+      /// </summary>
+      /// <returns></returns>
         public ActionResult getBooks()
         {
             var books = from b in tdb.View_Books
@@ -85,6 +88,21 @@ namespace TeachSys.Controllers
                 return Content("err");
             }
         }
+        public ActionResult DelBooks(int id)
+        {
+            try
+            {
+                var bookid = tdb.Books.First(t => t.ID == id);
+                tdb.Books.Remove(bookid);
+                tdb.SaveChanges();
+                return Content("ok");
+            }
+            catch 
+            {
+                return Content("err");
+            }
+
+        }
 
         /// <summary>
         /// 获取出版社，教材类别，教材性质
@@ -102,5 +120,6 @@ namespace TeachSys.Controllers
                         };
             return Json(press, JsonRequestBehavior.AllowGet);
         }
+       
     }
 }

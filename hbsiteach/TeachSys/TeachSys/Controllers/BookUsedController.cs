@@ -32,6 +32,18 @@ namespace TeachSys.Controllers
                           };
             return Json(bookuse, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Add()
+        {
+            return View();
+        }
+        /// <summary>
+        /// 添加需要课程列表，教师列表，教材列表，需要到对应的控制器中，找到与之对应的***标记，调用即可。_。
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult BookUseAdd()
+        {
+            return View();
+        }
 
     }
 }

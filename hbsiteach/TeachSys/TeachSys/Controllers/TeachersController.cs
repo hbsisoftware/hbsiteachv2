@@ -17,6 +17,20 @@ namespace TeachSys.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// ***教师列表
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Teachers()
+        {
+            var teachers = from t in tdb.Teachers
+                           select new
+                           {
+                               ID = t.ID,
+                               Name = t.Name,
+                           };
+            return Json(teachers, JsonRequestBehavior.AllowGet);
+        }
         //public ActionResult GetTeachers() {
         //    var teachers = from t in tdb.Teachers
         //                  join d in tdb.Departments on t.DeptID equals d.ID
@@ -73,7 +87,6 @@ namespace TeachSys.Controllers
                                 Name = t.Name
                             };
             ;
-
             return Json(teachers, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Add()
