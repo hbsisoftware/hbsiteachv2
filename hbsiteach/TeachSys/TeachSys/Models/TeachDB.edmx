@@ -19,6 +19,10 @@
           <EntitySet Name="TeacherClasses" EntityType="TeachDBModel.Store.TeacherClasses" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Teachers" EntityType="TeachDBModel.Store.Teachers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Type" EntityType="TeachDBModel.Store.Type" store:Type="Tables" Schema="dbo" />
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+=======
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
           <EntitySet Name="View_Books" EntityType="TeachDBModel.Store.View_Books" store:Type="Views" store:Schema="dbo" store:Name="View_Books">
             <DefiningQuery>SELECT 
       [View_Books].[ID] AS [ID], 
@@ -53,6 +57,11 @@
       [View_PartJobTeachers].[TitleName] AS [TitleName]
       FROM [dbo].[View_PartJobTeachers] AS [View_PartJobTeachers]</DefiningQuery>
           </EntitySet>
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+=======
+=======
+>>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
           <EntitySet Name="View_TeacherClasses" EntityType="TeachDBModel.Store.View_TeacherClasses" store:Type="Views" store:Schema="dbo" store:Name="View_TeacherClasses">
             <DefiningQuery>SELECT 
       [View_TeacherClasses].[ID] AS [ID], 
@@ -249,6 +258,10 @@
           <Property Name="TypeId" Type="int" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+=======
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
         <!--生成过程中发现错误:
       警告 6002: 表/视图“TeachDB.dbo.View_Books”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
       -->
@@ -304,6 +317,11 @@
           <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
           <Property Name="TitleName" Type="nvarchar" MaxLength="50" />
         </EntityType>
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+=======
+=======
+>>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
         <!--生成过程中发现错误:
       警告 6002: 表/视图“TeachDB.dbo.View_TeacherClasses”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
       -->
@@ -428,8 +446,16 @@
           <EntitySet Name="TeacherClasses" EntityType="TeachDBModel.TeacherClasses" />
           <EntitySet Name="Teachers" EntityType="TeachDBModel.Teachers" />
           <EntitySet Name="Type" EntityType="TeachDBModel.Type" />
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
           <EntitySet Name="View_Books" EntityType="TeachDBModel.View_Books" />
           <EntitySet Name="View_PartJobTeachers" EntityType="TeachDBModel.View_PartJobTeachers" />
+=======
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+          <EntitySet Name="View_Books" EntityType="TeachDBModel.View_Books" />
+          <EntitySet Name="View_PartJobTeachers" EntityType="TeachDBModel.View_PartJobTeachers" />
+=======
+>>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
           <EntitySet Name="View_TeacherClasses" EntityType="TeachDBModel.View_TeacherClasses" />
           <AssociationSet Name="FK_Classes_Majors" Association="TeachDBModel.FK_Classes_Majors">
             <End Role="Majors" EntitySet="Majors" />
@@ -438,6 +464,7 @@
           <AssociationSet Name="FK_Students_Classes" Association="TeachDBModel.FK_Students_Classes">
             <End Role="Classes" EntitySet="Classes" />
             <End Role="Students" EntitySet="Students" />
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
           </AssociationSet>
           <AssociationSet Name="FK_TeacherClasses_Classes" Association="TeachDBModel.FK_TeacherClasses_Classes">
             <End Role="Classes" EntitySet="Classes" />
@@ -453,12 +480,44 @@
           </AssociationSet>
           <AssociationSet Name="FK_Teachers_Departments" Association="TeachDBModel.FK_Teachers_Departments">
             <End Role="Departments" EntitySet="Departments" />
+=======
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherClasses_Classes" Association="TeachDBModel.FK_TeacherClasses_Classes">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="TeacherClasses" EntitySet="TeacherClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departments_Departments" Association="TeachDBModel.FK_Departments_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Departments1" EntitySet="Departments" />
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+          </AssociationSet>
+          <AssociationSet Name="FK_Majors_Departments" Association="TeachDBModel.FK_Majors_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Majors" EntitySet="Majors" />
+          </AssociationSet>
+=======
+          </AssociationSet>
+          <AssociationSet Name="FK_Majors_Departments" Association="TeachDBModel.FK_Majors_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Majors" EntitySet="Majors" />
+          </AssociationSet>
+>>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
+          <AssociationSet Name="FK_Teachers_Departments" Association="TeachDBModel.FK_Teachers_Departments">
+            <End Role="Departments" EntitySet="Departments" />
             <End Role="Teachers" EntitySet="Teachers" />
           </AssociationSet>
+          <AssociationSet Name="FK_TeacherClasses_Teachers" Association="TeachDBModel.FK_TeacherClasses_Teachers">
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="TeacherClasses" EntitySet="TeacherClasses" />
+          </AssociationSet>
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
           <AssociationSet Name="FK_TeacherClasses_Teachers" Association="TeachDBModel.FK_TeacherClasses_Teachers">
             <End Role="Teachers" EntitySet="Teachers" />
             <End Role="TeacherClasses" EntitySet="TeacherClasses" />
           </AssociationSet>
+=======
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
           <FunctionImport Name="AddClasses">
             <Parameter Name="majorID" Mode="In" Type="Int32" />
             <Parameter Name="Name" Mode="In" Type="String" />
@@ -634,6 +693,10 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="TypeId" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+=======
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
         </EntityType>
         <EntityType Name="View_Books">
           <Key>
@@ -683,6 +746,11 @@
           <Property Name="EduName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="TypeName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="TitleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+=======
+=======
+>>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
         </EntityType>
         <EntityType Name="View_TeacherClasses">
           <Key>
@@ -956,6 +1024,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+=======
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
           <EntitySetMapping Name="View_Books">
             <EntityTypeMapping TypeName="TeachDBModel.View_Books">
               <MappingFragment StoreEntitySet="View_Books">
@@ -994,6 +1066,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.edmx
+=======
+=======
+>>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb:hbsiteach/TeachSys/TeachSys/Models/TeachDB.edmx
           <EntitySetMapping Name="View_TeacherClasses">
             <EntityTypeMapping TypeName="TeachDBModel.View_TeacherClasses">
               <MappingFragment StoreEntitySet="View_TeacherClasses">

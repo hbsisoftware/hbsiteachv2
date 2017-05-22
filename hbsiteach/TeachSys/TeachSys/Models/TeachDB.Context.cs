@@ -41,8 +41,16 @@ namespace TeachSys.Models
         public DbSet<TeacherClasses> TeacherClasses { get; set; }
         public DbSet<Teachers> Teachers { get; set; }
         public DbSet<Type> Type { get; set; }
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.Context.cs
         public DbSet<View_Books> View_Books { get; set; }
         public DbSet<View_PartJobTeachers> View_PartJobTeachers { get; set; }
+=======
+<<<<<<< HEAD:hbsiteach/TeachSys/TeachSys/Models/Model1.Context.cs
+        public DbSet<View_Books> View_Books { get; set; }
+        public DbSet<View_PartJobTeachers> View_PartJobTeachers { get; set; }
+=======
+>>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467:hbsiteach/TeachSys/TeachSys/Models/TeachDB.Context.cs
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb:hbsiteach/TeachSys/TeachSys/Models/TeachDB.Context.cs
         public DbSet<View_TeacherClasses> View_TeacherClasses { get; set; }
     
         public virtual int AddClasses(Nullable<int> majorID, string name, Nullable<int> teacherID)

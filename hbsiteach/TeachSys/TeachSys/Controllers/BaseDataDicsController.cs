@@ -23,7 +23,15 @@ namespace TeachSys.Controllers
         {
             Models.BaseDataDics de = tdb.BaseDataDics.First(t => t.ID == id);
             return View(de);
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+            
+>>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb
         }
         public ActionResult GetDatabase()
         {
@@ -103,7 +111,14 @@ namespace TeachSys.Controllers
 
             return Json(classes, JsonRequestBehavior.AllowGet);
         }
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467
+>>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb
 
     }
 }
