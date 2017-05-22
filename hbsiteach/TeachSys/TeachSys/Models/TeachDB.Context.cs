@@ -16,10 +16,10 @@ namespace TeachSys.Models
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class TeachDBEntities3 : DbContext
+    public partial class TeachDBEntities4 : DbContext
     {
-        public TeachDBEntities3()
-            : base("name=TeachDBEntities3")
+        public TeachDBEntities4()
+            : base("name=TeachDBEntities4")
         {
         }
     
@@ -40,7 +40,6 @@ namespace TeachSys.Models
         public DbSet<Students> Students { get; set; }
         public DbSet<TeacherClasses> TeacherClasses { get; set; }
         public DbSet<Teachers> Teachers { get; set; }
-        public DbSet<Books_View> Books_View { get; set; }
         public DbSet<View_Books> View_Books { get; set; }
         public DbSet<View_TeacherClasses> View_TeacherClasses { get; set; }
     

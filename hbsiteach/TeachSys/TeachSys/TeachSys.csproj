@@ -210,9 +210,6 @@
     <Compile Include="Models\Books.cs">
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Books_View.cs">
-      <DependentUpon>TeachDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\BookUsed.cs">
       <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>

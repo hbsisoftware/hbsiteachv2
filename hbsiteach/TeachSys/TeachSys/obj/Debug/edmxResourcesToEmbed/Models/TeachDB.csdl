@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TeachDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-  <EntityContainer Name="TeachDBEntities3" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="TeachDBEntities4" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="BaseDataDics" EntityType="TeachDBModel.BaseDataDics" />
     <EntitySet Name="Books" EntityType="TeachDBModel.Books" />
     <EntitySet Name="BookUsed" EntityType="TeachDBModel.BookUsed" />
@@ -13,7 +13,6 @@
     <EntitySet Name="Students" EntityType="TeachDBModel.Students" />
     <EntitySet Name="TeacherClasses" EntityType="TeachDBModel.TeacherClasses" />
     <EntitySet Name="Teachers" EntityType="TeachDBModel.Teachers" />
-    <EntitySet Name="Books_View" EntityType="TeachDBModel.Books_View" />
     <EntitySet Name="View_Books" EntityType="TeachDBModel.View_Books" />
     <EntitySet Name="View_TeacherClasses" EntityType="TeachDBModel.View_TeacherClasses" />
     <AssociationSet Name="FK_Classes_Majors" Association="TeachDBModel.FK_Classes_Majors">
@@ -211,52 +210,26 @@
     <NavigationProperty Name="Departments" Relationship="TeachDBModel.FK_Teachers_Departments" FromRole="Teachers" ToRole="Departments" />
     <NavigationProperty Name="TeacherClasses" Relationship="TeachDBModel.FK_TeacherClasses_Teachers" FromRole="Teachers" ToRole="TeacherClasses" />
   </EntityType>
-  <EntityType Name="Books_View">
-    <Key>
-      <PropertyRef Name="ID" />
-      <PropertyRef Name="Name" />
-      <PropertyRef Name="Author" />
-      <PropertyRef Name="pubName" />
-      <PropertyRef Name="PubYear" />
-      <PropertyRef Name="ISBN" />
-      <PropertyRef Name="Price" />
-      <PropertyRef Name="propertyName" />
-      <PropertyRef Name="typename" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="Author" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="pubName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="PubYear" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="true" />
-    <Property Name="ISBN" Type="String" Nullable="false" MaxLength="13" Unicode="false" FixedLength="true" />
-    <Property Name="Price" Type="Double" Nullable="false" />
-    <Property Name="propertyName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="typename" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="LastTime" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
-    <Property Name="DisabledTime" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
-  </EntityType>
   <EntityType Name="View_Books">
     <Key>
-      <PropertyRef Name="ID" />
       <PropertyRef Name="Name" />
       <PropertyRef Name="Author" />
-      <PropertyRef Name="publisherName" />
       <PropertyRef Name="PubYear" />
       <PropertyRef Name="ISBN" />
       <PropertyRef Name="Price" />
-      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Author" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="publisherName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="publisherName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="PubYear" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="true" />
     <Property Name="ISBN" Type="String" Nullable="false" MaxLength="13" Unicode="false" FixedLength="true" />
     <Property Name="Price" Type="Double" Nullable="false" />
-    <Property Name="Expr1" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="Expr2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="BookProertyName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="BookTypeName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="LastTime" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
     <Property Name="DisabledTime" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="View_TeacherClasses">
     <Key>

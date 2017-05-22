@@ -14,7 +14,6 @@ namespace TeachSys.Models
     
     public partial class View_Books
     {
-        public int ID { get; set; }
         public string Name { get; set; }
         public string Author { get; set; }
         public string publisherName { get; set; }
@@ -25,5 +24,6 @@ namespace TeachSys.Models
         public string BookTypeName { get; set; }
         public string LastTime { get; set; }
         public string DisabledTime { get; set; }
+        public int ID { get; set; }
     }
 }

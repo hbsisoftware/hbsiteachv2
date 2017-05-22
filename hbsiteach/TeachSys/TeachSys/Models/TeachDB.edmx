@@ -18,34 +18,19 @@
           <EntitySet Name="Students" EntityType="TeachDBModel.Store.Students" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TeacherClasses" EntityType="TeachDBModel.Store.TeacherClasses" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Teachers" EntityType="TeachDBModel.Store.Teachers" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Books_View" EntityType="TeachDBModel.Store.Books_View" store:Type="Views" store:Schema="dbo" store:Name="Books_View">
-            <DefiningQuery>SELECT 
-      [Books_View].[ID] AS [ID], 
-      [Books_View].[Name] AS [Name], 
-      [Books_View].[Author] AS [Author], 
-      [Books_View].[pubName] AS [pubName], 
-      [Books_View].[PubYear] AS [PubYear], 
-      [Books_View].[ISBN] AS [ISBN], 
-      [Books_View].[Price] AS [Price], 
-      [Books_View].[propertyName] AS [propertyName], 
-      [Books_View].[typename] AS [typename], 
-      [Books_View].[LastTime] AS [LastTime], 
-      [Books_View].[DisabledTime] AS [DisabledTime]
-      FROM [dbo].[Books_View] AS [Books_View]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="View_Books" EntityType="TeachDBModel.Store.View_Books" store:Type="Views" store:Schema="dbo" store:Name="View_Books">
             <DefiningQuery>SELECT 
-      [View_Books].[ID] AS [ID], 
       [View_Books].[Name] AS [Name], 
       [View_Books].[Author] AS [Author], 
       [View_Books].[publisherName] AS [publisherName], 
       [View_Books].[PubYear] AS [PubYear], 
       [View_Books].[ISBN] AS [ISBN], 
       [View_Books].[Price] AS [Price], 
-      [View_Books].[Expr1] AS [Expr1], 
-      [View_Books].[Expr2] AS [Expr2], 
+      [View_Books].[BookProertyName] AS [BookProertyName], 
+      [View_Books].[BookTypeName] AS [BookTypeName], 
       [View_Books].[LastTime] AS [LastTime], 
-      [View_Books].[DisabledTime] AS [DisabledTime]
+      [View_Books].[DisabledTime] AS [DisabledTime], 
+      [View_Books].[ID] AS [ID]
       FROM [dbo].[View_Books] AS [View_Books]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_TeacherClasses" EntityType="TeachDBModel.Store.View_TeacherClasses" store:Type="Views" store:Schema="dbo" store:Name="View_TeacherClasses">
@@ -236,57 +221,28 @@
           <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
-      警告 6002: 表/视图“TeachDB.dbo.Books_View”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
-      -->
-        <EntityType Name="Books_View">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Author" />
-            <PropertyRef Name="pubName" />
-            <PropertyRef Name="PubYear" />
-            <PropertyRef Name="ISBN" />
-            <PropertyRef Name="Price" />
-            <PropertyRef Name="propertyName" />
-            <PropertyRef Name="typename" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Author" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="pubName" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="PubYear" Type="char" Nullable="false" MaxLength="4" />
-          <Property Name="ISBN" Type="char" Nullable="false" MaxLength="13" />
-          <Property Name="Price" Type="float" Nullable="false" />
-          <Property Name="propertyName" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="typename" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="LastTime" Type="char" MaxLength="10" />
-          <Property Name="DisabledTime" Type="char" MaxLength="10" />
-        </EntityType>
-        <!--生成过程中发现错误:
       警告 6002: 表/视图“TeachDB.dbo.View_Books”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
       -->
         <EntityType Name="View_Books">
           <Key>
-            <PropertyRef Name="ID" />
             <PropertyRef Name="Name" />
             <PropertyRef Name="Author" />
-            <PropertyRef Name="publisherName" />
             <PropertyRef Name="PubYear" />
             <PropertyRef Name="ISBN" />
             <PropertyRef Name="Price" />
-            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Author" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="publisherName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="publisherName" Type="nvarchar" MaxLength="50" />
           <Property Name="PubYear" Type="char" Nullable="false" MaxLength="4" />
           <Property Name="ISBN" Type="char" Nullable="false" MaxLength="13" />
           <Property Name="Price" Type="float" Nullable="false" />
-          <Property Name="Expr1" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Expr2" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookProertyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookTypeName" Type="nvarchar" MaxLength="50" />
           <Property Name="LastTime" Type="char" MaxLength="10" />
           <Property Name="DisabledTime" Type="char" MaxLength="10" />
+          <Property Name="ID" Type="int" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
       警告 6002: 表/视图“TeachDB.dbo.View_TeacherClasses”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
@@ -398,7 +354,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeachDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="TeachDBEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TeachDBEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BaseDataDics" EntityType="TeachDBModel.BaseDataDics" />
           <EntitySet Name="Books" EntityType="TeachDBModel.Books" />
           <EntitySet Name="BookUsed" EntityType="TeachDBModel.BookUsed" />
@@ -411,7 +367,6 @@
           <EntitySet Name="Students" EntityType="TeachDBModel.Students" />
           <EntitySet Name="TeacherClasses" EntityType="TeachDBModel.TeacherClasses" />
           <EntitySet Name="Teachers" EntityType="TeachDBModel.Teachers" />
-          <EntitySet Name="Books_View" EntityType="TeachDBModel.Books_View" />
           <EntitySet Name="View_Books" EntityType="TeachDBModel.View_Books" />
           <EntitySet Name="View_TeacherClasses" EntityType="TeachDBModel.View_TeacherClasses" />
           <AssociationSet Name="FK_Classes_Majors" Association="TeachDBModel.FK_Classes_Majors">
@@ -609,52 +564,26 @@
           <NavigationProperty Name="Departments" Relationship="TeachDBModel.FK_Teachers_Departments" FromRole="Teachers" ToRole="Departments" />
           <NavigationProperty Name="TeacherClasses" Relationship="TeachDBModel.FK_TeacherClasses_Teachers" FromRole="Teachers" ToRole="TeacherClasses" />
         </EntityType>
-        <EntityType Name="Books_View">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Author" />
-            <PropertyRef Name="pubName" />
-            <PropertyRef Name="PubYear" />
-            <PropertyRef Name="ISBN" />
-            <PropertyRef Name="Price" />
-            <PropertyRef Name="propertyName" />
-            <PropertyRef Name="typename" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Author" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="pubName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="PubYear" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="true" />
-          <Property Name="ISBN" Type="String" Nullable="false" MaxLength="13" Unicode="false" FixedLength="true" />
-          <Property Name="Price" Type="Double" Nullable="false" />
-          <Property Name="propertyName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="typename" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="LastTime" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
-          <Property Name="DisabledTime" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
-        </EntityType>
         <EntityType Name="View_Books">
           <Key>
-            <PropertyRef Name="ID" />
             <PropertyRef Name="Name" />
             <PropertyRef Name="Author" />
-            <PropertyRef Name="publisherName" />
             <PropertyRef Name="PubYear" />
             <PropertyRef Name="ISBN" />
             <PropertyRef Name="Price" />
-            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Author" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="publisherName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="publisherName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="PubYear" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="true" />
           <Property Name="ISBN" Type="String" Nullable="false" MaxLength="13" Unicode="false" FixedLength="true" />
           <Property Name="Price" Type="Double" Nullable="false" />
-          <Property Name="Expr1" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Expr2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BookProertyName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BookTypeName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="LastTime" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
           <Property Name="DisabledTime" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="View_TeacherClasses">
           <Key>
@@ -758,7 +687,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities3">
+        <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities4">
           <EntitySetMapping Name="BaseDataDics">
             <EntityTypeMapping TypeName="TeachDBModel.BaseDataDics">
               <MappingFragment StoreEntitySet="BaseDataDics">
@@ -918,37 +847,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Books_View">
-            <EntityTypeMapping TypeName="TeachDBModel.Books_View">
-              <MappingFragment StoreEntitySet="Books_View">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Author" ColumnName="Author" />
-                <ScalarProperty Name="pubName" ColumnName="pubName" />
-                <ScalarProperty Name="PubYear" ColumnName="PubYear" />
-                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="propertyName" ColumnName="propertyName" />
-                <ScalarProperty Name="typename" ColumnName="typename" />
-                <ScalarProperty Name="LastTime" ColumnName="LastTime" />
-                <ScalarProperty Name="DisabledTime" ColumnName="DisabledTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="View_Books">
             <EntityTypeMapping TypeName="TeachDBModel.View_Books">
               <MappingFragment StoreEntitySet="View_Books">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Author" ColumnName="Author" />
                 <ScalarProperty Name="publisherName" ColumnName="publisherName" />
                 <ScalarProperty Name="PubYear" ColumnName="PubYear" />
                 <ScalarProperty Name="ISBN" ColumnName="ISBN" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
-                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+                <ScalarProperty Name="BookProertyName" ColumnName="BookProertyName" />
+                <ScalarProperty Name="BookTypeName" ColumnName="BookTypeName" />
                 <ScalarProperty Name="LastTime" ColumnName="LastTime" />
                 <ScalarProperty Name="DisabledTime" ColumnName="DisabledTime" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

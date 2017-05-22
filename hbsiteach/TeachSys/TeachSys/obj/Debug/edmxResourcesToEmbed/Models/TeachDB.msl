@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities3">
+  <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities4">
     <EntitySetMapping Name="BaseDataDics">
       <EntityTypeMapping TypeName="TeachDBModel.BaseDataDics">
         <MappingFragment StoreEntitySet="BaseDataDics">
@@ -160,37 +160,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Books_View">
-      <EntityTypeMapping TypeName="TeachDBModel.Books_View">
-        <MappingFragment StoreEntitySet="Books_View">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Author" ColumnName="Author" />
-          <ScalarProperty Name="pubName" ColumnName="pubName" />
-          <ScalarProperty Name="PubYear" ColumnName="PubYear" />
-          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="propertyName" ColumnName="propertyName" />
-          <ScalarProperty Name="typename" ColumnName="typename" />
-          <ScalarProperty Name="LastTime" ColumnName="LastTime" />
-          <ScalarProperty Name="DisabledTime" ColumnName="DisabledTime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="View_Books">
       <EntityTypeMapping TypeName="TeachDBModel.View_Books">
         <MappingFragment StoreEntitySet="View_Books">
-          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Author" ColumnName="Author" />
           <ScalarProperty Name="publisherName" ColumnName="publisherName" />
           <ScalarProperty Name="PubYear" ColumnName="PubYear" />
           <ScalarProperty Name="ISBN" ColumnName="ISBN" />
           <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
-          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="BookProertyName" ColumnName="BookProertyName" />
+          <ScalarProperty Name="BookTypeName" ColumnName="BookTypeName" />
           <ScalarProperty Name="LastTime" ColumnName="LastTime" />
           <ScalarProperty Name="DisabledTime" ColumnName="DisabledTime" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
