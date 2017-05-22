@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-
+@Model books
 <!DOCTYPE html>
 
 <html>
@@ -11,7 +11,36 @@
 </head>
 <body>
     <div>
-        
+        <form id="books-edit-form">
+            <input type="hidden" name="ID" value="@Model.ID" />
+            <div class ="input_line"><label class="leftlabel">书名:</label><input class="easyui-textbox" name="Name" value="@Model.Name" /></div>
+            <div class="input_line"><label class="leftlabel">作者:</label><input class="easyui-textbox" name="Author" value="@Model.Author" /></div>
+            <div class="input_line"><label class="leftlabel">出版社:</label><input class="easyui-textbox" id="Publisher" name="PublisherID" value="@Model.PublisherID" /></div>
+            <div class="input_line"><label class="leftlabel">出版年份:</label><input class="easyui-textbox" name="PubYear" value="@Model.PubYear" /></div>
+            <div class="input_line"><label class="leftlabel">ISBN码:</label><input class="easyui-textbox" name="ISBN" value="@Model.ISBN" /></div>
+            <div class="input_line"><label class="leftlabel">价格:</label><input class="easyui-textbox" name="Price" value="@Model.Price" /></div>
+            <div class="input_line"><label class="leftlabel">教材性质:</label><input class="easyui-textbox" id="BookProperty" name="BookPropertyID" value="@Model.BookPropertyID" /></div>
+            <div class="input_line"><label class="leftlabel">教材类别:</label><input class="easyui-textbox" id="BookType" name="BookTypeID" value="@Model.BookTypeID" /></div>
+            <div class="input_line"><label class="leftlabel">教材最后一次使用时间:</label><input class="easyui-textbox" name="LastTime" value="@Model.LastTime" /></div>
+            <div class="input_line"><label class="leftlabel">停止印刷时间:</label><input class="easyui-textbox" name="DisabledTime" value="@Model.DisabledTime" /></div>
+        </form>
     </div>
+    <script>
+        $("#Publisher").combobox({
+            url: '/books/Press?typeno=6',
+            valueField: 'ID',
+            textField: "Name"
+        });
+        $("#BookProperty").combobox({
+            url: '/books/Press?typeno=1',
+            valueField: 'ID',
+            textField: "Name"
+        });
+        $("#BookType").combobox({
+            url: '/books/Press?typeno=2',
+            valueField: 'ID',
+            textField: "Name"
+        });
+    </script>
 </body>
 </html>

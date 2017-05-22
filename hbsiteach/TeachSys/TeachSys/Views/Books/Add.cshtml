@@ -11,7 +11,36 @@
 </head>
 <body>
     <div>
-        
+        <form id="books-add-form">
+            <input type="hidden" name="ID" />
+            <div class="input_line"><label class="leftlabel">书名:</label><input class="easyui-textbox" name="Name" /></div>
+            <div class="input_line"><label class="leftlabel">作者:</label><input class="easyui-textbox" name="Author" /></div>
+            <div class="input_line"><label class="leftlabel">出版社:</label><input class="easyui-textbox" id="Publisher" name="PublisherID" /></div>
+            <div class="input_line"><label class="leftlabel">出版年份:</label><input class="easyui-textbox" name="PubYear" /></div>
+            <div class="input_line"><label class="leftlabel">ISBN码:</label><input class="easyui-textbox" name="ISBN" /></div>
+            <div class="input_line"><label class="leftlabel">价格:</label><input class="easyui-textbox" name="Price" /></div>
+            <div class="input_line"><label class="leftlabel">教材性质:</label><input class="easyui-textbox" id="BookProperty" name="BookPropertyID" /></div>
+            <div class="input_line"><label class="leftlabel">教材类别:</label><input class="easyui-textbox" id="BookType" name="BookTypeID" /></div>
+            <div class="input_line"><label class="leftlabel">教材最后一次使用时间:</label><input class="easyui-textbox" name="LastTime" /></div>
+            <div class="input_line"><label class="leftlabel">停止印刷时间:</label><input class="easyui-textbox" name="DisabledTime" /></div>
+        </form>
     </div>
+    <script>
+        $("#Publisher").combobox({
+            url: '/books/Press?typeno=6',
+            valueField: 'ID',
+            textField: "Name"
+        });
+        $("#BookProperty").combobox({
+            url: '/books/Press?typeno=1',
+            valueField: 'ID',
+            textField: "Name"
+        });
+        $("#BookType").combobox({
+            url: '/books/Press?typeno=2',
+            valueField: 'ID',
+            textField: "Name"
+        });
+    </script>
 </body>
 </html>
