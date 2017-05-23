@@ -8,27 +8,30 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Add</title>
+    <script src="~/Scripts/jquery-2.2.1.js"></script>
+     <script src="~/Scripts/jquery_ext_hbsi.js"></script>
 </head>
 <body>
     <div>
        <div class="input_line"><label class="leftlabel"> 兼职教师:</label><input id="PJTD_add_PJTeacherID"></div>
-       <div class="input_line"><label class="leftlabel">选择文件:</label><input class="easyui-filebox"  id="PJTD_add_url"></div>
-          <div class="input_line"><label class="leftlabel">选择文件:</label><input   id="PJTD_add_Doc"></div>
-       <div class="input_line"><label class="leftlabel"> 上传日期：</label><input type="date" id="PJTD_add_Time"></div>
+       <div class="input_line"><label class="leftlabel">选择文件:</label><input class="easyui-filebox"  id="PJTD_add_url"value="<%=AddFile()%>"></div>
+          <div class="input_line"><label class="leftlabel">类型:</label><input   id="PJTD_add_Doc"></div>
+       <div class="input_line"><label class="leftlabel"> 上传日期：</label><input class="easyui-datebox" id="PJTD_add_Time"></div>
     </div>
     <script>
         $(function(){
         $("#PJTD_add_PJTeacherID").combobox({
-            url: "/PartJobTeachers/GetPartJobTeachers",
+            url: "/PartJobTeacher/GetPartJobTeachers",
             valueField: 'id',
             textField: "name"
         });
         $("#PJTD_add_Doc").combobox({
-           url: "/BaseDataDics/GetDatabases?typeNO=5",
+            url: "/BaseDataDics/GetDatabases?typeno=5",
            valueField: 'id',
            textField:"name"
 
         })
+      
 
 })
     </script>

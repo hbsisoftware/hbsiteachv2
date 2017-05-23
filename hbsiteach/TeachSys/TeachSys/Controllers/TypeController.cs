@@ -8,7 +8,7 @@ namespace TeachSys.Controllers
 {
     public class TypeController : Controller
     {
-        //
+       
         // GET: /Type/
 
         Models.TeachDBEntities tdb = new Models.TeachDBEntities();
@@ -27,11 +27,18 @@ namespace TeachSys.Controllers
         }
         public ActionResult GetType()
         {
-            var type = from t in tdb.Type
+            try
+            {
 
-            select new { name = t.Name, typeid = t.TypeId };
+                var da = (from d in tdb.Type
 
-            return Json(type, JsonRequestBehavior.AllowGet);
+                          select new { id = d.ID, name = d.Name, typid = d.TypeId, Status = d.Status });
+                return Json(da, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Content("error");
+            }
         }
         public ActionResult AddType(Models.Type t)
         {

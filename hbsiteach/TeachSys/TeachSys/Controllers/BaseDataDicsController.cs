@@ -39,6 +39,7 @@ namespace TeachSys.Controllers
                 return Content("error");
             }
         }
+      
         public ActionResult AddDatabase(Models.BaseDataDics b)
         {
             try

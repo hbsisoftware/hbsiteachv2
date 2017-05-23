@@ -1,0 +1,248 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" /> 
+<title>Index</title>
+<link href="~/jquery-easyui-1.5.1/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/jquery-easyui-1.5.1/themes/icon.css" rel="stylesheet" />
+   
+    <script src="~/jquery-easyui-1.5.1/jquery.min.js"></script>
+    <script src="~/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
+    <script>
+
+
+        $(function () {
+            var tb = [
+                                 {
+                                     text: '添加',
+                                     iconCls: 'icon-add',
+                                     handler: function () {
+
+                                         var url = "/partjobteachers/add";
+                                         $("#tb1").dialog({
+                                             title: "教师添加--",
+                                             iconCls: 'icon-add',
+                                             modal: true,
+                                             width: 300,
+                                             href: url,
+                                             buttons: [
+                                    {
+                                        text: '保存',
+                                        iconCls: 'icon-save',
+                                        handler: function () {
+                                            var jianzhi = $("#PJTD_add_PJTeacher").combobox("getValue");
+                                            var xueli = $("#xueli").combobox("getValue");
+                                            //var zhicheng = $("#zhicheng").combobox("getValue");
+                                            var riqi = $("#riqi").val;
+                                            var sex = $("#sex").val;
+                                            var time = $("#time").val;
+                                            var tel = $("#tel").val;
+                                            var lianxi = $("#lianxi").val;
+                                            var renke = $("#renke").val;
+                                            var beizhu = $("#benzhu").val;
+                                            // var status = $("#status").val;
+                                            var name = $("#name").val;
+                                            $.get("/parjobteachers/AddPartJobTeachers", { Name: name, TypeID: jianzhi, EduID: xueli, Birthday: riqi, Sex: sex, InTime: time, ContactName: lianxi, LastTime: renke, Memo: beizhu, Status: 0 }
+                                                 , function (data) {
+                                                     if (data == "ok") {
+                                                         //alert("成功");
+                                                         $.messager.show({
+                                                             title: '提示',
+                                                             msg: '成功',
+                                                             showType: 'show'
+                                                         });
+                                                         $("#teachers_add_dlg").dialog("close");
+                                                         $("#tb").datagrid("reload");
+
+                                                     }
+                                                     else { alert("失败"); }
+
+                                                 }, "text")
+
+                                        }
+                                    },
+                                    {
+                                        text: '取消',
+                                        iconCls: 'icon-cancel',
+                                        handler: function () {
+                                            $("#teachers_add_dlg").dialog("close");
+                                        }
+                                    }
+                                             ]
+                                         });
+                                     }
+                                 },
+                                 {
+                                     text: '修改',
+                                     icon: 'icon-edit',
+                                     handler: function () {
+                                         var id = $("#tb").datagrid("getSelected").ID;
+                                         //window.location.href = "/departments/EditIndex?id=" + id;
+                                         var url = "/Majors/Edit?id=" + id;
+                                         $("#dlgEdit").dialog({
+                                             title: "部门修改--",
+                                             iconCls: 'icon-Edit',
+
+                                             modal: true,
+                                             width: 300,
+                                             height: 200,
+                                             href: url,
+                                             buttons: [
+                                                 {
+                                                     text: '保存',
+                                                     iconCls: 'icon-save',
+                                                     handler: function () {
+
+
+                                                         var name = $("#view_EditIndex_depname").val();
+                                                         var id = $("#view_EditIndex_Id").val();
+                                                         var we = $("#wwe").val;
+                                                         var iid = $("#tb").datagrid("getSelected").ID;
+                                                         console.log(id);
+                                                         $.get("/Majors/EditMajors", { ID: iid, DepartmentID: id, Name: name, Status: 0 }, function (das) {
+
+                                                             if (das == "ok") {
+                                                                 //alert("成功");
+                                                                 $.messager.show({
+                                                                     title: '提示',
+                                                                     msg: '成功',
+                                                                     showType: 'show'
+                                                                 });
+                                                                 $("#dlgEdit").dialog("close");
+                                                                 $("#tb").datagrid("reload");
+
+                                                             }
+                                                             else { alert("修改失败"); }
+                                                         }, "text")
+                                                     }
+                                                 },
+                                    {
+                                        text: '取消',
+                                        iconCls: 'icon-cancel',
+                                        handler: function () {
+                                            $("#teachers_add_dlg").dialog("close");
+                                        }
+                                    }
+                                             ]
+                                         });
+                                     }
+                                 }, '-',
+                                 {
+                                     text: '删除',
+                                     iconCls: 'icon-remove',
+                                     handler: function () {
+                                         var id = $("#tb").datagrid("getSelected").ID;
+                                         $.get("/Home/delete", { id: id }, function (das) {
+                                             if (das == "ok") {
+                                                 //alert("成功");
+                                                 $.messager.show({
+                                                     title: '提示',
+                                                     msg: '成功',
+                                                     showType: 'show'
+                                                 });
+                                                 $("#tb1").dialog("close");
+                                                 $("#tb").datagrid("reload");
+                                                 $("#majors").datagrid("reload"); 
+                                             }
+                                             else { alert("失败"); }
+                                         }, "text")
+
+
+
+                                     }
+                                 },
+                                 {
+                                     text: '密码重置',
+                                     iconCls: 'icon-lock',
+                                     handler: function () {
+                                         var row = $("#tb").datagrid("getSelected");
+                                         if (row == null) {
+                                             $.messager.alert("提示", "请选择要重置密码的用户！", "warning");
+                                             return;
+                                         }
+                                         var name = row.Name;
+                                         $.messager.confirm("提示", "确信重置“" + name + "”的密码?", function (result) {
+                                             if (result) {
+                                                 var id = row.ID;
+                                                 $.get("/teachers/resetpass/", { id: id }, function (data) {
+                                                     if (data == "ok")
+                                                         $.messager.show({
+                                                             title: '提示',
+                                                             msg: '成功',
+                                                             showType: 'show'
+                                                         })
+                                                     else
+                                                         $.messager.show({
+                                                             title: '提示',
+                                                             msg: '失败',
+                                                             showType: 'show'
+                                                         });
+                                                 })
+                                             }
+
+                                         });
+                                     }
+                                 }
+
+            ];
+
+         
+            $("#tb").datagrid({
+                url: '/partjobteacher/getpartjobteachers/',
+              
+                width: 700,
+                height: 460,
+                fitColumns: true,
+                singleSelect: true,
+                toolbar: tb,
+                columns: [[
+
+                    { field: 'name', title: '教师姓名' },
+                       {
+                           field: 'sex', title: '性别 ',
+                           formatter: function (val, row) {
+                               if (val != "True") {
+                                   return "<span >男</span>"
+                               }
+                               else {
+                                   return "<span >女</span>"
+                               }
+                           }
+
+                       },
+                        { field: 'eduname', title: '学历 ' },
+                         { field: 'doc', title: '职称 ' },
+                          { field: 'intime', title: '入职时间 ' },
+                           { field: 'tel', title: '联系电话' },   
+                             { field: 'cname', title: '校内联系人 ' },
+                               { field: 'memo', title: '备注 ' },
+
+                ]]
+            });
+
+
+        });
+        function query() {
+            $("#tb").datagrid("load", {
+                Unitname: $("#majors").combobox("getValue"
+
+               )
+            });
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+    
+        <table id="tb"></table>
+    </div>
+    <div id="tb1"></div>
+  
+</body>
+</html>

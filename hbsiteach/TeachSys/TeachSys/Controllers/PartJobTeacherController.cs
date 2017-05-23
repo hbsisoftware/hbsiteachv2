@@ -9,7 +9,7 @@ namespace TeachSys.Controllers
     public class PartJobTeacherController : Controller
     {
         //
-        // GET: /PartJobTeachers/
+        // GET: /PartJobTeacher/
 
         Models.TeachDBEntities tdb = new Models.TeachDBEntities();
         public ActionResult Index()

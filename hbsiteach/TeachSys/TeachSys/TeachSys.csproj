@@ -1305,6 +1305,9 @@
       <SubType>
       </SubType>
     </Content>
+    <Content Include="Views\PartJobTeacher\Index.cshtml" />
+    <Content Include="Views\PartJobTeacher\Add.cshtml" />
+    <Content Include="Views\PartJobTeacher\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
