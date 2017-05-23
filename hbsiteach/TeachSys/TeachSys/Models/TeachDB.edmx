@@ -390,6 +390,7 @@
           <Parameter Name="TeacherID" Type="int" Mode="In" />
           <Parameter Name="Status" Type="int" Mode="In" />
           <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="TeacherNums" Type="int" Mode="In" />
         </Function>
         <Function Name="GetStudentNums" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CoursesID" Type="int" Mode="In" />
@@ -397,13 +398,14 @@
           <Parameter Name="BookID" Type="int" Mode="In" />
           <Parameter Name="TeacherID" Type="int" Mode="In" />
           <Parameter Name="Status" Type="int" Mode="In" />
+          <Parameter Name="TeacherNums" Type="int" Mode="In" />
         </Function>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeachDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="TeachDBEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TeachDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BaseDataDics" EntityType="TeachDBModel.BaseDataDics" />
           <EntitySet Name="Books" EntityType="TeachDBModel.Books" />
           <EntitySet Name="BookUsed" EntityType="TeachDBModel.BookUsed" />
@@ -459,6 +461,7 @@
             <Parameter Name="TeacherID" Mode="In" Type="Int32" />
             <Parameter Name="Status" Mode="In" Type="Int32" />
             <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="TeacherNums" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetStudentNums" ReturnType="Collection(Int32)">
             <Parameter Name="CoursesID" Mode="In" Type="Int32" />
@@ -466,6 +469,7 @@
             <Parameter Name="BookID" Mode="In" Type="Int32" />
             <Parameter Name="TeacherID" Mode="In" Type="Int32" />
             <Parameter Name="Status" Mode="In" Type="Int32" />
+            <Parameter Name="TeacherNums" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="BaseDataDics">
@@ -770,7 +774,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities1">
+        <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities">
           <EntitySetMapping Name="BaseDataDics">
             <EntityTypeMapping TypeName="TeachDBModel.BaseDataDics">
               <MappingFragment StoreEntitySet="BaseDataDics">

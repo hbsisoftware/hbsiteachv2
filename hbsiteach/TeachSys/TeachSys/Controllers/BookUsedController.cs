@@ -10,7 +10,7 @@ namespace TeachSys.Controllers
     {
         //
         // GET: /BookUsed/
-        Models.TeachDBEntities1 tdb = new Models.TeachDBEntities1();
+        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
         public ActionResult Index()
         {
             return View();
@@ -45,11 +45,11 @@ namespace TeachSys.Controllers
         /// 不需要学生数量-----添加
         /// </summary>
         /// <returns></returns>
-      
-        public ActionResult BookUseAdd(int CoursesID,int ClassID,int BookID,int TeacherID,int Status)
+
+        public ActionResult BookUseAdd(int CoursesID, int ClassID, int BookID, int TeacherID, int Status, int TeaBookNums)
         {
             try{
-            var bu=tdb.GetStudentNums(CoursesID,ClassID,BookID,TeacherID,Status);
+                var bu = tdb.GetStudentNums(CoursesID, ClassID, BookID, TeacherID, Status, TeaBookNums);
             tdb.SaveChanges();
             return Content("ok");
             }
@@ -68,11 +68,11 @@ namespace TeachSys.Controllers
         /// 不需要提供学生数量-----编辑
         /// </summary>
         /// <returns></returns>
-        public ActionResult EditBooksUse(int CoursesID,int ClassID,int BookID,int TeacherID,int Status,int id)
+        public ActionResult EditBooksUse(int CoursesID, int ClassID, int BookID, int TeacherID, int Status, int id, int TeaBookNums)
         {
             try
             {
-                var editbook=tdb.EditBookUsed(CoursesID,ClassID,BookID,TeacherID,Status,id);
+                var editbook = tdb.EditBookUsed(CoursesID, ClassID, BookID, TeacherID, Status, id, TeaBookNums);
                 tdb.SaveChanges();
                 return Content("ok");
             }
