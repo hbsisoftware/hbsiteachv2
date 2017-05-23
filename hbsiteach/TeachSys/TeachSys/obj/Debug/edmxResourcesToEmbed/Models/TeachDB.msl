@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities5">
+  <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities1">
     <EntitySetMapping Name="BaseDataDics">
       <EntityTypeMapping TypeName="TeachDBModel.BaseDataDics">
         <MappingFragment StoreEntitySet="BaseDataDics">
@@ -206,5 +206,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="AddClasses" FunctionName="TeachDBModel.Store.AddClasses" />
+    <FunctionImportMapping FunctionImportName="EditBookUsed" FunctionName="TeachDBModel.Store.EditBookUsed" />
+    <FunctionImportMapping FunctionImportName="GetStudentNums" FunctionName="TeachDBModel.Store.GetStudentNums" />
   </EntityContainerMapping>
 </Mapping>

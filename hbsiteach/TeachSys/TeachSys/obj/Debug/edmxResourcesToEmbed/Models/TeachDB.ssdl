@@ -378,4 +378,19 @@
     <Parameter Name="Name" Type="nvarchar" Mode="In" />
     <Parameter Name="TeacherID" Type="int" Mode="In" />
   </Function>
+  <Function Name="EditBookUsed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CoursesID" Type="int" Mode="In" />
+    <Parameter Name="ClassID" Type="int" Mode="In" />
+    <Parameter Name="BookID" Type="int" Mode="In" />
+    <Parameter Name="TeacherID" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetStudentNums" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CoursesID" Type="int" Mode="In" />
+    <Parameter Name="ClassID" Type="int" Mode="In" />
+    <Parameter Name="BookID" Type="int" Mode="In" />
+    <Parameter Name="TeacherID" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+  </Function>
 </Schema>

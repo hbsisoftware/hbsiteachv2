@@ -14,7 +14,7 @@ namespace TeachSys.Models
     
     public partial class View_BookUsed
     {
-        public int BookID { get; set; }
+        public Nullable<int> BookID { get; set; }
         public string CoursesName { get; set; }
         public int CourseID { get; set; }
         public int TeacherID { get; set; }

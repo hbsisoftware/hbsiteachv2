@@ -8,7 +8,7 @@ namespace TeachSys.Controllers
 {
     public class ClassesController : Controller
     {
-        Models.TeachDBEntities5 tdb = App_Start.Helper.tdb;
+        Models.TeachDBEntities1 tdb = App_Start.Helper.tdb;
         //
         // GET: /Classes/
 
@@ -16,6 +16,10 @@ namespace TeachSys.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// ***class 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult GetClassesList()
         {
             var classes = from c in tdb.Classes

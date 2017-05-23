@@ -16,10 +16,10 @@ namespace TeachSys.Models
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class TeachDBEntities5 : DbContext
+    public partial class TeachDBEntities1 : DbContext
     {
-        public TeachDBEntities5()
-            : base("name=TeachDBEntities5")
+        public TeachDBEntities1()
+            : base("name=TeachDBEntities1")
         {
         }
     
@@ -59,6 +59,60 @@ namespace TeachSys.Models
                 new ObjectParameter("TeacherID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddClasses", majorIDParameter, nameParameter, teacherIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> EditBookUsed(Nullable<int> coursesID, Nullable<int> classID, Nullable<int> bookID, Nullable<int> teacherID, Nullable<int> status, Nullable<int> iD)
+        {
+            var coursesIDParameter = coursesID.HasValue ?
+                new ObjectParameter("CoursesID", coursesID) :
+                new ObjectParameter("CoursesID", typeof(int));
+    
+            var classIDParameter = classID.HasValue ?
+                new ObjectParameter("ClassID", classID) :
+                new ObjectParameter("ClassID", typeof(int));
+    
+            var bookIDParameter = bookID.HasValue ?
+                new ObjectParameter("BookID", bookID) :
+                new ObjectParameter("BookID", typeof(int));
+    
+            var teacherIDParameter = teacherID.HasValue ?
+                new ObjectParameter("TeacherID", teacherID) :
+                new ObjectParameter("TeacherID", typeof(int));
+    
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(int));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("EditBookUsed", coursesIDParameter, classIDParameter, bookIDParameter, teacherIDParameter, statusParameter, iDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> GetStudentNums(Nullable<int> coursesID, Nullable<int> classID, Nullable<int> bookID, Nullable<int> teacherID, Nullable<int> status)
+        {
+            var coursesIDParameter = coursesID.HasValue ?
+                new ObjectParameter("CoursesID", coursesID) :
+                new ObjectParameter("CoursesID", typeof(int));
+    
+            var classIDParameter = classID.HasValue ?
+                new ObjectParameter("ClassID", classID) :
+                new ObjectParameter("ClassID", typeof(int));
+    
+            var bookIDParameter = bookID.HasValue ?
+                new ObjectParameter("BookID", bookID) :
+                new ObjectParameter("BookID", typeof(int));
+    
+            var teacherIDParameter = teacherID.HasValue ?
+                new ObjectParameter("TeacherID", teacherID) :
+                new ObjectParameter("TeacherID", typeof(int));
+    
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetStudentNums", coursesIDParameter, classIDParameter, bookIDParameter, teacherIDParameter, statusParameter);
         }
     }
 }
