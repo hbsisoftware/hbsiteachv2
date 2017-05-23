@@ -11,19 +11,47 @@
 </head>
 <body>
     <div>
+        <form id="pt_add">
         <div class="input_line"><label class="leftlabel">姓名:</label><input id="ptname" class="easyui-textbox" >  </div>
         <div class="input_line"><label class="leftlabel">性别:</label><div id="ptsex">
 		<input type="radio" name="rsex" value="男"><span>男</span>
 		<input type="radio" name="rsex" value="女"><span>女</span></div>
     </div>
-        <div class="input_line"><label class="leftlabel">生日:</label><input id="ptbirthday" class="easyui-datebox" >  </div>
+        <div class="input_line"><label class="leftlabel">生日:</label><input id="ptbirthday" type="date" >  </div>
+              <div class="input_line"><label class="leftlabel">兼职类型:</label><input id="ptType"  >  </div>
          <div class="input_line"><label class="leftlabel">学历:</label><input id="ptEdul"  >  </div>
          <div class="input_line"><label class="leftlabel">职称:</label><input id="pttitle"  >  </div>
         <div class="input_line"><label class="leftlabel">入职时间:</label><input id="ptintime" class="easyui-datebox" >  </div>
-         <div class="input_line"><label class="leftlabel">联系电话:</label><input id="pttel" class="easyui-datebox" >  </div>
-         <div class="input_line"><label class="leftlabel">工作单位:</label><input id="ptutname" class="easyui-datebox" >  </div>
-
+         <div class="input_line"><label class="leftlabel">联系电话:</label><input id="pttel" class="easyui-textbox" >  </div>
+         <div class="input_line"><label class="leftlabel">工作单位:</label><input id="ptutname" class="easyui-textbox" >  </div>
+          <div class="input_line"><label class="leftlabel">校内联系人:</label><input id="ptContactName" class="easyui-textbox" >  </div>
+         <div class="input_line"><label class="leftlabel">历年评价:</label><input id="ptJudgeText" class="easyui-textbox" >  </div>
+             <div class="input_line"><label class="leftlabel">最近一年任课时间:</label><input id="ptlasttime" class="easyui-datebox" >  </div>
+             <div class="input_line"><label class="leftlabel">备注:</label><input id="ptMemo" class="easyui-textbox" >  </div>
+            </form>
     </div>
-  
+   <script>
+       $(function () {
+           $("#ptEdul").combobox({
+               url: "/BaseDataDics/GetDatabases?typeno=1",
+               valueField: 'id',
+               textField: "name"
+
+           })
+           $("#pttitle").combobox({
+               url: "/BaseDataDics/GetDatabases?typeno=4",
+               valueField: 'id',
+               textField: "name"
+
+           })
+           $("#ptType").combobox({
+               url: "/BaseDataDics/GetDatabases?typeno=3",
+               valueField: 'id',
+               textField: "name"
+
+           })
+
+       })
+    </script>
 </body>
 </html>

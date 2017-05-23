@@ -423,6 +423,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Handler1.ashx" />
+    <Content Include="Images\top.jpg" />
     <Content Include="jquery-easyui-1.5.1\changelog.txt" />
     <Content Include="jquery-easyui-1.5.1\demo-mobile\accordion\basic.html" />
     <Content Include="jquery-easyui-1.5.1\demo-mobile\accordion\header.html" />
@@ -1312,7 +1313,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
-    <Folder Include="Images\" />
+    <Folder Include="PartJobTeachersDocsFile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace TeachSys.Controllers
 {
     public class PartJobTeacherDocsController : Controller
@@ -88,35 +89,55 @@ namespace TeachSys.Controllers
                 return Content("error");
             }
         }
-        public ActionResult AddFile(HttpPostedFileBase file)
+
+        //public ActionResult AddFile(HttpPostedFileBase file)
+        //{
+        //    if (file != null)
+        //    {
+        //        try
+        //        {
+        //            string filepath = Server.MapPath("`/PartJobTeacherDocs");
+        //            if (!Directory.Exists(filepath))
+        //            {
+        //                Directory.CreateDirectory(filepath);
+        //            }
+        //            string filename = Path.GetFileName(file.FileName);//获取文件名
+        //            string fileextension = Path.GetExtension(filename);//文件扩展名
+        //            string savename = Guid.NewGuid().ToString() + fileextension;//保存文件名
+        //            file.SaveAs(filepath + savename);
+        //            return Json(new { Success = true, FileName = filename, SaveName = savename });
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return Json(new { Success = false, Message = ex.Message }, JsonRequestBehavior.AllowGet);
+
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return Json(new { Success = false, Message = "请选择要上传的文件！" }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
+
+        public ActionResult load()
         {
-            if (file != null)
+            try
             {
-                try
-                {
-                    string filepath = Server.MapPath("`/PartJobTeacherDocs");
-                    if (!Directory.Exists(filepath))
-                    {
-                        Directory.CreateDirectory(filepath);
-                    }
-                    string filename = Path.GetFileName(file.FileName);//获取文件名
-                    string fileextension = Path.GetExtension(filename);//文件扩展名
-                    string savename = Guid.NewGuid().ToString() + fileextension;//保存文件名
-                    file.SaveAs(filepath + savename);
-                    return Json(new { Success = true, FileName = filename, SaveName = savename });
-
-                }
-                catch (Exception ex)
-                {
-                    return Json(new { Success = false, Message = ex.Message }, JsonRequestBehavior.AllowGet);
-
-                }
+                HttpPostedFileBase getfile = Request.Files["fileupload"];
+                string filename = getfile.FileName;
+                string str = filename.Substring(filename.LastIndexOf("\\") + 1);
+                string path = "/PartJobTeachersDocsFile/" + Guid.NewGuid() + str;
+                getfile.SaveAs(Server.MapPath(path));
+                return Content("ok");
             }
-            else
+            catch
             {
-                return Json(new { Success = false, Message = "请选择要上传的文件！" }, JsonRequestBehavior.AllowGet);
+                return Content("error");
             }
         }
+
+
 
     }
 }

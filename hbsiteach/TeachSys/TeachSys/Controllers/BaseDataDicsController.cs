@@ -104,6 +104,22 @@ namespace TeachSys.Controllers
 
             return Json(classes, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult GetDatabases(int typeno)
+        {
+            try
+            {
+
+                var da = (from d in tdb.BaseDataDics
+                          where d.TypeNo == typeno
+                          select new { id = d.ID, name = d.Name, d.Status });
+                return Json(da, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Content("error");
+            }
+        }
+
 
 
     }

@@ -23,7 +23,7 @@
                                      iconCls: 'icon-add',
                                      handler: function () {
 
-                                         var url = "/partjobteachers/add";
+                                         var url = "/partjobteacher/add";
                                          $("#tb1").dialog({
                                              title: "教师添加--",
                                              iconCls: 'icon-add',
@@ -47,7 +47,8 @@
                                             var beizhu = $("#benzhu").val;
                                             // var status = $("#status").val;
                                             var name = $("#name").val;
-                                            $.get("/parjobteachers/AddPartJobTeachers", { Name: name, TypeID: jianzhi, EduID: xueli, Birthday: riqi, Sex: sex, InTime: time, ContactName: lianxi, LastTime: renke, Memo: beizhu, Status: 0 }
+                                            var dep=$("#pt_add").val();
+                                            $.get("/parjobteachers/AddPartJobTeachers", dep
                                                  , function (data) {
                                                      if (data == "ok") {
                                                          //alert("成功");
@@ -206,7 +207,7 @@
                        {
                            field: 'sex', title: '性别 ',
                            formatter: function (val, row) {
-                               if (val != "True") {
+                               if (val != "1") {
                                    return "<span >男</span>"
                                }
                                else {
