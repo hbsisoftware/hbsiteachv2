@@ -13,29 +13,60 @@
     <div>
         <form id="books-edit-form">
             <input type="hidden" name="ID" value="@Model.ID" />
-            <div class ="input_line"><label class="leftlabel">书名:</label><input class="easyui-textbox" name="Name" value="@Model.Name" /></div>
-            <div class="input_line"><label class="leftlabel">作者:</label><input class="easyui-textbox" name="Author" value="@Model.Author" /></div>
-            <div class="input_line"><label class="leftlabel">出版社:</label><input class="easyui-textbox" id="Publisher" name="PublisherID" value="@Model.PublisherID" /></div>
-            <div class="input_line"><label class="leftlabel">出版年份:</label><input class="easyui-textbox" name="PubYear" value="@Model.PubYear" /></div>
-            <div class="input_line"><label class="leftlabel">ISBN码:</label><input class="easyui-textbox" name="ISBN" value="@Model.ISBN" /></div>
-            <div class="input_line"><label class="leftlabel">价格:</label><input class="easyui-textbox" name="Price" value="@Model.Price" /></div>
-            <div class="input_line"><label class="leftlabel">教材性质:</label><input class="easyui-textbox" id="BookProperty" name="BookPropertyID" value="@Model.BookPropertyID" /></div>
-            <div class="input_line"><label class="leftlabel">教材类别:</label><input class="easyui-textbox" id="BookType" name="BookTypeID" value="@Model.BookTypeID" /></div>
-            <div class="input_line"><label class="leftlabel">教材最后一次使用时间:</label><input class="easyui-textbox" name="LastTime" value="@Model.LastTime" /></div>
-            <div class="input_line"><label class="leftlabel">停止印刷时间:</label><input class="easyui-textbox" name="DisabledTime" value="@Model.DisabledTime" /></div>
+            <div class ="input_line"><label class="leftlabel">书名:</label><input class="easyui-validatebox textbox" name="Name" data-options="required:true" value="@Model.Name" /></div>
+            <div class="input_line"><label class="leftlabel">作者:</label><input class="easyui-validatebox textbox" name="Author" data-options="required:true" value="@Model.Author" /></div>
+            <div class="input_line"><label class="leftlabel">出版社:</label><input class="easyui-validatebox textbox" id="Publisher" data-options="required:true,editable:false" name="PublisherID" value="@Model.PublisherID" /></div>
+            <div class="input_line"><label class="leftlabel">出版年份:</label><input id="PubYear" class="easyui-validatebox textbox" name="PubYear" data-options="required:true,validType:'year'" value="@Model.PubYear" /></div>
+            <div class="input_line"><label class="leftlabel">ISBN码:</label><input class="easyui-validatebox textbox" name="ISBN" data-options="required:true,validType:'integer'" value="@Model.ISBN" /></div>
+            <div class="input_line"><label class="leftlabel">价格:</label><input class="easyui-validatebox textbox" name="Price" data-options="required:true,validType:'integer'" value="@Model.Price" /></div>
+            <div class="input_line"><label class="leftlabel">教材性质:</label><input class="easyui-validatebox textbox" id="BookProperty" name="BookPropertyID" data-options="required:true,editable:false" value="@Model.BookPropertyID" /></div>
+            <div class="input_line"><label class="leftlabel">教材类别:</label><input class="easyui-validatebox textbox" id="BookType" name="BookTypeID" data-options="required:true,editable:false" value="@Model.BookTypeID" /></div>
+            <div class="input_line"><label class="leftlabel">教材最后一次使用时间:</label><input id="LastTime" class="easyui-validatebox textbox" name="LastTime" value="@Model.LastTime" /></div>
+            <div class="input_line"><label class="leftlabel">停止印刷时间:</label><input id="DisabledTime" class="easyui-validatebox textbox" name="DisabledTime" value="@Model.DisabledTime" /></div>
         </form>
     </div>
     <script>
+        $(function () {
+            $.extend($.fn.validatebox.defaults.rules, {
+                integer: {// 验证整数
+                    validator: function (value) {
+                        return /^[+]?[1-9]+\d*$/i.test(value);
+
+                        //return /^([+]?[0-9])|([-]?[0-9])+\d*$/i.test(value);  //可正可负
+                    },
+                    message: '请输入正整数'
+                },
+                year: {// 验证4位整数
+                    validator: function (value) {
+                        return /^\d{4}$/i.test(value);
+
+                        //return /^([+]?[0-9])|([-]?[0-9])+\d*$/i.test(value);  //可正可负
+                    },
+                    message: '请输入正确的年'
+                }
+            });
+         
+            $("#LastTime").datebox({
+                editable: false
+            });
+            $("#DisabledTime").datebox({
+                editable: false
+            });
+
+        })
+        //添加出版社
         $("#Publisher").combobox({
             url: '/books/Press?typeno=6',
             valueField: 'ID',
             textField: "Name"
         });
+        //添加教材性质
         $("#BookProperty").combobox({
             url: '/books/Press?typeno=1',
             valueField: 'ID',
             textField: "Name"
         });
+        //添加教材类别
         $("#BookType").combobox({
             url: '/books/Press?typeno=2',
             valueField: 'ID',
