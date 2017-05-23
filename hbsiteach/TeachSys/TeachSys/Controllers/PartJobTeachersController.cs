@@ -10,16 +10,13 @@ namespace TeachSys.Controllers
     {
         //
         // GET: /PartJobTeachers/
-<<<<<<< HEAD
-=======
 
->>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb
-        Models.TeachDBEntities1 tdb = new Models.TeachDBEntities1();
+        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
         public ActionResult Index()
         {
             return View();
         }
-<<<<<<< HEAD
+
         public ActionResult Add()
         {
             return View();
@@ -29,8 +26,7 @@ namespace TeachSys.Controllers
             Models.PartJobTeachers p=tdb.PartJobTeachers.First(t=>t.ID==id);
             return View(p);
         }
-=======
->>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb
+
         public ActionResult GetPartJobTeachers()
         {
             var pt = from p in tdb.View_PartJobTeachers

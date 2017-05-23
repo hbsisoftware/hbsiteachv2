@@ -10,14 +10,8 @@ namespace TeachSys.Controllers
     {
         //
         // GET: /Type/
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
-=======
->>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467
->>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb
-        Models.TeachDBEntities1 tdb = new Models.TeachDBEntities1();
+        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
         public ActionResult Index()
         {
             return View();
@@ -26,15 +20,6 @@ namespace TeachSys.Controllers
         {
             Models.Type type = tdb.Type.First(t => t.ID == id);
             return View(type);
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-
-=======
-           
->>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467
->>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb
         }
         public ActionResult Add()
         {
@@ -43,15 +28,9 @@ namespace TeachSys.Controllers
         public ActionResult GetType()
         {
             var type = from t in tdb.Type
-<<<<<<< HEAD
-                       select new { name = t.Name, typeid = t.TypeId };
-=======
-<<<<<<< HEAD
-                       select new { name = t.Name, typeid = t.TypeId };
-=======
-                       select new { t.Name, t.TypeId };
->>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467
->>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb
+
+            select new { name = t.Name, typeid = t.TypeId };
+
             return Json(type, JsonRequestBehavior.AllowGet);
         }
         public ActionResult AddType(Models.Type t)
@@ -74,15 +53,9 @@ namespace TeachSys.Controllers
                 var type = tdb.Type.First(t => t.ID == id);
                 type.Name = name;
                 type.TypeId = typeid;
-<<<<<<< HEAD
-                type.Status = status;
-=======
-<<<<<<< HEAD
-                type.Status = status;
-=======
 
->>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467
->>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb
+                type.Status = status;
+
                 tdb.SaveChanges();
                 return Content("ok");
             }
@@ -105,13 +78,6 @@ namespace TeachSys.Controllers
                 return Content("error");
             }
         }
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> d5934dd1ac2a8e90f60d3a09b9a83248f57b1467
->>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb
     }
 }

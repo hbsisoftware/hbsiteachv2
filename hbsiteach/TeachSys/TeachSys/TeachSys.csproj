@@ -260,9 +260,6 @@
     <Compile Include="Models\Type.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\View_Books.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\View_PartJobTeachers.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1171,6 +1168,9 @@
     <Content Include="Views\BaseDataDics\Index.cshtml" />
     <Content Include="Views\Courses\Add.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Type\Add.cshtml" />
+    <Content Include="Views\Type\Edit.cshtml" />
+    <Content Include="Views\Type\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

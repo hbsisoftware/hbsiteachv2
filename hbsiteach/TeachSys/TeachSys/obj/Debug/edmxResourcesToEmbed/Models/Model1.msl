@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities1">
+  <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities">
     <EntitySetMapping Name="BaseDataDics">
       <EntityTypeMapping TypeName="TeachDBModel.BaseDataDics">
         <MappingFragment StoreEntitySet="BaseDataDics">
@@ -167,23 +167,6 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="TypeId" ColumnName="TypeId" />
           <ScalarProperty Name="Status" ColumnName="Status" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="View_Books">
-      <EntityTypeMapping TypeName="TeachDBModel.View_Books">
-        <MappingFragment StoreEntitySet="View_Books">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Author" ColumnName="Author" />
-          <ScalarProperty Name="PublisherName" ColumnName="PublisherName" />
-          <ScalarProperty Name="PubYear" ColumnName="PubYear" />
-          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
-          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-          <ScalarProperty Name="LastTime" ColumnName="LastTime" />
-          <ScalarProperty Name="DisabledTime" ColumnName="DisabledTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

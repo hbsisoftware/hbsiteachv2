@@ -10,16 +10,13 @@ namespace TeachSys.Controllers
     {
         //
         // GET: /PartJobTeachersDocs/
-<<<<<<< HEAD
-=======
 
->>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb
-        Models.TeachDBEntities1 tdb = new Models.TeachDBEntities1();
+        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
         public ActionResult Index()
         {
             return View();
         }
-<<<<<<< HEAD
+
         public ActionResult Add()
         {
             return View();
@@ -29,8 +26,7 @@ namespace TeachSys.Controllers
             Models.PartJobTeacherDocs pd = tdb.PartJobTeacherDocs.First(t => t.ID == id);
             return View(pd);
         }
-=======
->>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb
+
         public ActionResult GetDocs()
         {
             var gd = from c in tdb.PartJobTeacherDocs
@@ -91,9 +87,6 @@ namespace TeachSys.Controllers
                 return Content("error");
             }
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> aad2e41493bc8ac23ddb82ced4fecdd87ebec0fb
     }
 }

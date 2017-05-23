@@ -40,6 +40,8 @@ namespace TeachSys.Models
         public DbSet<Students> Students { get; set; }
         public DbSet<TeacherClasses> TeacherClasses { get; set; }
         public DbSet<Teachers> Teachers { get; set; }
+        public DbSet<Type> Type { get; set; }
+        public DbSet<View_PartJobTeachers> View_PartJobTeachers { get; set; }
         public DbSet<View_TeacherClasses> View_TeacherClasses { get; set; }
     
         public virtual int AddClasses(Nullable<int> majorID, string name, Nullable<int> teacherID)
