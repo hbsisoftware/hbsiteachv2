@@ -8,10 +8,210 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+<link href="~/Content/globals.css" rel="stylesheet" />
+<link href="~/jquery-easyui-1.5.1/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/jquery-easyui-1.5.1/themes/icon.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.2.1.js"></script>
+    <script src="~/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
+    <script>
+        $(function () {
+            var tb = [
+                                 {
+                                     text: '添加',
+                                     iconCls: 'icon-add',
+                                     handler: function () {
+
+                                         var url = "/BaseDataDics/add";
+                                         $("#BaseDataDics_add_dig").dialog({
+                                             title: "字典添加--",
+                                             iconCls: 'icon-add',
+                                             modal: true,
+                                             width: 300,
+                                             height: 200,
+                                             href: url,
+                                             buttons: [
+                                    {
+                                        text: '保存',
+                                        iconCls: 'icon-add',
+                                        handler: function () {
+
+                                            var typeno = $("#majors").combobox("getValue");
+                                            var name = $("#BaseDataDics_add_name").val();
+                                           
+
+
+                                            $.get("/BaseDataDics/AddDatabase", { Name: name, typeno: typeno, Status: 0 }, function (das) {
+                                                if (das == "ok") {
+                                                    //alert("成功");
+                                                    $.messager.show({
+                                                        title: '提示',
+                                                        msg: '成功',
+                                                        showType: 'show'
+                                                    });
+                                                    $("#BaseDataDics_add_dig").dialog("close");
+                                                    $("#tb").datagrid("reload");
+
+                                                }
+                                                else { alert("失败"); }
+                                            }, "text")
+                                        }
+                                    },
+                                    {
+                                        text: '取消',
+                                        iconCls: 'icon-cancel',
+                                        handler: function () {
+                                            $("#BaseDataDics_add_dig").dialog("close");
+                                        }
+                                    }
+                                             ]
+                                         });
+                                     }
+                                 },
+                                 {
+                                     text: '修改',
+                                     icon: 'icon-edit',
+                                     handler: function () {
+                                         var id = $("#tb").datagrid("getSelected").ID;
+                                         var url = "/BaseDataDics/edit?id=" + id;
+                                         $("#BaseDataDics_edit_dig").dialog({
+                                             title: "字典修改--",
+                                             iconCls: 'icon-Edit',
+
+                                             modal: true,
+                                             width: 300,
+                                             height: 200,
+                                             href: url,
+                                             buttons: [
+                                                 {
+                                                     text: '保存',
+                                                     iconCls: 'icon-save',
+                                                     handler: function () {
+
+
+                                                         var name = $("#BaseDataDics_edit_name").val();
+                                                         var id = $("#BaseDataDics_edit_id").val();
+                                                         var typeno = $("#BaseDataDics_edit_typeNo").val();
+
+                                                         $.get("/BaseDataDics/EditDatabase", { ID: id, Name: name, typeno: typeno, Status: 0 }, function (das) {
+
+                                                             if (das == "ok") {
+                                                                 //alert("成功");
+                                                                 $.messager.show({
+                                                                     title: '提示',
+                                                                     msg: '成功',
+                                                                     showType: 'show'
+                                                                 });
+                                                                 $("#BaseDataDics_edit_dig").dialog("close");
+                                                                 $("#tb").datagrid("reload");
+
+                                                             }
+                                                             else { alert("修改失败"); }
+                                                         }, "text")
+                                                     }
+                                                 },
+                                    {
+                                        text: '取消',
+                                        iconCls: 'icon-cancel',
+                                        handler: function () {
+                                            $("#BaseDataDics_edit_dig").dialog("close");
+                                        }
+                                    }
+                                             ]
+                                         });
+                                     }
+                                 }, '-',
+                                 {
+                                     text: '删除',
+                                     iconCls: 'icon-remove',
+                                     handler: function () {
+                                         var row = $("#tb").datagrid("getSelected")
+                                         if (row != null) {
+                                             var name = row.Name;
+                                             $.messager.confirm("提示...", "确定要删除“" + name + "”吗？", function (retult) {
+                                                 if (retult) {
+                                                     var id = row.ID;
+                                                     $.get("/BaseDataDics/DeleteDatabase", { id: id }, function (data) {
+                                                         if (data == "ok") {
+                                                             $("#tb").datagrid("reload");
+
+                                                             $.messager.show({
+                                                                 title: '提示...',
+                                                                 msg: '删除成功',
+                                                                 showType: 'show'
+
+                                                             })
+                                                         }
+
+                                                         else
+                                                             $.messager.show({
+                                                                 title: '提示...',
+                                                                 msg: '删除失败',
+                                                                 showType: 'show'
+
+                                                             })
+
+
+                                                     }, "text")
+                                                 }
+                                             })
+
+                                         }
+
+                                     }
+
+                                 }];
+
+            $("#majors").combobox({
+                width: 200,
+                onSelect
+               : function (newvalue, oldvalue) {
+                   $("#tb").datagrid("reload");
+               },
+                url: "/Type/gettype",
+                valueField: 'typid',
+                textField: "name",
+
+            });
+
+            $("#majors").combobox("select", "1");
+            $("#tb").datagrid({
+                url: ' /BaseDataDics/GettypeID',
+                queryParams
+                    : {
+                        typeno: $("#majors").combobox("getValue")
+                    },
+                width: 300,
+                height: 300,
+                fitColumns: true,
+                singleSelect: true,
+                // pagination: true,
+                toolbar: tb,
+                columns: [[
+
+                    { field: 'Name', title: '字典名称', width: 300 }
+                ]]
+            });
+
+
+        });
+        function query() {
+            $("#tb").datagrid("load", {
+                typeno: $("#majors").combobox("getValue"
+
+                )
+            });
+        }
+    </script>
 </head>
 <body>
     <div>
-        
+       
+        <select class="esayui-combobox" id="majors"></select>
+        <input type="button" onclick="query();" value="查询" />
+        <table id="tb"></table>
+        <div id="BaseDataDics_add_dig"></div>
+        <div id="BaseDataDics_edit_dig"></div>
     </div>
+   
 </body>
 </html>

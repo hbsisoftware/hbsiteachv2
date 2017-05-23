@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    <div>
+       <div class="input_line"><label class="leftlabel"> 兼职教师:</label><input id="PJTD_add_PJTeacherID"></div>
+       <div class="input_line"><label class="leftlabel">选择文件:</label><input class="easyui-filebox"  id="PJTD_add_url"></div>
+          <div class="input_line"><label class="leftlabel">选择文件:</label><input   id="PJTD_add_Doc"></div>
+       <div class="input_line"><label class="leftlabel"> 上传日期：</label><input type="date" id="PJTD_add_Time"></div>
+    </div>
+    <script>
+        $(function(){
+        $("#PJTD_add_PJTeacherID").combobox({
+            url: "/PartJobTeachers/GetPartJobTeachers",
+            valueField: 'id',
+            textField: "name"
+        });
+        $("#PJTD_add_Doc").combobox({
+           url: "/BaseDataDics/GetDatabases?typeNO=5",
+           valueField: 'id',
+           textField:"name"
+
+        })
+
+})
+    </script>
+</body>
+</html>

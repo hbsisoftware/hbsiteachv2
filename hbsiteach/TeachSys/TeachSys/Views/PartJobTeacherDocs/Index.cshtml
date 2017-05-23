@@ -8,7 +8,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-  <link href="~/Content/globals.css" rel="stylesheet" />
+ <link href="~/Content/globals.css" rel="stylesheet" />
  <link href="~/jquery-easyui-1.5.1/themes/default/easyui.css" rel="stylesheet" />
     <link href="~/jquery-easyui-1.5.1/themes/icon.css" rel="stylesheet" />
      <script src="~/Scripts/jquery-2.2.1.js"></script>
@@ -16,22 +16,22 @@
    <script>
        $(function () {
            $('#tb').datagrid({
-               url: '/Type/gettype',
+               url: '/PartJobTeacherDocs/GetDocs',
                width: 400,
-               height: 240,
+               height: 340,
                fitColumns: true,
                singleSelect: true,
                toolbar: [{
                    text: '添加',
                    iconCls: 'icon-add',
                    handler: function () {
-                       $("#type_add_dig").dialog({
-                           title: "类型添加---",
+                       $("#PJTD_add_dig").dialog({
+                           title: "兼职教师添加---",
                            iconCls: 'icon-add',
                            closed: false,
                            modal: true,
-                           href: '/Type/add',
-                           width: 300,
+                           href: '/PartJobTeacherDocs/Add',
+                           width: 400,
                            height: 200,
                            buttons: [
                                {
@@ -39,9 +39,11 @@
                                    iconCls: 'icon-save',
                                    handler: function () {
 
-                                       var name = $("#type_add_name").textbox("getValue");
-                                       var typeid = $("#type_add_typeid").textbox("getValue");
-                                       $.get("/Type/AddType", { Name: name, typeid: typeid, Status: 0 }, function (data) {
+                                       var PJTeacherID = $("#PJTD_add_PJTeacherID").val();
+                                       var url = $("#PJTD_add_url").filebox("getValue");
+                                       var doc = $("#PJTD_add_Doc").val();
+                                       var time = $("#PJTD_add_Time").val();
+                                       $.get("/PartJobTeacherDocs/AddDocs", { PJTeacherID: PJTeacherID, Url:url,DocTypeID:doc,UploadTime:time, Status: 0 }, function (data) {
 
                                            if (data == "ok") {
                                                $.messager.show({
@@ -49,7 +51,7 @@
                                                    msg: '保存成功',
                                                    showType: 'show'
                                                })
-                                               $("#type_add_dig").dialog("close");
+                                               $("#PJTD_add_dig").dialog("close");
                                                $("#tb").datagrid("reload");
 
                                            }
@@ -67,7 +69,7 @@
                                    text: '取消',
                                    iconCls: 'icon-cancel',
                                    handler: function () {
-                                       $("#type_add_dig").dialog("close");
+                                       $("#PJTD_add_dig").dialog("close");
 
                                    }
 
@@ -83,9 +85,9 @@
                    iconCls: 'icon-edit',
                    handler: function () {
                        var id = $("#tb").datagrid("getSelected").id;
-                       var url = "/Type/edit?id=" + id;
-                       $("#type_edit_dig").dialog({
-                           title: "类型修改---",
+                       var url = "/PartJobTeacherDocs/Edit?id=" + id;
+                       $("#PJTD_edit_dig").dialog({
+                           title: "兼职教师修改---",
                            iconCls: 'icon-edit',
 
                            modal: true,
@@ -101,7 +103,7 @@
                                        var name = $("#type_add_name").val();
                                        var typeid = $("#type_edit_typeid").val();
 
-                                       $.get("/Type/EditType", { id: id, name: name, typid: typeid, Status: 0 }, function (data) {
+                                       $.get("/PartJobTeacherDocs/EditDocs", { id: id, name: name, typid: typeid, Status: 0 }, function (data) {
 
                                            if (data == "ok") {
                                                $.messager.show({
@@ -111,7 +113,7 @@
                                                })
 
                                                $("#tb").datagrid("reload");
-                                               $("#type_edit_dig").dialog("close");
+                                               $("#PJTD_edit_dig").dialog("close");
                                            }
                                            else { alert("失败"); }
 
@@ -124,7 +126,7 @@
                                    text: '取消',
                                    iconCls: 'icon-cancel',
                                    handler: function () {
-                                       $("#type_edit_dig").dialog("close");
+                                       $("#PJTD_edit_dig").dialog("close");
 
                                    }
 
@@ -146,8 +148,8 @@
                            var name = row.name;
                            $.messager.confirm("提示...", "确定要删除“" + name + "”吗？", function (retult) {
                                if (retult) {
-                                   var id = row.id;
-                                   $.get("/Type/DeleteType/", { id: id }, function (data) {
+                                   var id = row.ID;
+                                   $.get("/PartJobTeacherDocs/DeleteDocs/", { id: id }, function (data) {
                                        if (data == "ok") {
                                            $("#tb").datagrid("reload");
 
@@ -178,8 +180,10 @@
 
                columns: [[
 
-                   { field: 'name', title: '类型', width: 100 },
-                     { field: 'typid', title: '类型型号', width: 50 }
+                   { field: 'PName', title: '兼职教师', width: 100 },
+                     { field: 'Url', title: '文档路径', width: 150 },
+                      { field: 'DocTypeId', title: '文档类型', width: 150 },
+                     { field: 'UploadTime', title: '上传日期', width: 100 }
                ]]
 
            })
@@ -189,8 +193,9 @@
 </head>
 <body>
     <table id="tb"></table>
-    <div id="type_add_dig">     
+    <div id="PJTD_add_dig">     
     </div>
-    <div id="type_edit_dig"></div>
+    <div id="PJTD_edit_dig"></div>
 </body>
 </html>
+

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace TeachSys.Controllers
 {
-    public class PartJobTeachersDocsController : Controller
+    public class PartJobTeacherDocsController : Controller
     {
         //
         // GET: /PartJobTeachersDocs/
