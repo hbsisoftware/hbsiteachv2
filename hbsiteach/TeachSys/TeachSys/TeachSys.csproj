@@ -1313,7 +1313,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
-    <Folder Include="PartJobTeachersDocsFile1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
