@@ -35,18 +35,16 @@
                                         text: '保存',
                                         iconCls: 'icon-save',
                                         handler: function () {
-                                            //var jianzhi = $("#PJTD_add_PJTeacher").combobox("getValue");
-                                            //var xueli = $("#xueli").combobox("getValue");
-                                            ////var zhicheng = $("#zhicheng").combobox("getValue");
-                                            //var riqi = $("#riqi").val;
-                                            //var sex = $("#sex").val;
-                                            //var time = $("#time").val;
-                                            //var tel = $("#tel").val;
-                                            //var lianxi = $("#lianxi").val;
-                                            //var renke = $("#renke").val;
-                                            //var beizhu = $("#benzhu").val;
-                                            //// var status = $("#status").val;
-                                            //var name = $("#name").val;
+                                            var name = $("#ptname").val();
+                                            var sex = $("#ptsex").val();
+                                            var birthday = $("#ptbirthday").val();
+                                            var ptType = $("#ptType").val();
+                                            var ptEdul = $("#ptEdul").val();
+                                            var birthday = $("#ptbirthday").val();
+                                            var birthday = $("#ptbirthday").val();
+                                            var birthday = $("#ptbirthday").val();
+                                            var birthday = $("#ptbirthday").val();
+                                            var birthday = $("#ptbirthday").val();
                                             var dep = $("#pt_add").serialize();
                                             $.get("/PartJobTeacher/AddPartJobTeachers", dep, function (data) {
                                                 alert(dep);
@@ -136,18 +134,16 @@
                                      text: '删除',
                                      iconCls: 'icon-remove',
                                      handler: function () {
-                                         var id = $("#tb").datagrid("getSelected").ID;
-                                         $.get("/Home/delete", { id: id }, function (das) {
+                                         var id = $("#tb").datagrid("getSelected").id;
+                                         $.get("/PartJobTeacher/DeletePartJobTeachers", { id: id }, function (das) {
                                              if (das == "ok") {
-                                                 //alert("成功");
+                                                 $("#tb").datagrid("reload");
                                                  $.messager.show({
                                                      title: '提示',
                                                      msg: '成功',
                                                      showType: 'show'
                                                  });
-                                                 $("#tb1").dialog("close");
-                                                 $("#tb").datagrid("reload");
-                                                 $("#majors").datagrid("reload"); 
+                                                 
                                              }
                                              else { alert("失败"); }
                                          }, "text")

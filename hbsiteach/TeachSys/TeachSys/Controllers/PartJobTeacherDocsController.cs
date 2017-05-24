@@ -51,12 +51,16 @@ namespace TeachSys.Controllers
             {
                 tdb.PartJobTeacherDocs.Add(pt);
                 tdb.SaveChanges();
+
+              
                 return Content("ok");
             }
             catch
             {
                 return Content("error");
             }
+
+
         }
         public ActionResult EditDocs(int id, int doctypeid, DateTime uploadtime, int status, string url)
         {
@@ -90,54 +94,41 @@ namespace TeachSys.Controllers
             }
         }
 
-        //public ActionResult AddFile(HttpPostedFileBase file)
-        //{
-        //    if (file != null)
-        //    {
-        //        try
-        //        {
-        //            string filepath = Server.MapPath("`/PartJobTeacherDocs");
-        //            if (!Directory.Exists(filepath))
-        //            {
-        //                Directory.CreateDirectory(filepath);
-        //            }
-        //            string filename = Path.GetFileName(file.FileName);//获取文件名
-        //            string fileextension = Path.GetExtension(filename);//文件扩展名
-        //            string savename = Guid.NewGuid().ToString() + fileextension;//保存文件名
-        //            file.SaveAs(filepath + savename);
-        //            return Json(new { Success = true, FileName = filename, SaveName = savename });
-
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return Json(new { Success = false, Message = ex.Message }, JsonRequestBehavior.AllowGet);
-
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return Json(new { Success = false, Message = "请选择要上传的文件！" }, JsonRequestBehavior.AllowGet);
-        //    }
-        //}
-
-        public ActionResult load()
+        public ActionResult load(Models.PartJobTeacherDocs pt)
         {
+            
+            //try
+            //{
+
+                //HttpPostedFileBase getfile = Request.Files["fileupload"];
+                //string filename = getfile.FileName;
+                //string str = filename.Substring(filename.LastIndexOf("\\") + 1);
+                //string path = "/doc/" + Guid.NewGuid() + str;
+                //string getpath = Server.MapPath(path);
+                //getfile.SaveAs(path);
+                //tdb.PartJobTeacherDocs.Add(pt);
+                //pt.Url = getpath;
+
+
+
+
             try
             {
                 HttpPostedFileBase getfile = Request.Files["fileupload"];
                 string filename = getfile.FileName;
                 string str = filename.Substring(filename.LastIndexOf("\\") + 1);
-                string path = "/PartJobTeachersDocsFile/" + Guid.NewGuid() + str;
+                string path = "/doc/" + Guid.NewGuid() + str;
                 getfile.SaveAs(Server.MapPath(path));
+                tdb.PartJobTeacherDocs.Add(pt);
+                tdb.SaveChanges();
                 return Content("ok");
             }
             catch
             {
                 return Content("error");
             }
+
+
         }
-
-
-
     }
 }
