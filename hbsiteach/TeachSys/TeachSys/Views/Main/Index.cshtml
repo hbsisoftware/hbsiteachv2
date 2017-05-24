@@ -26,7 +26,8 @@
             $(".submit").click(function () {
                 var user = $(".admin").val();
                 var pass = $(".passWord").val();
-                $.get("/main/login", {username:user,password:pass,role:$(":radio[name='o']").val()}, function (data) {//ok:登录成功，其它：失败
+               
+                $.get("/main/login", { username: user, password: pass, role: $(":radio[name='o']").val() }, function (data) {//ok:登录成功，其它：失败
                     if (data == "ok") {
                         location.href = "/main/main";
                     }

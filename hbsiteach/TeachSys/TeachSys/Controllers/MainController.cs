@@ -10,7 +10,6 @@ namespace TeachSys.Controllers
     public class MainController : Controller
     {
         Models.TeachDBEntities tdb = new Models.TeachDBEntities();
-        //
         // GET: /Main/
 
         public ActionResult Index()

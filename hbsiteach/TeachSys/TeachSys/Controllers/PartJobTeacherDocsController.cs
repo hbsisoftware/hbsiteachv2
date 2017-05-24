@@ -52,7 +52,7 @@ namespace TeachSys.Controllers
                 tdb.PartJobTeacherDocs.Add(pt);
                 tdb.SaveChanges();
 
-              
+
                 return Content("ok");
             }
             catch
@@ -94,20 +94,23 @@ namespace TeachSys.Controllers
             }
         }
 
+
+
+
         public ActionResult load(Models.PartJobTeacherDocs pt)
         {
-            
+
             //try
             //{
 
-                //HttpPostedFileBase getfile = Request.Files["fileupload"];
-                //string filename = getfile.FileName;
-                //string str = filename.Substring(filename.LastIndexOf("\\") + 1);
-                //string path = "/doc/" + Guid.NewGuid() + str;
-                //string getpath = Server.MapPath(path);
-                //getfile.SaveAs(path);
-                //tdb.PartJobTeacherDocs.Add(pt);
-                //pt.Url = getpath;
+            //HttpPostedFileBase getfile = Request.Files["fileupload"];
+            //string filename = getfile.FileName;
+            //string str = filename.Substring(filename.LastIndexOf("\\") + 1);
+            //string path = "/doc/" + Guid.NewGuid() + str;
+            //string getpath = Server.MapPath(path);
+            //getfile.SaveAs(path);
+            //tdb.PartJobTeacherDocs.Add(pt);
+            //pt.Url = getpath;
 
 
 
@@ -127,7 +130,6 @@ namespace TeachSys.Controllers
             {
                 return Content("error");
             }
-
 
         }
     }
