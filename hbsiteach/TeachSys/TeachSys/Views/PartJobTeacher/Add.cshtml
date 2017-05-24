@@ -13,9 +13,13 @@
     <div>
         <form id="pt_add">
         <div class="input_line"><label class="leftlabel">姓名:</label><input id="ptname" class="easyui-textbox" >  </div>
-        <div class="input_line"><label class="leftlabel">性别:</label><div id="ptsex">
-		<input type="radio" name="rsex" value="男"><span>男</span>
-		<input type="radio" name="rsex" value="女"><span>女</span></div>
+        <div class="input_line"><label class="leftlabel">性别:</label><input type="text" name="filmType" id="ptsex"
+            placeholder="请输入性别"  list="fileTypeList"/><br/>
+    <datalist id="fileTypeList">
+        <option value="男">男</option>
+        <option value="女">女</option>
+       
+    </datalist>
     </div>
         <div class="input_line"><label class="leftlabel">生日:</label><input id="ptbirthday" type="date" >  </div>
               <div class="input_line"><label class="leftlabel">兼职类型:</label><input id="ptType"  >  </div>
@@ -54,4 +58,4 @@
        })
     </script>
 </body>
-</html>
+</html>>

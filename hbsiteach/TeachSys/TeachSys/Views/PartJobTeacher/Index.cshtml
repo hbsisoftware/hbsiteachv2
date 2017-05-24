@@ -24,7 +24,7 @@
                                      handler: function () {
 
                                          var url = "/partjobteacher/add";
-                                         $("#tb1").dialog({
+                                         $("#pt_add_dig").dialog({
                                              title: "教师添加--",
                                              iconCls: 'icon-add',
                                              modal: true,
@@ -35,29 +35,28 @@
                                         text: '保存',
                                         iconCls: 'icon-save',
                                         handler: function () {
-                                            var jianzhi = $("#PJTD_add_PJTeacher").combobox("getValue");
-                                            var xueli = $("#xueli").combobox("getValue");
-                                            //var zhicheng = $("#zhicheng").combobox("getValue");
-                                            var riqi = $("#riqi").val;
-                                            var sex = $("#sex").val;
-                                            var time = $("#time").val;
-                                            var tel = $("#tel").val;
-                                            var lianxi = $("#lianxi").val;
-                                            var renke = $("#renke").val;
-                                            var beizhu = $("#benzhu").val;
-                                            // var status = $("#status").val;
-                                            var name = $("#name").val;
-                                            var dep=$("#pt_add").val();
-                                            $.get("/parjobteachers/AddPartJobTeachers", dep
-                                                 , function (data) {
+                                            //var jianzhi = $("#PJTD_add_PJTeacher").combobox("getValue");
+                                            //var xueli = $("#xueli").combobox("getValue");
+                                            ////var zhicheng = $("#zhicheng").combobox("getValue");
+                                            //var riqi = $("#riqi").val;
+                                            //var sex = $("#sex").val;
+                                            //var time = $("#time").val;
+                                            //var tel = $("#tel").val;
+                                            //var lianxi = $("#lianxi").val;
+                                            //var renke = $("#renke").val;
+                                            //var beizhu = $("#benzhu").val;
+                                            //// var status = $("#status").val;
+                                            //var name = $("#name").val;
+                                            var dep = $("#pt_add").serialize();
+                                            $.get("/PartJobTeacher/AddPartJobTeachers", dep, function (data) {
+                                                alert(dep);
                                                      if (data == "ok") {
-                                                         //alert("成功");
                                                          $.messager.show({
                                                              title: '提示',
                                                              msg: '成功',
                                                              showType: 'show'
                                                          });
-                                                         $("#teachers_add_dlg").dialog("close");
+                                                         $("#pt_add_dig").dialog("close");
                                                          $("#tb").datagrid("reload");
 
                                                      }
@@ -71,7 +70,7 @@
                                         text: '取消',
                                         iconCls: 'icon-cancel',
                                         handler: function () {
-                                            $("#teachers_add_dlg").dialog("close");
+                                            $("#pt_add_dig").dialog("close");
                                         }
                                     }
                                              ]
@@ -156,40 +155,7 @@
 
 
                                      }
-                                 },
-                                 {
-                                     text: '密码重置',
-                                     iconCls: 'icon-lock',
-                                     handler: function () {
-                                         var row = $("#tb").datagrid("getSelected");
-                                         if (row == null) {
-                                             $.messager.alert("提示", "请选择要重置密码的用户！", "warning");
-                                             return;
-                                         }
-                                         var name = row.Name;
-                                         $.messager.confirm("提示", "确信重置“" + name + "”的密码?", function (result) {
-                                             if (result) {
-                                                 var id = row.ID;
-                                                 $.get("/teachers/resetpass/", { id: id }, function (data) {
-                                                     if (data == "ok")
-                                                         $.messager.show({
-                                                             title: '提示',
-                                                             msg: '成功',
-                                                             showType: 'show'
-                                                         })
-                                                     else
-                                                         $.messager.show({
-                                                             title: '提示',
-                                                             msg: '失败',
-                                                             showType: 'show'
-                                                         });
-                                                 })
-                                             }
-
-                                         });
-                                     }
                                  }
-
             ];
 
          
@@ -243,7 +209,8 @@
     
         <table id="tb"></table>
     </div>
-    <div id="tb1"></div>
+    <div id="pt_add_dig"></div>
+     <div id="pt_edit_dig"></div>
   
 </body>
 </html>
