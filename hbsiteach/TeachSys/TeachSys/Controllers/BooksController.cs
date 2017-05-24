@@ -10,7 +10,7 @@ namespace TeachSys.Controllers
     {
         //
         // GET: /Books/
-        Models.TeachDBEntities2 tdb = new Models.TeachDBEntities2();
+        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
         public ActionResult Index()
         {
            

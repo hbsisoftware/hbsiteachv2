@@ -16,60 +16,60 @@
     <title>Index</title>
     <script>
         $(function () {
-            var url = '';//按钮的路径
-            //工具栏数组
+            var url = "";
             var tb = [{
                 text: '添加',
                 iconCls: 'icon-add',
                 handler: function () {
-                    url="/books/add"
-                    $("#books-dlg").dialog({
-                        title: '教材添加---',
+                    url="/BookUsed/add"
+                    $("#BookUsed-dlg").dialog({
+                        title: '教材选用添加',
                         iconCls: 'icon-add',
                         width: 350,
-                        height: 430,
+                        height: 350,
                         href: url,
-                        modal: true,//窗口是否可模式化
+                        modal: true,
                         buttons: [{
-                            text: '确定',
-                            iconCls: 'icon-ok',
-                            handler: function () {
-                                $("#books-add-form").form({
-                                    url: '/Books/AddBooks/',
+                            text:'确定',
+                            iconCls:'icon-ok',
+                            handler:function(){
+                                $("#BookUsed-add-form").form({
+                                    url: '/BookUsed/BookUseAdd/',
                                     success: function (data) {
+                                        console.log(data);
                                         if (data == "ok") {
                                             $.messager.show({
                                                 title: '提示...',
-                                                msg: '添加成功！！',
-                                                showtype: 'show'
+                                                msg: '添加成功！',
+                                                showType: 'show'
                                             });
-                                            $("#books-dlg").dialog("close");
                                             $("#tb").datagrid("reload");
+                                            $("#BookUsed-dlg").dialog("close");
                                         }
                                         else {
                                             $.messager.show({
                                                 title: '提示...',
                                                 msg: '添加失败！！',
-                                                showtype:'show'
-                                            })
+                                                showType: 'show'
+                                            });
                                         }
                                     }
                                 })
-                                $("#books-add-form").submit();
+                                $("#BookUsed-add-form").submit();
                             }
-                            
                         }, {
                             text: '取消',
                             iconCls: 'icon-no',
                             handler: function () {
-                                $("#books-dlg").dialog("close");//关闭对话框
+                                $("#BookUsed-dlg").dialog("close");
                             }
                         }]
+
                     })
                 }
             }, {
                 text: '修改',
-                iconCls: 'icon-add',
+                iconCls: 'icon-edit',
                 handler: function () {
                     var row = $("#tb").datagrid("getSelected");
                     if (row == null)
@@ -78,137 +78,100 @@
                         return;
                     }
                     var id = row.ID;
-                    url ="/books/edit/" + id;
-                    $("#books-dlg").dialog({
-                        title: '修改',
-                        iconCls: 'icon-edit',
+                    url = "/BookUsed/edit/"+id;
+                    $("#BookUsed-dlg").dialog({
+                        title: '教材选用修改',
+                        iconCls: 'icon-add',
                         width: 350,
-                        height: 430,
+                        height: 350,
                         href: url,
-                        modal: true,//窗口是否模式化
+                        modal: true,
                         buttons: [{
                             text: '确定',
                             iconCls: 'icon-ok',
                             handler: function () {
-                                $("#books-edit-form").form({
-                                    url: '/Books/EditBooks/',
+                                $("#BookUsed-add-form").form({
+                                    url: '/BookUsed/EditBooksUse/',
                                     success: function (data) {
                                         if (data == "ok") {
                                             $.messager.show({
                                                 title: '提示...',
                                                 msg: '修改成功！！',
-                                                showtype: 'show'
+                                                showType: 'show'
                                             });
-                                            $("#books-dlg").dialog("close");
                                             $("#tb").datagrid("reload");
+                                            $("#BookUsed-dlg").dialog("close");
                                         }
                                         else {
                                             $.messager.show({
                                                 title: '提示...',
                                                 msg: '修改失败！！',
-                                                showtype: 'show'
+                                                showType:'show'
                                             })
                                         }
                                     }
-                                })
-                                $("#books-edit-form").submit();
+                                });
+                                $("#BookUsed-add-form").submit();
                             }
                         }, {
                             text: '取消',
                             iconCls: 'icon-no',
                             handler: function () {
-                                $("#books-dlg").dialog("close");//关闭对话框
+                                $("#BookUsed-dlg").dialog("close");
                             }
                         }]
-                    });
+
+                    })
                 }
             }, '-', {
                 text: '删除',
                 iconCls: 'icon-remove',
                 handler: function () {
                     var row = $("#tb").datagrid("getSelected");
-                    if (row == null)
+                    console.log(row)
+                    if(row==null)
                     {
-                        $.messager.alert("提示...", "请选中行！！", "warning");
+                        $.messager.alert("提示...","请选中行!!","wraning");
                         return;
                     }
-                    var id = row.ID;
-                    $.messager.confirm("Tip", "您确定要删除吗？", function (r) {
+                    var id=row.ID;
+                    var name=row.CoursesName;
+                    $.messager.confirm("提示...", "你确定要删除"+name+"这条记录？", function (r) {
                         if (r)
                         {
-                            $.get("/books/DelBooks", { id: id }, function (data) {
+                            $.get("/BookUsed/RemteBookUse", { id: id }, function (data) {
                                 if (data == "ok") {
                                     $.messager.show({
                                         title: '提示...',
-                                        msg: '删除成功！！',
-                                        showtype: 'show'
-                                    });
+                                        msg: '删除成功！',
+                                        showType: 'show'
+                                    })
                                     $("#tb").datagrid("reload");
                                 }
                                 else {
                                     $.messager.show({
                                         title: '提示...',
                                         msg: '删除失败！！',
-                                        showtype: 'show'
-                                    });
+                                        showType:'show'
+                                    })
                                 }
                             }, "text")
                         }
-                    });
-                }
-            }, '-', {
-                text: '停止使用该书',
-                iconCls: 'icon-clear',
-                handler: function () {
-                    var row = $("#tb").datagrid("getSelected");
-                    if (row == null) {
-                        $.messager.alert("提示...", "请选中行！！", "warning");
-                        return;
-                    }
-                    var id = row.ID;
-                    var name = row.Name;
-
-                    $.messager.confirm("提示...", "你确定" + name + ",这本书停止印刷了吗？", function (r) {
-                        $.post("/books/StopUse", { id: id }, function (data) {
-
-                            if (data == "ok") {
-                                $.messager.show({
-                                    title: '提示...',
-                                    msg: '停止添加成功！',
-                                    showType: 'show',
-                                });
-                                $("#tb").datagrid("reload");
-                            }
-                            else {
-                                $.messager.show({
-                                    title: '提示...',
-                                    msg: '停止添加失败！',
-                                    showType: 'show',
-                                });
-                            }
-                        }, "text")
                     })
                 }
             }]
             $("#tb").datagrid({
-                url: '/books/getBooks',
-                width: 1000,
-                singleSelect: true,//能否多选
+                url: '/BookUsed/getBookUsed',
+                singleSelect: true,
                 fitColums: true,
-                toolbar: tb,//工具栏
-                columns: [[
-                    { field: 'Name', title: '书名', width: 150 },
-                    { field: 'Author', title: '作者', width: 100 },
-                    { field: 'pubName', title: '出版社', width: 100 },
-                    { field: 'Price', title: '价格', width: 50 },
-                    { field: 'ISBN', title: 'ISBN码', width: 100 },
-                    { field: 'PubYear', title: '出版年份', width: 100 },
-                    { field: 'BPN', title: '教材性质', width: 100 },
-                    { field: 'BTN', title: '教材类别', width: 100 },
-                    { field: 'LastTime', title: '最后一次使用时间', width: 100 },
-                    //{ field: 'DisabledTime', title: '停止印刷时间', width: 100 }
-                ]]
-            });
+                toolbar: tb,
+                columns: [[{ field: 'CoursesName', title: '课程名称', width: 150 },
+                           { field: 'TeacherName', title: '教师名称', width: 100 },
+                           { field: 'Name', title: '教材名称', width: 150 },
+                           { field: 'StuBookNums', title: '学生用书数量', width: 80 },
+                           { field: 'TeaBookNums', title: '教师用书数量', width: 80 }
+                         ]]
+            })
         });
     </script>
     <style scoped="scoped">
@@ -224,6 +187,6 @@
     <div>
         <table id="tb"></table>
     </div>
-    <div id="books-dlg"></div>
+    <div id="BookUsed-dlg"></div>
 </body>
 </html>

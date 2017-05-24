@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b382bd7d0f874085a2e006db9aaba7ef" Name="关系图1">
+      <Diagram DiagramId="cdb8e36f0873418cbf44ba8d0c1a03cf" Name="Diagram1">
         <EntityTypeShape EntityType="TeachDBModel.BaseDataDics" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachDBModel.Books" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachDBModel.BookUsed" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
@@ -18,8 +18,7 @@
         <EntityTypeShape EntityType="TeachDBModel.TeacherClasses" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachDBModel.Teachers" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="TeachDBModel.View_Books" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.View_BookUsed" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.View_TeacherClasses" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachDBModel.View_TeacherClasses" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
         <AssociationConnector Association="TeachDBModel.FK_Classes_Majors" ManuallyRouted="false" />
         <AssociationConnector Association="TeachDBModel.FK_Students_Classes" ManuallyRouted="false" />
         <AssociationConnector Association="TeachDBModel.FK_TeacherClasses_Classes" ManuallyRouted="false" />
@@ -27,6 +26,7 @@
         <AssociationConnector Association="TeachDBModel.FK_Majors_Departments" ManuallyRouted="false" />
         <AssociationConnector Association="TeachDBModel.FK_Teachers_Departments" ManuallyRouted="false" />
         <AssociationConnector Association="TeachDBModel.FK_TeacherClasses_Teachers" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TeachDBModel.View_BookUsed" Width="1.5" PointX="12.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

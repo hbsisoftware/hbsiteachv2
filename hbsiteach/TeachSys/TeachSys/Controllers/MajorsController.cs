@@ -8,7 +8,7 @@ namespace TeachSys.Controllers
 {
     public class MajorsController : Controller
     {
-        Models.TeachDBEntities2 tdb = new Models.TeachDBEntities2();
+        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
         //
         // GET: /Majars/
 

@@ -166,7 +166,7 @@
     <Property Name="PJTeacherID" Type="int" Nullable="false" />
     <Property Name="Url" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="DocTypeID" Type="int" Nullable="false" />
-    <Property Name="UploadTime" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="UploadTime" Type="datetime" Nullable="false" />
     <Property Name="Status" Type="int" />
   </EntityType>
   <EntityType Name="PartJobTeachers">
@@ -380,12 +380,11 @@
   </Function>
   <Function Name="EditBookUsed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CoursesID" Type="int" Mode="In" />
+    <Parameter Name="ClassID" Type="int" Mode="In" />
     <Parameter Name="BookID" Type="int" Mode="In" />
     <Parameter Name="TeacherID" Type="int" Mode="In" />
     <Parameter Name="Status" Type="int" Mode="In" />
     <Parameter Name="ID" Type="int" Mode="In" />
-    <Parameter Name="TeacherNums" Type="int" Mode="In" />
-    <Parameter Name="StudentNums" Type="int" Mode="In" />
   </Function>
   <Function Name="GetStudentNums" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CoursesID" Type="int" Mode="In" />
@@ -393,6 +392,5 @@
     <Parameter Name="BookID" Type="int" Mode="In" />
     <Parameter Name="TeacherID" Type="int" Mode="In" />
     <Parameter Name="Status" Type="int" Mode="In" />
-    <Parameter Name="TeacherNums" Type="int" Mode="In" />
   </Function>
 </Schema>

@@ -1,0 +1,76 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@Model BookUsed
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <title>Edit</title>
+</head>
+<body>
+    <div>
+        <form id="BookUsed-add-form">
+
+            <input type="hidden" name="ID" value="@Model.ID" />
+            <div class="input_line"><label class="leftlabel">课程名称:</label><input id="courses" class="easyui-vaildatebox" data-options="required:true" name="CoursesID" value="@Model.CourseID" /></div>
+
+            <div class="input_line"><label class="leftlabel">教师名称:</label><input id="teacher" class="easyui-vaildatebox" data-options="required:true" name="TeacherID" value="@Model.TeacherID" /></div>
+
+            <div class="input_line"><label class="leftlabel">教材名称:</label><input id="book" class="easyui-vaildatebox" data-options="required:true" name="BookID" value="@Model.BookID" /></div>
+
+            <input type="hidden" name="Status" value="0" />
+           
+            <div class ="input_line"><label class="leftlabel">学生用书数量:</label><input id="stunum" class="easyui-validatebox textbox" data-options="required:true,validType:'integer'" name="StudentNums" value="@Model.StuBookNums" /></div>
+
+            <div class="input_line"><label class="leftlabel">教师用书数量:</label><input id="teanum" class="easyui-validatebox textbox" data-options="required:true,validType:'integer'" name="TeaBookNums" value="@Model.TeaBookNums" /></div>
+        </form>
+    </div>
+    <script>
+        $(function () {
+           
+            $.extend($.fn.validatebox.defaults.rules, {
+                integer: {// 验证整数
+                    validator: function (value) {
+                        return /^[+]?[1-9]+\d*$/i.test(value);
+
+                        //return /^([+]?[0-9])|([-]?[0-9])+\d*$/i.test(value);  //可正可负
+                    },
+                    message: '请输入正整数'
+                }
+            });
+
+            //添加课程
+            $("#courses").combobox({
+                url: '/Courses/Courses',
+                valueField: 'ID',
+                textField: 'Name',
+                editable: false
+            });
+            //添加教师
+            $("#teacher").combobox({
+                url: '/Teachers/Teachers',
+                valueField: 'ID',
+                textField: "Name",
+                editable: false
+            });
+            //添加教材
+            $("#book").combobox({
+                url: '/Books/getBooks',
+                valueField: 'ID',
+                textField: 'Name',
+                editable: false
+            })
+            //添加班级
+            $("#class").combobox({
+                url: '/Classes/GetClassesList',
+                valueField: 'ID',
+                textField: 'Name',
+                editable: false
+            })
+        })
+    </script>
+</body>
+</html>

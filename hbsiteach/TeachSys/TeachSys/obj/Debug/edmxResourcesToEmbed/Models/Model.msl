@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities1">
+  <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities">
     <EntitySetMapping Name="BaseDataDics">
       <EntityTypeMapping TypeName="TeachDBModel.BaseDataDics">
         <MappingFragment StoreEntitySet="BaseDataDics">
@@ -177,21 +177,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="View_BookUsed">
-      <EntityTypeMapping TypeName="TeachDBModel.View_BookUsed">
-        <MappingFragment StoreEntitySet="View_BookUsed">
-          <ScalarProperty Name="BookID" ColumnName="BookID" />
-          <ScalarProperty Name="CoursesName" ColumnName="CoursesName" />
-          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
-          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
-          <ScalarProperty Name="TeachName" ColumnName="TeachName" />
-          <ScalarProperty Name="StuBookNums" ColumnName="StuBookNums" />
-          <ScalarProperty Name="TeaBookNums" ColumnName="TeaBookNums" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="View_TeacherClasses">
       <EntityTypeMapping TypeName="TeachDBModel.View_TeacherClasses">
         <MappingFragment StoreEntitySet="View_TeacherClasses">
@@ -208,5 +193,20 @@
     <FunctionImportMapping FunctionImportName="AddClasses" FunctionName="TeachDBModel.Store.AddClasses" />
     <FunctionImportMapping FunctionImportName="EditBookUsed" FunctionName="TeachDBModel.Store.EditBookUsed" />
     <FunctionImportMapping FunctionImportName="GetStudentNums" FunctionName="TeachDBModel.Store.GetStudentNums" />
+    <EntitySetMapping Name="View_BookUsed">
+      <EntityTypeMapping TypeName="TeachDBModel.View_BookUsed">
+        <MappingFragment StoreEntitySet="View_BookUsed">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TeaBookNums" ColumnName="TeaBookNums" />
+          <ScalarProperty Name="StuBookNums" ColumnName="StuBookNums" />
+          <ScalarProperty Name="TeachName" ColumnName="TeachName" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="CoursesName" ColumnName="CoursesName" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
