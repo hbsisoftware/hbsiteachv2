@@ -4,29 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1cea51814d924678b80979fb40fefc9d" Name="关系图1">
-        <EntityTypeShape EntityType="TeachDBModel.BaseDataDics" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.Books" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.BookUsed" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.Classes" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.Courses" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.Departments" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.Majors" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.PartJobTeacherDocs" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.PartJobTeachers" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.Students" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.TeacherClasses" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.Teachers" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.Type" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.View_PartJobTeachers" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeachDBModel.View_TeacherClasses" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
-        <AssociationConnector Association="TeachDBModel.FK_Classes_Majors" ManuallyRouted="false" />
-        <AssociationConnector Association="TeachDBModel.FK_Students_Classes" ManuallyRouted="false" />
-        <AssociationConnector Association="TeachDBModel.FK_TeacherClasses_Classes" ManuallyRouted="false" />
-        <AssociationConnector Association="TeachDBModel.FK_Departments_Departments" ManuallyRouted="false" />
-        <AssociationConnector Association="TeachDBModel.FK_Majors_Departments" ManuallyRouted="false" />
-        <AssociationConnector Association="TeachDBModel.FK_Teachers_Departments" ManuallyRouted="false" />
-        <AssociationConnector Association="TeachDBModel.FK_TeacherClasses_Teachers" ManuallyRouted="false" />
+      <Diagram DiagramId="c2b7111e9bc543a68e20710d04b2739a" Name="关系图1">
+        <EntityTypeShape EntityType="TeachModel.BaseDataDics" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.Books" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.BookUsed" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.Classes" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.Courses" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.Departments" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.Majors" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.PartJobTeacherDocs" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.PartJobTeachers" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.Students" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.TeacherClasses" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.Teachers" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.Type" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.View_PartJobTeachers" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeachModel.View_TeacherClasses" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="TeachModel.FK_Classes_Majors" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachModel.FK_Students_Classes" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachModel.FK_TeacherClasses_Classes" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachModel.FK_Departments_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachModel.FK_Majors_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachModel.FK_Teachers_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="TeachModel.FK_TeacherClasses_Teachers" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

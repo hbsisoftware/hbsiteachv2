@@ -8,7 +8,7 @@ namespace TeachSys.Controllers
 {
     public class StudentsController : Controller
     {
-        Models.TeachDBEntities tdb = App_Start.Helper.tdb;
+        Models.TeachEntities  tdb = App_Start.Helper.tdb;
         //
         // GET: /Students/
 

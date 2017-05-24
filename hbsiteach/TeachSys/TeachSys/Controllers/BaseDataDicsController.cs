@@ -10,7 +10,7 @@ namespace TeachSys.Controllers
     {
         //
         // GET: /BaseDataDics/
-        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
+        Models.TeachEntities tdb = new Models.TeachEntities();
         public ActionResult Index()
         {
             return View();

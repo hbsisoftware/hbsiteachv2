@@ -9,7 +9,7 @@ namespace TeachSys.Controllers
     public class DepartmentsController : Controller
     {
         //.net   Entity framework  -- 操作数据库，它是对ADO.NET的一个高级封装
-        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
+        Models.TeachEntities tdb = new Models.TeachEntities();
 
         public ActionResult Index()
         {

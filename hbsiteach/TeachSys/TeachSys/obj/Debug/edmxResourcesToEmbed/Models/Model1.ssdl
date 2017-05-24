@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="TeachDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-  <EntityContainer Name="TeachDBModelStoreContainer">
-    <EntitySet Name="BaseDataDics" EntityType="TeachDBModel.Store.BaseDataDics" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Books" EntityType="TeachDBModel.Store.Books" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="BookUsed" EntityType="TeachDBModel.Store.BookUsed" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Classes" EntityType="TeachDBModel.Store.Classes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Courses" EntityType="TeachDBModel.Store.Courses" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Departments" EntityType="TeachDBModel.Store.Departments" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Majors" EntityType="TeachDBModel.Store.Majors" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PartJobTeacherDocs" EntityType="TeachDBModel.Store.PartJobTeacherDocs" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PartJobTeachers" EntityType="TeachDBModel.Store.PartJobTeachers" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Students" EntityType="TeachDBModel.Store.Students" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TeacherClasses" EntityType="TeachDBModel.Store.TeacherClasses" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Teachers" EntityType="TeachDBModel.Store.Teachers" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Type" EntityType="TeachDBModel.Store.Type" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="View_PartJobTeachers" EntityType="TeachDBModel.Store.View_PartJobTeachers" store:Type="Views" store:Schema="dbo" store:Name="View_PartJobTeachers">
+<Schema Namespace="TeachModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="TeachModelStoreContainer">
+    <EntitySet Name="BaseDataDics" EntityType="TeachModel.Store.BaseDataDics" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Books" EntityType="TeachModel.Store.Books" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BookUsed" EntityType="TeachModel.Store.BookUsed" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Classes" EntityType="TeachModel.Store.Classes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Courses" EntityType="TeachModel.Store.Courses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Departments" EntityType="TeachModel.Store.Departments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Majors" EntityType="TeachModel.Store.Majors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PartJobTeacherDocs" EntityType="TeachModel.Store.PartJobTeacherDocs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PartJobTeachers" EntityType="TeachModel.Store.PartJobTeachers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Students" EntityType="TeachModel.Store.Students" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TeacherClasses" EntityType="TeachModel.Store.TeacherClasses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Teachers" EntityType="TeachModel.Store.Teachers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Type" EntityType="TeachModel.Store.Type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="View_PartJobTeachers" EntityType="TeachModel.Store.View_PartJobTeachers" store:Type="Views" store:Schema="dbo" store:Name="View_PartJobTeachers">
       <DefiningQuery>SELECT 
       [View_PartJobTeachers].[ID] AS [ID], 
       [View_PartJobTeachers].[Name] AS [Name], 
@@ -33,7 +33,7 @@
       [View_PartJobTeachers].[TitleName] AS [TitleName]
       FROM [dbo].[View_PartJobTeachers] AS [View_PartJobTeachers]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="View_TeacherClasses" EntityType="TeachDBModel.Store.View_TeacherClasses" store:Type="Views" store:Schema="dbo" store:Name="View_TeacherClasses">
+    <EntitySet Name="View_TeacherClasses" EntityType="TeachModel.Store.View_TeacherClasses" store:Type="Views" store:Schema="dbo" store:Name="View_TeacherClasses">
       <DefiningQuery>SELECT 
       [View_TeacherClasses].[ID] AS [ID], 
       [View_TeacherClasses].[Name] AS [Name], 
@@ -44,31 +44,31 @@
       [View_TeacherClasses].[TeacherClassID] AS [TeacherClassID]
       FROM [dbo].[View_TeacherClasses] AS [View_TeacherClasses]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK_Classes_Majors" Association="TeachDBModel.Store.FK_Classes_Majors">
+    <AssociationSet Name="FK_Classes_Majors" Association="TeachModel.Store.FK_Classes_Majors">
       <End Role="Majors" EntitySet="Majors" />
       <End Role="Classes" EntitySet="Classes" />
     </AssociationSet>
-    <AssociationSet Name="FK_Departments_Departments" Association="TeachDBModel.Store.FK_Departments_Departments">
+    <AssociationSet Name="FK_Departments_Departments" Association="TeachModel.Store.FK_Departments_Departments">
       <End Role="Departments" EntitySet="Departments" />
       <End Role="Departments1" EntitySet="Departments" />
     </AssociationSet>
-    <AssociationSet Name="FK_Majors_Departments" Association="TeachDBModel.Store.FK_Majors_Departments">
+    <AssociationSet Name="FK_Majors_Departments" Association="TeachModel.Store.FK_Majors_Departments">
       <End Role="Departments" EntitySet="Departments" />
       <End Role="Majors" EntitySet="Majors" />
     </AssociationSet>
-    <AssociationSet Name="FK_Students_Classes" Association="TeachDBModel.Store.FK_Students_Classes">
+    <AssociationSet Name="FK_Students_Classes" Association="TeachModel.Store.FK_Students_Classes">
       <End Role="Classes" EntitySet="Classes" />
       <End Role="Students" EntitySet="Students" />
     </AssociationSet>
-    <AssociationSet Name="FK_TeacherClasses_Classes" Association="TeachDBModel.Store.FK_TeacherClasses_Classes">
+    <AssociationSet Name="FK_TeacherClasses_Classes" Association="TeachModel.Store.FK_TeacherClasses_Classes">
       <End Role="Classes" EntitySet="Classes" />
       <End Role="TeacherClasses" EntitySet="TeacherClasses" />
     </AssociationSet>
-    <AssociationSet Name="FK_TeacherClasses_Teachers" Association="TeachDBModel.Store.FK_TeacherClasses_Teachers">
+    <AssociationSet Name="FK_TeacherClasses_Teachers" Association="TeachModel.Store.FK_TeacherClasses_Teachers">
       <End Role="Teachers" EntitySet="Teachers" />
       <End Role="TeacherClasses" EntitySet="TeacherClasses" />
     </AssociationSet>
-    <AssociationSet Name="FK_Teachers_Departments" Association="TeachDBModel.Store.FK_Teachers_Departments">
+    <AssociationSet Name="FK_Teachers_Departments" Association="TeachModel.Store.FK_Teachers_Departments">
       <End Role="Departments" EntitySet="Departments" />
       <End Role="Teachers" EntitySet="Teachers" />
     </AssociationSet>
@@ -230,7 +230,7 @@
     <Property Name="Status" Type="int" Nullable="false" />
   </EntityType>
   <!--生成过程中发现错误:
-      警告 6002: 表/视图“TeachDB.dbo.View_PartJobTeachers”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      警告 6002: 表/视图“Teach.dbo.View_PartJobTeachers”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
       -->
   <EntityType Name="View_PartJobTeachers">
     <Key>
@@ -261,7 +261,7 @@
     <Property Name="TitleName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--生成过程中发现错误:
-      警告 6002: 表/视图“TeachDB.dbo.View_TeacherClasses”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      警告 6002: 表/视图“Teach.dbo.View_TeacherClasses”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
       -->
   <EntityType Name="View_TeacherClasses">
     <Key>
@@ -277,8 +277,8 @@
     <Property Name="TeacherClassID" Type="int" />
   </EntityType>
   <Association Name="FK_Classes_Majors">
-    <End Role="Majors" Type="TeachDBModel.Store.Majors" Multiplicity="0..1" />
-    <End Role="Classes" Type="TeachDBModel.Store.Classes" Multiplicity="*" />
+    <End Role="Majors" Type="TeachModel.Store.Majors" Multiplicity="0..1" />
+    <End Role="Classes" Type="TeachModel.Store.Classes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Majors">
         <PropertyRef Name="ID" />
@@ -289,8 +289,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Departments_Departments">
-    <End Role="Departments" Type="TeachDBModel.Store.Departments" Multiplicity="1" />
-    <End Role="Departments1" Type="TeachDBModel.Store.Departments" Multiplicity="0..1" />
+    <End Role="Departments" Type="TeachModel.Store.Departments" Multiplicity="1" />
+    <End Role="Departments1" Type="TeachModel.Store.Departments" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Departments">
         <PropertyRef Name="ID" />
@@ -301,8 +301,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Majors_Departments">
-    <End Role="Departments" Type="TeachDBModel.Store.Departments" Multiplicity="0..1" />
-    <End Role="Majors" Type="TeachDBModel.Store.Majors" Multiplicity="*" />
+    <End Role="Departments" Type="TeachModel.Store.Departments" Multiplicity="0..1" />
+    <End Role="Majors" Type="TeachModel.Store.Majors" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Departments">
         <PropertyRef Name="ID" />
@@ -313,8 +313,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Students_Classes">
-    <End Role="Classes" Type="TeachDBModel.Store.Classes" Multiplicity="0..1" />
-    <End Role="Students" Type="TeachDBModel.Store.Students" Multiplicity="*" />
+    <End Role="Classes" Type="TeachModel.Store.Classes" Multiplicity="0..1" />
+    <End Role="Students" Type="TeachModel.Store.Students" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Classes">
         <PropertyRef Name="ID" />
@@ -325,8 +325,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_TeacherClasses_Classes">
-    <End Role="Classes" Type="TeachDBModel.Store.Classes" Multiplicity="0..1" />
-    <End Role="TeacherClasses" Type="TeachDBModel.Store.TeacherClasses" Multiplicity="*" />
+    <End Role="Classes" Type="TeachModel.Store.Classes" Multiplicity="0..1" />
+    <End Role="TeacherClasses" Type="TeachModel.Store.TeacherClasses" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Classes">
         <PropertyRef Name="ID" />
@@ -337,8 +337,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_TeacherClasses_Teachers">
-    <End Role="Teachers" Type="TeachDBModel.Store.Teachers" Multiplicity="0..1" />
-    <End Role="TeacherClasses" Type="TeachDBModel.Store.TeacherClasses" Multiplicity="*" />
+    <End Role="Teachers" Type="TeachModel.Store.Teachers" Multiplicity="0..1" />
+    <End Role="TeacherClasses" Type="TeachModel.Store.TeacherClasses" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Teachers">
         <PropertyRef Name="ID" />
@@ -349,8 +349,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Teachers_Departments">
-    <End Role="Departments" Type="TeachDBModel.Store.Departments" Multiplicity="0..1" />
-    <End Role="Teachers" Type="TeachDBModel.Store.Teachers" Multiplicity="*" />
+    <End Role="Departments" Type="TeachModel.Store.Departments" Multiplicity="0..1" />
+    <End Role="Teachers" Type="TeachModel.Store.Teachers" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Departments">
         <PropertyRef Name="ID" />

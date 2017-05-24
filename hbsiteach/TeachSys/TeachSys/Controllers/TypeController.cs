@@ -11,7 +11,7 @@ namespace TeachSys.Controllers
         //
         // GET: /Type/
 
-        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
+        Models.TeachEntities tdb = new Models.TeachEntities();
         public ActionResult Index()
         {
             return View();

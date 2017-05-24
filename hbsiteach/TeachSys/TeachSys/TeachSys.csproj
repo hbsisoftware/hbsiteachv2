@@ -1219,6 +1219,17 @@
     <Content Include="jquery-easyui-1.5.1\demo\tree\tree_data1.json" />
     <Content Include="jquery-easyui-1.5.1\demo\tree\tree_data2.json" />
     <Content Include="jquery-easyui-1.5.1\themes\material\images\Thumbs.db" />
+    <Content Include="bin\TeachSys.dll.config" />
+    <Content Include="obj\Debug\build.force" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\Model1.csdl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\Model1.msl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\Model1.ssdl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\TeachDB.csdl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\TeachDB.msl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\TeachDB.ssdl" />
+    <Content Include="obj\Debug\TeachSys.csprojResolveAssemblyReference.cache" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -1236,17 +1247,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="bin\TeachSys.dll.config" />
-    <Content Include="obj\Debug\build.force" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\Model1.csdl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\Model1.msl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\Model1.ssdl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\TeachDB.csdl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\TeachDB.msl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\TeachDB.ssdl" />
-    <Content Include="obj\Debug\TeachSys.csprojResolveAssemblyReference.cache" />
     <None Include="Scripts\jquery-1.8.2-vsdoc.js" />
     <Content Include="obj\Debug\TeachSys.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\TeachSys.dll" />

@@ -12,7 +12,7 @@ namespace TeachSys.Controllers
         //
         // GET: /PartJobTeachersDocs/
 
-        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
+        Models.TeachEntities tdb = new Models.TeachEntities();
         public ActionResult Index()
         {
             return View();
@@ -88,7 +88,8 @@ namespace TeachSys.Controllers
                 return Content("error");
             }
         }
-       
+
+
 
     }
 }
