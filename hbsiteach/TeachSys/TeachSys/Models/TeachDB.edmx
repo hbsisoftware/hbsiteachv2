@@ -171,7 +171,7 @@
           <Property Name="PJTeacherID" Type="int" Nullable="false" />
           <Property Name="Url" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="DocTypeID" Type="int" Nullable="false" />
-          <Property Name="UploadTime" Type="datetime" Nullable="false" />
+          <Property Name="UploadTime" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="PartJobTeachers">
@@ -385,12 +385,12 @@
         </Function>
         <Function Name="EditBookUsed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CoursesID" Type="int" Mode="In" />
-          <Parameter Name="ClassID" Type="int" Mode="In" />
           <Parameter Name="BookID" Type="int" Mode="In" />
           <Parameter Name="TeacherID" Type="int" Mode="In" />
           <Parameter Name="Status" Type="int" Mode="In" />
           <Parameter Name="ID" Type="int" Mode="In" />
           <Parameter Name="TeacherNums" Type="int" Mode="In" />
+          <Parameter Name="StudentNums" Type="int" Mode="In" />
         </Function>
         <Function Name="GetStudentNums" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CoursesID" Type="int" Mode="In" />
@@ -405,7 +405,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeachDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="TeachDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TeachDBEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BaseDataDics" EntityType="TeachDBModel.BaseDataDics" />
           <EntitySet Name="Books" EntityType="TeachDBModel.Books" />
           <EntitySet Name="BookUsed" EntityType="TeachDBModel.BookUsed" />
@@ -456,12 +456,12 @@
           </FunctionImport>
           <FunctionImport Name="EditBookUsed" ReturnType="Collection(Int32)">
             <Parameter Name="CoursesID" Mode="In" Type="Int32" />
-            <Parameter Name="ClassID" Mode="In" Type="Int32" />
             <Parameter Name="BookID" Mode="In" Type="Int32" />
             <Parameter Name="TeacherID" Mode="In" Type="Int32" />
             <Parameter Name="Status" Mode="In" Type="Int32" />
             <Parameter Name="ID" Mode="In" Type="Int32" />
             <Parameter Name="TeacherNums" Mode="In" Type="Int32" />
+            <Parameter Name="StudentNums" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetStudentNums" ReturnType="Collection(Int32)">
             <Parameter Name="CoursesID" Mode="In" Type="Int32" />
@@ -566,7 +566,7 @@
           <Property Name="PJTeacherID" Type="Int32" Nullable="false" />
           <Property Name="Url" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="DocTypeID" Type="Int32" Nullable="false" />
-          <Property Name="UploadTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UploadTime" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="Status" Type="Int32" />
         </EntityType>
         <EntityType Name="PartJobTeachers">
@@ -774,7 +774,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities">
+        <EntityContainerMapping StorageEntityContainer="TeachDBModelStoreContainer" CdmEntityContainer="TeachDBEntities2">
           <EntitySetMapping Name="BaseDataDics">
             <EntityTypeMapping TypeName="TeachDBModel.BaseDataDics">
               <MappingFragment StoreEntitySet="BaseDataDics">

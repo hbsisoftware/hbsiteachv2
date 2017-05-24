@@ -18,7 +18,7 @@ namespace TeachSys.Models
         public int PJTeacherID { get; set; }
         public string Url { get; set; }
         public int DocTypeID { get; set; }
-        public System.DateTime UploadTime { get; set; }
+        public string UploadTime { get; set; }
         public Nullable<int> Status { get; set; }
     }
 }
