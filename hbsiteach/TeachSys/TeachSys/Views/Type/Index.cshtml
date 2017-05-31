@@ -97,11 +97,11 @@
                                    text: '修改',
                                    iconCls: 'icon-edit',
                                    handler: function () {
-                                       var id = $("#type_add_id").val();
-                                       var name = $("#type_add_name").val();
+                                       var id = $("#type_edit_id").val();
+                                       var name = $("#type_edit_name").val();
                                        var typeid = $("#type_edit_typeid").val();
 
-                                       $.get("/Type/EditType", { id: id, name: name, typid: typeid, Status: 0 }, function (data) {
+                                       $.get("/Type/EditType", { id: id, name: name, typeid: typeid, Status: 0 }, function (data) {
 
                                            if (data == "ok") {
                                                $.messager.show({
