@@ -566,3 +566,4 @@ E:\get\hbsiteachv2\hbsiteach\TeachSys\TeachSys\bin\zh-Hant\System.Spatial.resour
 E:\get\hbsiteachv2\hbsiteach\TeachSys\TeachSys\obj\Debug\TeachSys.csprojResolveAssemblyReference.cache
 E:\get\hbsiteachv2\hbsiteach\TeachSys\TeachSys\obj\Debug\TeachSys.dll
 E:\get\hbsiteachv2\hbsiteach\TeachSys\TeachSys\obj\Debug\TeachSys.pdb
+E:\get\hbsiteachv2\hbsiteach\TeachSys\TeachSys\bin\TeachSys.dll.config

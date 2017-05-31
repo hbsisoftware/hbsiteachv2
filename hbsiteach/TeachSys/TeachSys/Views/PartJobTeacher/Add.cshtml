@@ -7,55 +7,62 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Add</title>
+    <title>add</title>
 </head>
 <body>
-    <div>
-        <form id="pt_add">
-        <div class="input_line"><label class="leftlabel">姓名:</label><input id="ptname" class="easyui-textbox" name="Name">  </div>
-        <div class="input_line"><label class="leftlabel">性别:</label><input type="text" id="ptsex"
-            placeholder="请输入性别"  list="fileTypeList"/><br/>
-    <datalist id="fileTypeList">
-        <option value="男">男</option>
-        <option value="女">女</option>
-       
-    </datalist>
+
+
+    <div class="input_line"><label class="leftlabel"> 姓名:</label><input class="easyui-textbox" id="name" /></div>
+    <div class="input_line"><label class="leftlabel"> 工作单位:</label><input class="easyui-textbox" id="danwei" /></div>
+    <div class="input_line"><label class="leftlabel"> 职称:</label><input id="PJTD_add_PJTeacher" /></div>
+    <div class="input_line"><label class="leftlabel"> 学历:</label><input id="xueli" /></div>
+    <div class="input_line"><label class="leftlabel"> 兼职类型:</label><input id="zhicheng" /></div>
+    <div class="input_line"><label class="leftlabel"> 出生日期：</label><input class="easyui-datebox" id="riqi"></div>
+    <div class="input_line">
+        <label class="leftlabel">性别:</label><select id="sex" class="easyui-combobox" style="width:175px">
+            <option>男</option>
+            <option>女</option>
+        </select>
     </div>
-        <div class="input_line"><label class="leftlabel">生日:</label><input id="ptbirthday" type="date">  </div>
-              <div class="input_line"><label class="leftlabel">兼职类型:</label><input id="ptType"  >  </div>
-         <div class="input_line"><label class="leftlabel">学历:</label><input id="ptEdul"  >  </div>
-         <div class="input_line"><label class="leftlabel">职称:</label><input id="pttitle"  >  </div>
-        <div class="input_line"><label class="leftlabel">入职时间:</label><input id="ptintime" class="easyui-datebox" >  </div>
-         <div class="input_line"><label class="leftlabel">联系电话:</label><input id="pttel" class="easyui-textbox" >  </div>
-         <div class="input_line"><label class="leftlabel">工作单位:</label><input id="ptutname" class="easyui-textbox" >  </div>
-          <div class="input_line"><label class="leftlabel">校内联系人:</label><input id="ptContactName" class="easyui-textbox" >  </div>
-         <div class="input_line"><label class="leftlabel">历年评价:</label><input id="ptJudgeText" class="easyui-textbox" >  </div>
-             <div class="input_line"><label class="leftlabel">最近一年任课时间:</label><input id="ptlasttime" class="easyui-datebox" >  </div>
-             <div class="input_line"><label class="leftlabel">备注:</label><input id="ptMemo" class="easyui-textbox" >  </div>
-            </form>
-    </div>
-   <script>
-       $(function () {
-           $("#ptEdul").combobox({
-               url: "/BaseDataDics/GetDatabases?typeno=1",
-               valueField: 'id',
-               textField: "name"
+    <div class="input_line"><label class="leftlabel"> 历年评价：</label><input class="easyui-textbox" id="pingjia"></div>
+    <div class="input_line"><label class="leftlabel"> 入职时间：</label><input class="easyui-datebox" id="time"></div>
+    <div class="input_line"><label class="leftlabel"> 联系电话:</label><input id="tel" class="easyui-textbox"></div>
+    <div class="input_line"><label class="leftlabel"> 校内联系人:</label><input id="lianxi" class="easyui-textbox"></div>
+    <div class="input_line"><label class="leftlabel"> 最后任课：</label><input class="easyui-datebox" id="renke"></div>
+    <div class="input_line"><label class="leftlabel"> 备注:</label><input id="beizhu" class="easyui-textbox"></div>
 
-           })
-           $("#pttitle").combobox({
-               url: "/BaseDataDics/GetDatabases?typeno=4",
-               valueField: 'id',
-               textField: "name"
 
-           })
-           $("#ptType").combobox({
-               url: "/BaseDataDics/GetDatabases?typeno=3",
-               valueField: 'id',
-               textField: "name"
+    <script>
+        $(function () {
 
-           })
 
-       })
+
+            $("#PJTD_add_PJTeacher").combobox({
+                url: "/BaseDataDics/GetDatabases?typeNO=4",
+                valueField: 'id',
+                textField: "name",
+                width: 175
+            });
+
+        });
+        $(function () {
+            $("#xueli").combobox({
+                url: "/BaseDataDics/GetDatabases?typeNO=1",
+                valueField: 'id',
+                textField: "name",
+                width: 175
+            });
+
+        });
+        $(function () {
+            $("#zhicheng").combobox({
+                url: "/BaseDataDics/GetDatabases?typeNO=3",
+                valueField: 'id',
+                textField: "name",
+                width: 175
+            });
+
+        });
     </script>
 </body>
-</html>>
+</html>

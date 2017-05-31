@@ -1,4 +1,4 @@
-﻿@{
+﻿{
     Layout = null;
 }
 
@@ -10,8 +10,44 @@
     <title>Edit</title>
 </head>
 <body>
-    <div>
-        
-    </div>
+    <form id="ImportForm" enctype="multipart/form-data">
+        <div>
+
+
+            <input id="id" type="hidden" value="@Model.ID">
+            <div class="input_line"><label class="leftlabel"> 兼职教师:</label><input id="PJTD_edit_PJTeacherID" value="@Model.PJTeacherID"></div>
+
+            <div class="input_line">
+                <label class="leftlabel">路径:</label><input class="easyui-textbox" id="fileuploads" value="@Model.Url" disabled="true" />
+            </div>
+
+
+
+            <div class="input_line"><label class="leftlabel">类型:</label><input id="PJTD_edit_Doc" value="@Model.DocTypeID"></div>
+            <div class="input_line"><label class="leftlabel"> 当前日期：</label><input class="easyui-textbox" id="PJTD_edit_Time" value="@Model.UploadTime" disabled="true"></div>
+
+
+        </div>
+    </form>
+    <script>
+        $(function () {
+            $("#PJTD_edit_PJTeacherID").combobox({
+                url: "/PartJobTeacher/GetPartJobTeachers",
+                valueField: 'id',
+                textField: "name"
+            });
+            $("#PJTD_edit_Doc").combobox({
+                url: "/BaseDataDics/GetDatabases?typeno=5",
+                valueField: 'id',
+                textField: "name"
+
+            })
+
+
+        })
+
+
+
+    </script>
 </body>
 </html>

@@ -1248,6 +1248,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="doc\黄山.pptx" />
+    <Content Include="doc\旅游文化考试题目要求及评分标准.doc" />
+    <Content Include="doc\我党思想路线的形成.docx" />
     <None Include="Scripts\jquery-1.8.2-vsdoc.js" />
     <Content Include="obj\Debug\TeachSys.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\TeachSys.dll" />
@@ -1262,7 +1265,18 @@
     <Content Include="test.html" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="uploadify\Change Log.txt" />
+    <Content Include="uploadify\jquery.uploadify.js" />
+    <Content Include="uploadify\jquery.uploadify.min.js" />
+    <Content Include="uploadify\license.txt" />
+    <Content Include="uploadify\uploadify-cancel.png" />
+    <Content Include="uploadify\uploadify.css" />
+    <Content Include="uploadify\uploadify.swf" />
+    <Content Include="uploadify\__MACOSX\._Change Log.txt" />
+    <Content Include="uploadify\__MACOSX\._uploadify.swf" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1309,11 +1323,15 @@
     <Content Include="Views\PartJobTeacher\Index.cshtml" />
     <Content Include="Views\PartJobTeacher\Add.cshtml" />
     <Content Include="Views\PartJobTeacher\Edit.cshtml" />
+    <Content Include="uploadify\check-exists.php" />
+    <Content Include="uploadify\index.php" />
+    <Content Include="uploadify\uploadify.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="doc\" />
     <Folder Include="Filters\" />
+    <Folder Include="PartJobTeachersDocsFile\0\" />
+    <Folder Include="PartJobTeachersDocsFile\1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

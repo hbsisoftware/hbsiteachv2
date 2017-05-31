@@ -62,13 +62,14 @@ namespace TeachSys.Controllers
 
 
         }
-        public ActionResult EditDocs(int id, int doctypeid, DateTime uploadtime, int status, string url)
+        public ActionResult EditDocs(int id, int PJTeacherID, int doctypeid, string url )
         {
             try
             {
                 var p = tdb.PartJobTeacherDocs.First(t => t.ID == id);
-                p.UploadTime = uploadtime;
-                p.Status = status;
+                p.PJTeacherID = PJTeacherID;
+               //p.UploadTime = uploadtime;
+              
                 p.Url = url;
                 p.DocTypeID = doctypeid;
                 tdb.SaveChanges();
@@ -99,30 +100,22 @@ namespace TeachSys.Controllers
 
         public ActionResult load(Models.PartJobTeacherDocs pt)
         {
-
-            //try
-            //{
-
-            //HttpPostedFileBase getfile = Request.Files["fileupload"];
-            //string filename = getfile.FileName;
-            //string str = filename.Substring(filename.LastIndexOf("\\") + 1);
-            //string path = "/doc/" + Guid.NewGuid() + str;
-            //string getpath = Server.MapPath(path);
-            //getfile.SaveAs(path);
-            //tdb.PartJobTeacherDocs.Add(pt);
-            //pt.Url = getpath;
-
-
-
+            DateTime dt = DateTime.Now;
 
             try
             {
-                HttpPostedFileBase getfile = Request.Files["fileupload"];
+                var p = Server.MapPath("/PartJobTeachersDocsFile/") + pt.PJTeacherID + "/";
+                if (!System.IO.Directory.Exists(p))
+                {
+                    System.IO.Directory.CreateDirectory(p);
+                }
+                HttpPostedFileBase getfile = Request.Files["uploadify"];
                 string filename = getfile.FileName;
                 string str = filename.Substring(filename.LastIndexOf("\\") + 1);
-                string path = "/doc/" + Guid.NewGuid() + str;
-                getfile.SaveAs(Server.MapPath(path));
+                string path = p + Guid.NewGuid() + str;
+                getfile.SaveAs(path);
                 tdb.PartJobTeacherDocs.Add(pt);
+                pt.UploadTime = dt;
                 tdb.SaveChanges();
                 return Content("ok");
             }
@@ -131,6 +124,27 @@ namespace TeachSys.Controllers
                 return Content("error");
             }
 
+
+
         }
+
+        public ActionResult UploadifyFun(HttpPostedFileBase Filedata)
+        {
+          
+            if (Filedata == null ||
+                String.IsNullOrEmpty(Filedata.FileName) ||
+                Filedata.ContentLength == 0)
+            {
+                return this.HttpNotFound();
+            }
+
+            string filename = System.IO.Path.GetFileName(Filedata.FileName);
+            string virtualPath = String.Format("~/doc/{0}", filename);
+
+            string path = this.Server.MapPath(virtualPath);
+            Filedata.SaveAs(path);
+            return this.Json(new object { });
+        }  
+     
     }
 }

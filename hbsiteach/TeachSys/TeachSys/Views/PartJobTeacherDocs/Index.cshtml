@@ -8,196 +8,229 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
- <link href="~/Content/globals.css" rel="stylesheet" />
- <link href="~/jquery-easyui-1.5.1/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/uploadify/uploadify.css" rel="stylesheet" />
+    <link href="~/Content/globals.css" rel="stylesheet" />
+    <link href="~/jquery-easyui-1.5.1/themes/default/easyui.css" rel="stylesheet" />
     <link href="~/jquery-easyui-1.5.1/themes/icon.css" rel="stylesheet" />
-     <script src="~/Scripts/jquery-2.2.1.js"></script>
+    <script src="~/Scripts/jquery-2.2.1.js"></script>
     <script src="~/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
+    <script src="~/uploadify/jquery.uploadify.js"></script>
+    <script src="~/uploadify/jquery.uploadify.min.js"></script>
+    <script>
+        $(function () {
+            $('#tb').datagrid({
+                url: '/PartJobTeacherDocs/GetDocs',
+                width: 400,
+                height: 400,
 
-   <script>
-       $(function () {
-           $('#tb').datagrid({
-               url: '/PartJobTeacherDocs/GetDocs',
-               width: 400,
-               height: 400,
-              
-               fitColumns: true,
-               singleSelect: true,
-               toolbar: [{
-                   text: '添加',
-                   iconCls: 'icon-add',
-                   handler: function () {
-                       $("#PJTD_add_dig").dialog({
-                           title: "兼职教师添加---",
-                           iconCls: 'icon-add',
-                           closed: false,
-                           modal: true,
-                           href: '/PartJobTeacherDocs/Add',
-                           width: 400,
-                           height: 300,
-                           buttons: [
-                               {
-                                   text: '保存',
-                                   iconCls: 'icon-save',
-                                   handler: function () {
+                fitColumns: true,
+                singleSelect: true,
+                toolbar: [{
+                    text: '添加',
+                    iconCls: 'icon-add',
+                    handler: function () {
+                        $("#PJTD_add_dig").dialog({
+                            title: "类型添加---",
+                            iconCls: 'icon-add',
+                            closed: false,
+                            modal: true,
+                            href: '/PartJobTeacherDocs/Add',
+                            width: 300,
+                            height: 300,
+                            buttons: [
+                                {
+                                    text: '保存',
+                                    iconCls: 'icon-save',
+                                    handler: function () {
+                                        var dep = $("#pt_add").serialize();
+                                        var PJTeacherID = $("#PJTD_add_PJTeacherID").val();
+                                        var url = $("#a").val();
+                                        var doc = $("#PJTD_add_Doc").val();
+                                        var time = $("#PJTD_add_Time").val();
+                                        $.get("/PartJobTeacherDocs/AddDocs", { PJTeacherID: PJTeacherID, Url: url, DocTypeID: doc, UploadTime: time, Status: 0 }, function (data) {
+                                         
+                                            if (data == "ok") {
+                                                $.messager.show({
+                                                    title: '提示...',
+                                                    msg: '保存成功',
+                                                    showType: 'show'
+                                                })
+                                                $("#PJTD_add_dig").dialog("close");
+                                                $("#tb").datagrid("reload");
 
-                                       var PJTeacherID = $("#PJTD_add_PJTeacherID").val();
-                                       var url = $("#fileupload").filebox("getValue");
-                                       var doc = $("#PJTD_add_Doc").val();
-                                       var time = $("#PJTD_add_Time").val();
-                                       $.get("/PartJobTeacherDocs/AddDocs", { PJTeacherID: PJTeacherID, Url: url, DocTypeID: doc, UploadTime: time, Status: 0 }, function (data) {
-                                           if (data == "ok") {
-                                               $.messager.show({
-                                                   title: '提示...',
-                                                   msg: '保存成功',
-                                                   showType: 'show'
-                                               })
-                                               $("#PJTD_add_dig").dialog("close");
-                                               $("#tb").datagrid("reload");
+                                            }
 
-                                           }
-
-                                           else {
-                                               alert("出错");
-                                           }
-
-
-                                       }, "text")
-                                   }
+                                            else {
+                                                alert("出错");
+                                            }
 
 
-                               }, {
-                                   text: '取消',
-                                   iconCls: 'icon-cancel',
-                                   handler: function () {
-                                       $("#PJTD_add_dig").dialog("close");
-
-                                   }
-
-                               }
-                           ]
-
-                       });
-                   }
-               },
-
-               {
-                   text: '修改',
-                   iconCls: 'icon-edit',
-                   handler: function () {
-                       var id = $("#tb").datagrid("getSelected").id;
-                       var url = "/PartJobTeacherDocs/Edit?id=" + id;
-                       $("#PJTD_edit_dig").dialog({
-                           title: "兼职教师修改---",
-                           iconCls: 'icon-edit',
-
-                           modal: true,
-                           width: 400,
-                           height: 10,
-                           href: url,
-                           buttons: [
-                               {
-                                   text: '修改',
-                                   iconCls: 'icon-edit',
-                                   handler: function () {
-                                       var id = $("#type_add_id").val();
-                                       var name = $("#type_add_name").val();
-                                       var typeid = $("#type_edit_typeid").val();
-
-                                       $.get("/PartJobTeacherDocs/load", { id: id, name: name, typid: typeid, Status: 0 }, function (data) {
-
-                                           if (data == "ok") {
-                                               $.messager.show({
-                                                   title: '提示...',
-                                                   msg: '修改成功',
-                                                   showType: 'show'
-                                               })
-
-                                               $("#tb").datagrid("reload");
-                                               $("#PJTD_edit_dig").dialog("close");
-                                           }
-                                           else { alert("失败"); }
-
-                                       }, "text")
-
-                                   }
+                                        }, "text")
+                                    }
 
 
-                               }, {
-                                   text: '取消',
-                                   iconCls: 'icon-cancel',
-                                   handler: function () {
-                                       $("#PJTD_edit_dig").dialog("close");
+                                }, {
+                                    text: '取消',
+                                    iconCls: 'icon-cancel',
+                                    handler: function () {
+                                        $("#PJTD_add_dig").dialog("close");
 
-                                   }
+                                    }
 
-                               }
-                           ]
+                                }
+                            ]
 
-                       });
+                        });
+                    }
+                },
 
-                   }
+                {
+                    text: '修改',
+                    iconCls: 'icon-edit',
+                    handler: function () {
+                        var id = $("#tb").datagrid("getSelected").ID;
+                        var url = "/PartJobTeacherDocs/Edit?id=" + id;
+                        $("#PJTD_edit_dig").dialog({
+                            title: "类型修改---",
+                            iconCls: 'icon-edit',
 
-               }, '-', {
-                   text: '删除',
-                   iconCls: 'icon-remove',
-                   handler: function () {
-                       //var id = $("#tb").datagrid("getSelected").ID;
-                       //del(id);
-                       var row = $("#tb").datagrid("getSelected")
-                       if (row != null) {
-                           var name = row.name;
-                           $.messager.confirm("提示...", "确定要删除“" + name + "”吗？", function (retult) {
-                               if (retult) {
-                                   var id = row.ID;
-                                   $.get("/PartJobTeacherDocs/DeleteDocs/", { id: id }, function (data) {
-                                       if (data == "ok") {
-                                           $("#tb").datagrid("reload");
+                            modal: true,
+                            width: 300,
+                            height: 250,
+                            href: url,
+                            buttons: [
+                                {
+                                    text: '修改',
+                                    iconCls: 'icon-edit',
+                                    handler: function () {
+                                        var dep = $("#pt_add").serialize();
+                                        var id = $("#id").val();
+                                        var PJTeachersID = $("#PJTD_edit_PJTeacherID").val();
+                                        alert(PJTeachersID);
+                                        var urls = $("#fileuploads").val();
+                                        var docs = $("#PJTD_edit_Doc").val();
 
-                                           $.messager.show({
-                                               title: '提示...',
-                                               msg: '删除成功',
-                                               showType: 'show'
+                                        var typeids = $("#PJTD_edit_Time").val();
 
-                                           })
-                                       }
+                                        $.get("/PartJobTeacherDocs/EditDocs", { id: id, PJTeacherID: PJTeachersID, url: urls, DocTypeID: docs }, function (data) {
 
-                                       else
-                                           $.messager.show({
-                                               title: '提示...',
-                                               msg: '删除失败',
-                                               showType: 'show'
+                                            if (data == "ok") {
+                                                $.messager.show({
+                                                    title: '提示...',
+                                                    msg: '修改成功',
+                                                    showType: 'show'
+                                                })
 
-                                           })
+                                                $("#tb").datagrid("reload");
+                                                $("#PJTD_edit_dig").dialog("close");
+                                            }
+                                            else { alert("失败"); }
+
+                                        }, "text")
+
+                                    }
 
 
-                                   }, "text")
-                               }
-                           })
+                                }, {
+                                    text: '取消',
+                                    iconCls: 'icon-cancel',
+                                    handler: function () {
+                                        $("#PJTD_edit_dig").dialog("close");
 
-                       }
-                   }
-               }],
+                                    }
 
-               columns: [[
+                                }
+                            ]
 
-                   { field: 'PName', title: '兼职教师', width: 100 },
-                     { field: 'Url', title: '文档路径', width: 150 },
-                      { field: 'DocTypeId', title: '文档类型', width: 150 },
-                     {
-                         field: 'UploadTime', title: '上传日期', width: 100
-                     }
-               ]]
+                        });
 
-           })
-       })
+                    }
+
+                }, '-', {
+                    text: '删除',
+                    iconCls: 'icon-remove',
+                    handler: function () {
+                        //var id = $("#tb").datagrid("getSelected").ID;
+                        //del(id);
+                        var row = $("#tb").datagrid("getSelected")
+                        if (row != null) {
+                            var name = row.PJTeacherID;
+                            $.messager.confirm("提示...", "确定要删除吗？", function (retult) {
+                                if (retult) {
+                                    var id = row.ID;
+                                    $.get("/PartJobTeacherDocs/DeleteDocs/", { id: id }, function (data) {
+                                        if (data == "ok") {
+                                            $("#tb").datagrid("reload");
+
+                                            $.messager.show({
+                                                title: '提示...',
+                                                msg: '删除成功',
+                                                showType: 'show'
+
+                                            })
+                                        }
+
+                                        else
+                                            $.messager.show({
+                                                title: '提示...',
+                                                msg: '删除失败',
+                                                showType: 'show'
+
+                                            })
+
+
+                                    }, "text")
+                                }
+                            })
+
+                        }
+                    }
+                }],
+
+                columns: [[
+
+                    { field: 'PName', title: '兼职教师', width: 100 },
+                      { field: 'Url', title: '文档路径', width: 150 },
+                       { field: 'DocTypeId', title: '文档类型', width: 150 },
+                      {
+                          field: 'UploadTime', title: '上传日期', width: 100,
+                          formatter: function (date) {
+                              var pa = /.*\((.*)\)/;
+                              var timel = date.match(pa)[1].substring(0, 10);
+                              return getTime(timel);
+                          }
+                      }
+                ]]
+
+            })
+        })
 
     </script>
+    <style>
+        .uploadify{
+          margin:-15px 0px 0px 100px;
+             }
+        .lujin {
+          margin-top:8px;
+        }
+    </style>
 </head>
 <body>
     <table id="tb"></table>
     <div id="PJTD_add_dig">  </div>
     <div id="PJTD_edit_dig"></div>
+    <script>
+        function getTime(/**?timestamp=0?**/) {
+            var ts = arguments[0] || 0;
+            var t, y, m, d, h, i, s;
+            t = ts ? new Date(ts * 1000) : new Date();
+            y = t.getFullYear();
+            m = t.getMonth() + 1;
+            d = t.getDate();
+
+            //?可根据需要在这里定义时间格式????
+            return y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d);
+        }
+    </script>
 </body>
 </html>
-

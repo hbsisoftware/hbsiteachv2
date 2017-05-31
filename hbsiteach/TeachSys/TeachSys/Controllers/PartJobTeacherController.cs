@@ -37,6 +37,7 @@ namespace TeachSys.Controllers
                          typename = p.TypeName,
                          titlename = p.TitleName,
                          sex = p.Sex,
+                         brithday=p.Birthday,
                          eduname = p.EduName,
                          intime = p.InTime,
                          tel = p.Tel,
@@ -51,23 +52,23 @@ namespace TeachSys.Controllers
             return Json(pt, JsonRequestBehavior.AllowGet);
 
         }
-        public ActionResult EditPartJobTeachers(int id, string name, int typeid, DateTime birthday, bool sex, int eduid, int titleid, DateTime intime, string tel, string uname, string cname, string jtext, DateTime ltime, string memo, int status)
+        public ActionResult EditPartJobTeachers(int id, string name, int typeid, int eduid, int titleid, string tel, string uname, string cname, string jtext, string memo, int status)
         {
             try
             {
                 var pt = tdb.PartJobTeachers.First(t => t.ID == id);
                 pt.Name = name;
                 pt.TypeID = typeid;
-                pt.Birthday = birthday;
-                pt.Sex = sex;
+           //    pt.Birthday = birthday;
+              //  pt.Sex = sex;
                 pt.EduID = eduid;
                 pt.TitleID = titleid;
-                pt.InTime = intime;
+               // pt.InTime = intime;
                 pt.Tel = tel;
                 pt.UnitName = uname;
                 pt.ContactName = cname;
                 pt.JudgeText = jtext;
-                pt.LastTime = ltime;
+             //   pt.LastTime = ltime;
                 pt.Memo = memo;
                 pt.Status = status;
                 tdb.SaveChanges();
