@@ -8,7 +8,7 @@ namespace TeachSys.Controllers
 {
     public class CoursesController : Controller
     {
-        Models.TeachDBEntities tdb = App_Start.Helper.tdb;
+        Models.TeachDBEntities1 tdb = App_Start.Helper.tdb;
         //
         // GET: /Courses/
 
@@ -37,7 +37,7 @@ namespace TeachSys.Controllers
                           select new
                           {
                               ID = c.ID,
-                              Name = c.Name
+                              Name = c.Name,
                           };
             return Json(courses, JsonRequestBehavior.AllowGet);
         }

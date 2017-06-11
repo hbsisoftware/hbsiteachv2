@@ -1,0 +1,196 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/globals.css" rel="stylesheet" />
+    <link href="~/jquery-easyui-1.5.1/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/jquery-easyui-1.5.1/themes/icon.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.2.1.js"></script>
+    <script src="~/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
+    <script>
+        $(function () {
+            $('#tb').datagrid({
+                url: '/Type/GetType',
+                width: 400,
+                height: 240,
+                fitColumns: true,
+                singleSelect: true,
+                toolbar: [{
+                    text: '添加',
+                    iconCls: 'icon-add',
+                    handler: function () {
+                        $("#type_add_dig").dialog({
+                            title: "类型添加---",
+                            iconCls: 'icon-add',
+                            closed: false,
+                            modal: true,
+                            href: '/Type/add',
+                            width: 300,
+                            height: 200,
+                            buttons: [
+                                {
+                                    text: '保存',
+                                    iconCls: 'icon-save',
+                                    handler: function () {
+
+                                        var name = $("#type_add_name").textbox("getValue");
+                                        var typeid = $("#type_add_typeid").textbox("getValue");
+                                        $.get("/Type/AddType", { Name: name, typeid: typeid, Status: 0 }, function (data) {
+
+                                            if (data == "ok") {
+                                                $.messager.show({
+                                                    title: '提示...',
+                                                    msg: '保存成功',
+                                                    showType: 'show'
+                                                })
+                                                $("#type_add_dig").dialog("close");
+                                                $("#tb").datagrid("reload");
+
+                                            }
+
+                                            else {
+                                                alert("出错");
+                                            }
+
+
+                                        }, "text")
+                                    }
+
+
+                                }, {
+                                    text: '取消',
+                                    iconCls: 'icon-cancel',
+                                    handler: function () {
+                                        $("#type_add_dig").dialog("close");
+
+                                    }
+
+                                }
+                            ]
+
+                        });
+                    }
+                },
+
+                {
+                    text: '修改',
+                    iconCls: 'icon-edit',
+                    handler: function () {
+                        var id = $("#tb").datagrid("getSelected").id;
+                        var url = "/Type/edit?id=" + id;
+                        $("#type_edit_dig").dialog({
+                            title: "类型修改---",
+                            iconCls: 'icon-edit',
+
+                            modal: true,
+                            width: 300,
+                            height: 150,
+                            href: url,
+                            buttons: [
+                                {
+                                    text: '修改',
+                                    iconCls: 'icon-edit',
+                                    handler: function () {
+                                        var id = $("#type_edit_id").val();
+                                        var name = $("#type_edit_name").val();
+                                        var typeid = $("#type_edit_typeid").val();
+
+                                        $.get("/Type/EditType", { id: id, name: name, typeid: typeid, Status: 0 }, function (data) {
+
+                                            if (data == "ok") {
+                                                $.messager.show({
+                                                    title: '提示...',
+                                                    msg: '修改成功',
+                                                    showType: 'show'
+                                                })
+
+                                                $("#tb").datagrid("reload");
+                                                $("#type_edit_dig").dialog("close");
+                                            }
+                                            else { alert("失败"); }
+
+                                        }, "text")
+
+                                    }
+
+
+                                }, {
+                                    text: '取消',
+                                    iconCls: 'icon-cancel',
+                                    handler: function () {
+                                        $("#type_edit_dig").dialog("close");
+
+                                    }
+
+                                }
+                            ]
+
+                        });
+
+                    }
+
+                }, '-', {
+                    text: '删除',
+                    iconCls: 'icon-remove',
+                    handler: function () {
+                        //var id = $("#tb").datagrid("getSelected").ID;
+                        //del(id);
+                        var row = $("#tb").datagrid("getSelected")
+                        if (row != null) {
+                            var name = row.name;
+                            $.messager.confirm("提示...", "确定要删除“" + name + "”吗？", function (retult) {
+                                if (retult) {
+                                    var id = row.id;
+                                    $.get("/Type/DeleteType/", { id: id }, function (data) {
+                                        if (data == "ok") {
+                                            $("#tb").datagrid("reload");
+
+                                            $.messager.show({
+                                                title: '提示...',
+                                                msg: '删除成功',
+                                                showType: 'show'
+
+                                            })
+                                        }
+
+                                        else
+                                            $.messager.show({
+                                                title: '提示...',
+                                                msg: '删除失败',
+                                                showType: 'show'
+
+                                            })
+
+
+                                    }, "text")
+                                }
+                            })
+
+                        }
+                    }
+                }],
+
+                columns: [[
+
+                    { field: 'name', title: '类型', width: 100 },
+                      { field: 'typid', title: '类型型号', width: 50 }
+                ]]
+
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <table id="tb"></table>
+    <div id="type_add_dig">
+    </div>
+    <div id="type_edit_dig"></div>
+</body>
+</html>

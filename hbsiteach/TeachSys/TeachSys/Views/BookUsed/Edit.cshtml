@@ -22,15 +22,15 @@
             <div class="input_line"><label class="leftlabel">教材名称:</label><input id="book" class="easyui-vaildatebox" data-options="required:true" name="BookID" value="@Model.BookID" /></div>
 
             <input type="hidden" name="Status" value="0" />
-           
-            <div class ="input_line"><label class="leftlabel">学生用书数量:</label><input id="stunum" class="easyui-validatebox textbox" data-options="required:true,validType:'integer'" name="StudentNums" value="@Model.StuBookNums" /></div>
+
+            <div class="input_line"><label class="leftlabel">学生用书数量:</label><input id="stunum" class="easyui-validatebox textbox" data-options="required:true,validType:'integer'" name="StudentNums" value="@Model.StuBookNums" /></div>
 
             <div class="input_line"><label class="leftlabel">教师用书数量:</label><input id="teanum" class="easyui-validatebox textbox" data-options="required:true,validType:'integer'" name="TeaBookNums" value="@Model.TeaBookNums" /></div>
         </form>
     </div>
     <script>
         $(function () {
-           
+
             $.extend($.fn.validatebox.defaults.rules, {
                 integer: {// 验证整数
                     validator: function (value) {
@@ -74,3 +74,4 @@
     </script>
 </body>
 </html>
+

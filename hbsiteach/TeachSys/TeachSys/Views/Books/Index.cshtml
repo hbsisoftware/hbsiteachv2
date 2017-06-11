@@ -124,7 +124,7 @@
                 }
             }, '-', {
                 text: '删除',
-                iconCls: 'icon-remove',
+                iconCls: 'icon-add',
                 handler: function () {
                     var row = $("#tb").datagrid("getSelected");
                     if (row == null)
@@ -156,42 +156,12 @@
                         }
                     });
                 }
-            }, '-', {
-                text: '停止使用该书',
-                iconCls: 'icon-clear',
-                handler: function () {
-                    var row = $("#tb").datagrid("getSelected");
-                    if (row == null) {
-                        $.messager.alert("提示...", "请选中行！！", "warning");
-                        return;
-                    }
-                    var id = row.ID;
-                    var name = row.Name;
-
-                    $.messager.confirm("提示...", "你确定" + name + ",这本书停止印刷了吗？", function (r) {
-                        $.post("/books/StopUse", { id: id }, function (data) {
-
-                            if (data == "ok") {
-                                $.messager.show({
-                                    title: '提示...',
-                                    msg: '停止添加成功！',
-                                    showType: 'show',
-                                });
-                                $("#tb").datagrid("reload");
-                            }
-                            else {
-                                $.messager.show({
-                                    title: '提示...',
-                                    msg: '停止添加失败！',
-                                    showType: 'show',
-                                });
-                            }
-                        }, "text")
-                    })
-                }
             }]
             $("#tb").datagrid({
                 url: '/books/getBooks',
+                queryPatams: {//向后台传递参数
+
+                },
                 width: 1000,
                 singleSelect: true,//能否多选
                 fitColums: true,
@@ -206,7 +176,7 @@
                     { field: 'BPN', title: '教材性质', width: 100 },
                     { field: 'BTN', title: '教材类别', width: 100 },
                     { field: 'LastTime', title: '最后一次使用时间', width: 100 },
-                    //{ field: 'DisabledTime', title: '停止印刷时间', width: 100 }
+                    { field: 'DisabledTime', title: '停止印刷时间', width: 100 }
                 ]]
             });
         });

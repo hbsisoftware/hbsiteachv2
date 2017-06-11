@@ -51,11 +51,12 @@
     </FunctionImport>
     <FunctionImport Name="EditBookUsed" ReturnType="Collection(Int32)">
       <Parameter Name="CoursesID" Mode="In" Type="Int32" />
-      <Parameter Name="ClassID" Mode="In" Type="Int32" />
       <Parameter Name="BookID" Mode="In" Type="Int32" />
       <Parameter Name="TeacherID" Mode="In" Type="Int32" />
       <Parameter Name="Status" Mode="In" Type="Int32" />
       <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="TeacherNums" Mode="In" Type="Int32" />
+      <Parameter Name="StudentNums" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="GetStudentNums" ReturnType="Collection(Int32)">
       <Parameter Name="CoursesID" Mode="In" Type="Int32" />
@@ -63,7 +64,10 @@
       <Parameter Name="BookID" Mode="In" Type="Int32" />
       <Parameter Name="TeacherID" Mode="In" Type="Int32" />
       <Parameter Name="Status" Mode="In" Type="Int32" />
+      <Parameter Name="TeacherNums" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="Type" EntityType="TeachDBModel.Type" />
+    <EntitySet Name="View_PartJobTeachers" EntityType="TeachDBModel.View_PartJobTeachers" />
   </EntityContainer>
   <EntityType Name="BaseDataDics">
     <Key>
@@ -362,4 +366,41 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeId" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_PartJobTeachers">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="InTime" />
+      <PropertyRef Name="Tel" />
+      <PropertyRef Name="UnitName" />
+      <PropertyRef Name="ContactName" />
+      <PropertyRef Name="JudgeText" />
+      <PropertyRef Name="LastTime" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <Property Name="Sex" Type="Boolean" Nullable="false" />
+    <Property Name="InTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Tel" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="JudgeText" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="LastTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Memo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="EduName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TitleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

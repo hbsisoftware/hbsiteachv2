@@ -21,7 +21,7 @@
                 text: '添加',
                 iconCls: 'icon-add',
                 handler: function () {
-                    url="/BookUsed/add"
+                    url = "/BookUsed/add"
                     $("#BookUsed-dlg").dialog({
                         title: '教材选用添加',
                         iconCls: 'icon-add',
@@ -30,9 +30,9 @@
                         href: url,
                         modal: true,
                         buttons: [{
-                            text:'确定',
-                            iconCls:'icon-ok',
-                            handler:function(){
+                            text: '确定',
+                            iconCls: 'icon-ok',
+                            handler: function () {
                                 $("#BookUsed-add-form").form({
                                     url: '/BookUsed/BookUseAdd/',
                                     success: function (data) {
@@ -72,13 +72,12 @@
                 iconCls: 'icon-edit',
                 handler: function () {
                     var row = $("#tb").datagrid("getSelected");
-                    if (row == null)
-                    {
+                    if (row == null) {
                         $.messager.alert("提示...", "请选中行！！", "warning");
                         return;
                     }
                     var id = row.ID;
-                    url = "/BookUsed/edit/"+id;
+                    url = "/BookUsed/edit/" + id;
                     $("#BookUsed-dlg").dialog({
                         title: '教材选用修改',
                         iconCls: 'icon-add',
@@ -106,7 +105,7 @@
                                             $.messager.show({
                                                 title: '提示...',
                                                 msg: '修改失败！！',
-                                                showType:'show'
+                                                showType: 'show'
                                             })
                                         }
                                     }
@@ -129,16 +128,14 @@
                 handler: function () {
                     var row = $("#tb").datagrid("getSelected");
                     console.log(row)
-                    if(row==null)
-                    {
-                        $.messager.alert("提示...","请选中行!!","wraning");
+                    if (row == null) {
+                        $.messager.alert("提示...", "请选中行!!", "wraning");
                         return;
                     }
-                    var id=row.ID;
-                    var name=row.CoursesName;
-                    $.messager.confirm("提示...", "你确定要删除"+name+"这条记录？", function (r) {
-                        if (r)
-                        {
+                    var id = row.ID;
+                    var name = row.CoursesName;
+                    $.messager.confirm("提示...", "你确定要删除" + name + "这条记录？", function (r) {
+                        if (r) {
                             $.get("/BookUsed/RemteBookUse", { id: id }, function (data) {
                                 if (data == "ok") {
                                     $.messager.show({
@@ -152,7 +149,7 @@
                                     $.messager.show({
                                         title: '提示...',
                                         msg: '删除失败！！',
-                                        showType:'show'
+                                        showType: 'show'
                                     })
                                 }
                             }, "text")
@@ -170,7 +167,7 @@
                            { field: 'Name', title: '教材名称', width: 150 },
                            { field: 'StuBookNums', title: '学生用书数量', width: 80 },
                            { field: 'TeaBookNums', title: '教师用书数量', width: 80 }
-                         ]]
+                ]]
             })
         });
     </script>
@@ -190,3 +187,4 @@
     <div id="BookUsed-dlg"></div>
 </body>
 </html>
+

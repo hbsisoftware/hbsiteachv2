@@ -1,0 +1,19 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <div>
+        <input id="type_edit_id" type="hidden" value="@Model.ID">
+        <div class="input_line"><label class="leftlabel">   类型：</label><input id="type_edit_name" class="easyui-textbox" value="@Model.Name"></div><br>
+        <input id="type_edit_typeid" type="hidden" value="@Model.TypeId">
+    </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <div>
+        
+    </div><input id="edit-id" type="hidden" value="@Model.ID" />
+
+<div class="input_line">
+    <label class="leftlabel"> 教师姓名:</label><input class="easyui-textbox" id="name" value="@Model.Name" style="width:175px">
+    <label class="leftlabel"> 工作单位:</label><input class="easyui-textbox" id="danwei" value="@Model.UnitName" style="width:175px">
+</div>
+<div class="input_line">
+    <label class="leftlabel"> 学历:</label><input id="xueli" value="@Model.EduID" />
+    <label class="leftlabel"> 职称:</label><input id="PJTD_add_PJTeacher" value="@Model.TitleID">
+</div>
+<div class="input_line">
+    <label class="leftlabel"> 兼职类型:</label><input id="zhicheng" value="@Model.TypeID">
+    <label class="leftlabel"> 出生日期:</label><input class="easyui-textbox" id="riqi" value="@Model.Birthday" disabled="true" style="width:175px" />
+</div>
+<div class="input_line">
+    <label class="leftlabel"> 历年评价：</label><input class="easyui-textbox" id="pingjia" value="@Model.JudgeText" style="width:175px">
+    <label class="leftlabel"> 入职时间：</label><input class="easyui-textbox" id="time" value="@Model.InTime" disabled="true" style="width:175px">
+</div>
+<div class="input_line">
+    <label class="leftlabel"> 联系电话:</label><input id="tel" class="easyui-textbox" value="@Model.Tel" style="width:175px">
+    <label class="leftlabel"> 校内联系人:</label><input id="lianxi" class="easyui-textbox" value="@Model.ContactName" style="width:175px">
+</div>
+<div class="input_line">
+    <label class="leftlabel"> 最后时间：</label><input class="easyui-textbox" id="renke" value="@Model.LastTime" disabled="true" style="width:175px">
+    <label class="leftlabel"> 备注:</label><input id="beizhu" class="easyui-textbox" value="@Model.Memo" style="width:175px">
+</div>
+
+
+<script>
+    $(function () {
+
+
+
+        $("#PJTD_add_PJTeacher").combobox({
+            url: "/BaseDataDics/GetDatabases?typeNO=4",
+            valueField: 'id',
+            textField: "name",
+            width: 175
+        });
+
+    });
+    $(function () {
+        $("#xueli").combobox({
+            url: "/BaseDataDics/GetDatabases?typeNO=1",
+            valueField: 'id',
+            textField: "name",
+            width: 175
+        });
+
+    });
+    $(function () {
+        $("#zhicheng").combobox({
+            url: "/BaseDataDics/GetDatabases?typeNO=3",
+            valueField: 'id',
+            textField: "name",
+            width: 175
+        });
+
+    });
+</script>
+
+
+</body>
+</html>

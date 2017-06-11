@@ -208,5 +208,36 @@
     <FunctionImportMapping FunctionImportName="AddClasses" FunctionName="TeachDBModel.Store.AddClasses" />
     <FunctionImportMapping FunctionImportName="EditBookUsed" FunctionName="TeachDBModel.Store.EditBookUsed" />
     <FunctionImportMapping FunctionImportName="GetStudentNums" FunctionName="TeachDBModel.Store.GetStudentNums" />
+    <EntitySetMapping Name="Type">
+      <EntityTypeMapping TypeName="TeachDBModel.Type">
+        <MappingFragment StoreEntitySet="Type">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_PartJobTeachers">
+      <EntityTypeMapping TypeName="TeachDBModel.View_PartJobTeachers">
+        <MappingFragment StoreEntitySet="View_PartJobTeachers">
+          <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="EduName" ColumnName="EduName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Memo" ColumnName="Memo" />
+          <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+          <ScalarProperty Name="JudgeText" ColumnName="JudgeText" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="InTime" ColumnName="InTime" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

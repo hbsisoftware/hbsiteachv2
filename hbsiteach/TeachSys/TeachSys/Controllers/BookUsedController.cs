@@ -10,7 +10,7 @@ namespace TeachSys.Controllers
     {
         //
         // GET: /BookUsed/
-        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
+        Models.TeachDBEntities1 tdb = new Models.TeachDBEntities1();
         public ActionResult Index()
         {
             return View();
@@ -69,7 +69,7 @@ namespace TeachSys.Controllers
         /// 不需要提供学生数量-----编辑
         /// </summary>
         /// <returns></returns>
-         public ActionResult EditBooksUse(int CoursesID, int BookID, int TeacherID, int Status, int id, int TeaBookNums, int StudentNums)
+        public ActionResult EditBooksUse(int CoursesID, int BookID, int TeacherID, int Status, int id, int TeaBookNums, int StudentNums)
         {
             try
             {

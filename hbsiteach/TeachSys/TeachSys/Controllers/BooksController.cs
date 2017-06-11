@@ -10,7 +10,7 @@ namespace TeachSys.Controllers
     {
         //
         // GET: /Books/
-        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
+        Models.TeachDBEntities1 tdb = new Models.TeachDBEntities1();
         public ActionResult Index()
         {
            
@@ -119,51 +119,6 @@ namespace TeachSys.Controllers
                             Name = p.Name,
                         };
             return Json(press, JsonRequestBehavior.AllowGet);
-        }
-        /// <summary>
-        /// 停止使用
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-         DateTime ts1 = DateTime.Now;
-        public ActionResult StopUse(int id)
-        {
-            try
-            {
-                var sid = tdb.Books.First(t => t.ID == id);
-                sid.DisabledTime = ts1.Year + "-" + Time(ts1.Month) + "-" + Day(ts1.Day);
-                tdb.SaveChanges();
-                return Content("ok");
-            }
-            catch
-            {
-                return Content("err");
-            }
-
-        }
-        public string Time(int month)
-        {
-           
-            if (month < 10)
-            {
-                return "0" + month;
-            }
-            else
-            {
-                return "" + month;
-            }
-        }
-        public string Day(int day)
-        {
-
-            if (day < 10)
-            {
-                return "0" + day;
-            }
-            else
-            {
-                return "" + day;
-            }
         }
        
     }

@@ -21,6 +21,8 @@
             <div class="input_line"><label class="leftlabel">价格:</label><input class="easyui-validatebox textbox" name="Price" data-options="required:true,validType:'integer'" value="@Model.Price" /></div>
             <div class="input_line"><label class="leftlabel">教材性质:</label><input class="easyui-validatebox textbox" id="BookProperty" name="BookPropertyID" data-options="required:true,editable:false" value="@Model.BookPropertyID" /></div>
             <div class="input_line"><label class="leftlabel">教材类别:</label><input class="easyui-validatebox textbox" id="BookType" name="BookTypeID" data-options="required:true,editable:false" value="@Model.BookTypeID" /></div>
+            <div class="input_line"><label class="leftlabel">教材最后一次使用时间:</label><input id="LastTime" class="easyui-validatebox textbox" name="LastTime" value="@Model.LastTime" /></div>
+            <div class="input_line"><label class="leftlabel">停止印刷时间:</label><input id="DisabledTime" class="easyui-validatebox textbox" name="DisabledTime" value="@Model.DisabledTime" /></div>
         </form>
     </div>
     <script>
@@ -42,6 +44,13 @@
                     },
                     message: '请输入正确的年'
                 }
+            });
+         
+            $("#LastTime").datebox({
+                editable: false
+            });
+            $("#DisabledTime").datebox({
+                editable: false
             });
 
         })

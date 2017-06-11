@@ -1,0 +1,69 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    <form id="pt_add">
+        <div>
+            <input id="id" type="hidden">
+
+            <div class="input_line"> <label class="leftlabel"> 兼职教师:</label><input id="PJTD_add_PJTeacherID" name="PJTeacherID"></div>
+
+
+            <label class="leftlabel lujin"> 路径:</label>
+
+            <span id="uploadify"></span>
+
+            <div class="input_line">   <label class="leftlabel">类型:</label><input id="PJTD_add_Doc" name="DocTypeID"></div>
+            <div class="input_line"><label class="leftlabel"> 当前日期：</label><input class="easyui-datetimebox" id="PJTD_add_Time" name="UploadTime"></div>
+            <input type="hidden" value="0" name="Status">
+        </div>
+        <input id="a" type="hidden">
+    </form>
+    <script>
+        $(function () {
+            $("#PJTD_add_PJTeacherID").combobox({
+                url: "/PartJobTeacher/GetPartJobTeachers",
+                valueField: 'id',
+                textField: "name"
+            });
+            $("#PJTD_add_Doc").combobox({
+                url: "/BaseDataDics/GetDatabases?typeno=5",
+                valueField: 'id',
+                textField: "name"
+
+            })
+
+
+        });
+        $(function () {
+
+            $("#uploadify").uploadify
+                ({
+                    uploader: '/PartJobTeacherDocs/UploadifyFun',//处理上传的方法
+                    swf: '../uploadify/uploadify.swf',
+                    width: 60,
+                    height: 23,
+                    buttonText: "上传",
+                    buttonCursor: 'hand',
+                    fileobjName: 'Filedata',
+                    //fileTypeExts: '*.xlsx;*.docx',//扩展名
+                    fileTypeDesc: "请选择xslx,docx文件",//文件说明
+                    auto: true,
+                    onUploadSuccess: function (file, data, response) {
+                        $("#a").val(file.name).text;
+
+                    }
+                });
+        });
+    </script>
+
+</body>
+</html>

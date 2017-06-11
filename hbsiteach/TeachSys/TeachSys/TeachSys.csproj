@@ -199,75 +199,187 @@
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\MajorsController.cs" />
+    <Compile Include="Controllers\PartJobTeacherController.cs" />
+    <Compile Include="Controllers\PartJobTeacherDocsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
+    <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseDataDics.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Books.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BookUsed.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Classes.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Courses.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Departments.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Majors.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PartJobTeacherDocs.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PartJobTeachers.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Students.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeachDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeachDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeachDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeachDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeachDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeachDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\TeacherClasses.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Teachers.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Type.cs">
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\View_Books.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\View_BookUsed.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_PartJobTeachers.cs">
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\View_TeacherClasses.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>TeachDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\de\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\de\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\de\System.Spatial.resources.dll" />
+    <Content Include="bin\DotNetOpenAuth.AspNet.dll" />
+    <Content Include="bin\DotNetOpenAuth.AspNet.xml" />
+    <Content Include="bin\DotNetOpenAuth.Core.dll" />
+    <Content Include="bin\DotNetOpenAuth.Core.xml" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.Consumer.dll" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.Consumer.xml" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.dll" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.xml" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.dll" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.RelyingParty.dll" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.RelyingParty.xml" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.xml" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\es\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\es\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\es\System.Spatial.resources.dll" />
+    <Content Include="bin\fr\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\fr\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\fr\System.Spatial.resources.dll" />
+    <Content Include="bin\it\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\it\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\it\System.Spatial.resources.dll" />
+    <Content Include="bin\ja\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\ja\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\ja\System.Spatial.resources.dll" />
+    <Content Include="bin\ko\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\ko\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\ko\System.Spatial.resources.dll" />
+    <Content Include="bin\Microsoft.Data.Edm.dll" />
+    <Content Include="bin\Microsoft.Data.Edm.xml" />
+    <Content Include="bin\Microsoft.Data.OData.dll" />
+    <Content Include="bin\Microsoft.Data.OData.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Microsoft.Web.Mvc.FixedDisplayModes.dll" />
+    <Content Include="bin\Microsoft.Web.WebPages.OAuth.dll" />
+    <Content Include="bin\Microsoft.Web.WebPages.OAuth.xml" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\ru\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\ru\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\ru\System.Spatial.resources.dll" />
+    <Content Include="bin\System.Net.Http.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.xml" />
+    <Content Include="bin\System.Net.Http.WebRequest.dll" />
+    <Content Include="bin\System.Net.Http.WebRequest.xml" />
+    <Content Include="bin\System.Net.Http.xml" />
+    <Content Include="bin\System.Spatial.dll" />
+    <Content Include="bin\System.Spatial.xml" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.OData.dll" />
+    <Content Include="bin\System.Web.Http.OData.xml" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.xml" />
+    <Content Include="bin\System.Web.Http.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\TeachSys.dll" />
+    <Content Include="bin\TeachSys.pdb" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="bin\WebMatrix.Data.dll" />
+    <Content Include="bin\WebMatrix.Data.xml" />
+    <Content Include="bin\WebMatrix.WebData.dll" />
+    <Content Include="bin\WebMatrix.WebData.xml" />
+    <Content Include="bin\zh-Hans\EntityFramework.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Web.WebPages.OAuth.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Net.Http.Formatting.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Net.Http.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Net.Http.WebRequest.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Spatial.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Helpers.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Http.OData.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Http.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Http.WebHost.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Mvc.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Optimization.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Razor.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.WebPages.Razor.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.WebPages.resources.dll" />
+    <Content Include="bin\zh-Hans\WebMatrix.Data.resources.dll" />
+    <Content Include="bin\zh-Hans\WebMatrix.WebData.resources.dll" />
+    <Content Include="bin\zh-Hant\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\zh-Hant\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\zh-Hant\System.Spatial.resources.dll" />
     <Content Include="Content\globals.css" />
     <Content Include="Content\login\css\ie-css3.htc" />
     <Content Include="Content\login\css\login.css" />
@@ -1115,30 +1227,56 @@
     <Content Include="jquery-easyui-1.5.1\demo\tree\tree_data1.json" />
     <Content Include="jquery-easyui-1.5.1\demo\tree\tree_data2.json" />
     <Content Include="jquery-easyui-1.5.1\themes\material\images\Thumbs.db" />
-    <EntityDeploy Include="Models\Model.edmx">
+    <EntityDeploy Include="Models\TeachDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>TeachDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model.Context.tt">
+    <Content Include="Models\TeachDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
+      <DependentUpon>TeachDB.edmx</DependentUpon>
+      <LastGenOutput>TeachDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
+    <Content Include="Models\TeachDB.edmx.diagram">
+      <DependentUpon>TeachDB.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\Model.tt">
+    <Content Include="Models\TeachDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
+      <DependentUpon>TeachDB.edmx</DependentUpon>
+      <LastGenOutput>TeachDB.cs</LastGenOutput>
     </Content>
+    <Content Include="bin\TeachSys.dll.config" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\Model1.csdl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\Model1.msl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\Model1.ssdl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\TeachDB.csdl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\TeachDB.msl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\TeachDB.ssdl" />
+    <Content Include="obj\Debug\TeachSys.csprojResolveAssemblyReference.cache" />
     <None Include="Scripts\jquery-1.8.2-vsdoc.js" />
+    <Content Include="obj\Debug\TeachSys.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\TeachSys.dll" />
+    <Content Include="obj\Debug\TeachSys.pdb" />
+    <Content Include="obj\Debug\TempPE\Models.Model1.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.Model1.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.TeachDB.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.TeachDB.Designer.cs.dll" />
     <Content Include="Scripts\jquery-2.2.1.js" />
     <Content Include="Scripts\jquery_ext_hbsi.js" />
     <Content Include="Scripts\myjs\students.js" />
     <Content Include="test.html" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="uploadify\Change Log.txt" />
+    <Content Include="uploadify\jquery.uploadify.js" />
+    <Content Include="uploadify\jquery.uploadify.min.js" />
+    <Content Include="uploadify\license.txt" />
+    <Content Include="uploadify\uploadify-cancel.png" />
+    <Content Include="uploadify\uploadify.css" />
+    <Content Include="uploadify\uploadify.swf" />
+    <Content Include="uploadify\__MACOSX\._Change Log.txt" />
+    <Content Include="uploadify\__MACOSX\._uploadify.swf" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1170,12 +1308,25 @@
     <Content Include="Views\Books\Index.cshtml" />
     <Content Include="Views\Books\Edit.cshtml" />
     <Content Include="Views\Books\Add.cshtml" />
+    <Content Include="Views\PartJobTeacher\Add.cshtml" />
+    <Content Include="Views\PartJobTeacher\Edit.cshtml" />
+    <Content Include="Views\PartJobTeacher\Index.cshtml" />
+    <Content Include="Views\PartJobTeacherDocs\Add.cshtml" />
+    <Content Include="Views\PartJobTeacherDocs\Edit.cshtml" />
+    <Content Include="Views\PartJobTeacherDocs\Index.cshtml" />
+    <Content Include="Views\Type\Add.cshtml" />
+    <Content Include="Views\Type\Edit.cshtml" />
+    <Content Include="Views\Type\Index.cshtml" />
+    <Content Include="Views\BookUsed\Index.cshtml" />
     <Content Include="Views\BookUsed\Add.cshtml" />
     <Content Include="Views\BookUsed\Edit.cshtml" />
-    <Content Include="Views\BookUsed\Index.cshtml" />
+    <Content Include="uploadify\check-exists.php" />
+    <Content Include="uploadify\index.php" />
+    <Content Include="uploadify\uploadify.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="doc\" />
     <Folder Include="Filters\" />
     <Folder Include="Images\" />
   </ItemGroup>
