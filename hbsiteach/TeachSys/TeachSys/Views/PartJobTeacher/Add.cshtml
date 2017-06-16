@@ -23,8 +23,8 @@
     <label class="leftlabel"> 出生日期：</label><input class="easyui-datebox" id="riqi" style="width:175px"></div>
     <div class="input_line">
         <label class="leftlabel">性别:</label><select id="sex" class="easyui-combobox" style="width:175px">
-            <option>男</option>
-            <option>女</option>
+            <option value="true">男</option>
+            <option value="false">女</option>
         </select>
     <label class="leftlabel"> 历年评价：</label><input class="easyui-textbox" id="pingjia" style="width:175px"></div>
     <div class="input_line">
@@ -54,7 +54,7 @@
         });
         $(function () {
             $("#xueli").combobox({
-                url: "/BaseDataDics/GetDatabases?typeNO=1",
+                url: "/BaseDataDics/GetDatabases?typeNO=3",
                 valueField: 'id',
                 textField: "name",
                 width: 175
@@ -63,7 +63,7 @@
         });
         $(function () {
             $("#zhicheng").combobox({
-                url: "/BaseDataDics/GetDatabases?typeNO=3",
+                url: "/BaseDataDics/GetDatabases?typeNO=5",
                 valueField: 'id',
                 textField: "name",
                 width: 175

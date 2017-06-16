@@ -168,11 +168,19 @@
                    $("#tb").datagrid("reload");
                },
                 url: "/Type/GetType",
-                valueField: 'id',
+                valueField: 'typid',
                 textField: "name",
+                editable: false,
+                listeners: {
+                    afterRender: function (combo) {
+                        var firstValue = store.reader.jsonData[0].text;
+                        combo.setValue(firstValue);//同时下拉框会将与name为firstValue值对应的 text显示
+                    }
+
+                }
 
             });
-
+          
             $("#majors").combobox("select", "1");
             $("#tb").datagrid({
                 url: ' /BaseDataDics/GettypeID',

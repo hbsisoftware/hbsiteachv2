@@ -20,5 +20,6 @@ namespace TeachSys.Models
         public int DocTypeID { get; set; }
         public System.DateTime UploadTime { get; set; }
         public Nullable<int> Status { get; set; }
+        public string Name { get; set; }
     }
 }

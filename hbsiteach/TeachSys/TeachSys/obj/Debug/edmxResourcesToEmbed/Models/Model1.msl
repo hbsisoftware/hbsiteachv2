@@ -88,6 +88,7 @@
     <EntitySetMapping Name="PartJobTeacherDocs">
       <EntityTypeMapping TypeName="TeachDBModel.PartJobTeacherDocs">
         <MappingFragment StoreEntitySet="PartJobTeacherDocs">
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="PJTeacherID" ColumnName="PJTeacherID" />
           <ScalarProperty Name="Url" ColumnName="Url" />

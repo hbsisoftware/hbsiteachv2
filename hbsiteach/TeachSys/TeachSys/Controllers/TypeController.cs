@@ -27,11 +27,12 @@ namespace TeachSys.Controllers
         }
         public ActionResult GetType()
         {
+        
             try
             {
 
                 var da = (from d in tdb.Type
-
+                     
                           select new { id = d.ID, name = d.Name, typid = d.TypeId, Status = d.Status });
                 return Json(da, JsonRequestBehavior.AllowGet);
             }

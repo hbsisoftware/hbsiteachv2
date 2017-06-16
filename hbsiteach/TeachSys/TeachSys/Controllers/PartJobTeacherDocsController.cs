@@ -38,6 +38,7 @@ namespace TeachSys.Controllers
                      {
                          ID = c.ID,
                          Url = c.Url,
+                         Name=c.Name,
                          PName = p.Name,
                          DocTypeId = b.Name,
                          UploadTime = c.UploadTime,
@@ -104,7 +105,7 @@ namespace TeachSys.Controllers
 
             try
             {
-                var p = Server.MapPath("/PartJobTeachersDocsFile/") + pt.PJTeacherID + "/";
+                var p = Server.MapPath("/doc/") + pt.PJTeacherID + "/";
                 if (!System.IO.Directory.Exists(p))
                 {
                     System.IO.Directory.CreateDirectory(p);
