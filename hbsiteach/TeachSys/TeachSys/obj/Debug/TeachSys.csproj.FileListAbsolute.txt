@@ -419,7 +419,6 @@ E:\teach\hbsiteachv2\hbsiteach\TeachSys\TeachSys\obj\Debug\TeachSys.pdb
 F:\Warehouse\hbsiteachv2\hbsiteach\TeachSys\TeachSys\bin\TeachSys.dll.config
 F:\Warehouse\hbsiteachv2\hbsiteach\TeachSys\TeachSys\bin\TeachSys.dll
 F:\Warehouse\hbsiteachv2\hbsiteach\TeachSys\TeachSys\bin\TeachSys.pdb
-F:\Warehouse\hbsiteachv2\hbsiteach\TeachSys\TeachSys\bin\System.Web.Mvc.xml
 F:\Warehouse\hbsiteachv2\hbsiteach\TeachSys\TeachSys\obj\Debug\TeachSys.dll
 F:\Warehouse\hbsiteachv2\hbsiteach\TeachSys\TeachSys\obj\Debug\TeachSys.pdb
 D:\myProgramsNew\otherPrjs\hbsi\日常教学管理信息系统\Proj\hbsiteachv2\hbsiteach\TeachSys\TeachSys\bin\TeachSys.dll.config
@@ -535,3 +534,4 @@ F:\house\1\hbsiteachv2\hbsiteach\TeachSys\TeachSys\bin\TeachSys.pdb
 F:\house\1\hbsiteachv2\hbsiteach\TeachSys\TeachSys\obj\Debug\TeachSys.csprojResolveAssemblyReference.cache
 F:\house\1\hbsiteachv2\hbsiteach\TeachSys\TeachSys\obj\Debug\TeachSys.dll
 F:\house\1\hbsiteachv2\hbsiteach\TeachSys\TeachSys\obj\Debug\TeachSys.pdb
+F:\Warehouse\hbsiteachv2\hbsiteach\TeachSys\TeachSys\obj\Debug\TeachSys.csprojResolveAssemblyReference.cache

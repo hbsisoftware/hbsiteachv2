@@ -173,7 +173,7 @@
 
             });
 
-            $("#majors").combobox("select", "1");
+            $("#majors").combobox("select");
             $("#tb").datagrid({
                 url: ' /BaseDataDics/GettypeID',
                 queryParams
@@ -196,9 +196,7 @@
         });
         function query() {
             $("#tb").datagrid("load", {
-                typeno: $("#majors").combobox("getValue"
-
-                )
+                typeno: $("#majors").combobox("getValue")
             });
         }
     </script>

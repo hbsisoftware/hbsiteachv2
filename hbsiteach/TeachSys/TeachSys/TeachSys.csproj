@@ -1323,6 +1323,8 @@
     <Content Include="uploadify\check-exists.php" />
     <Content Include="uploadify\index.php" />
     <Content Include="uploadify\uploadify.php" />
+    <Content Include="Views\BaseDataDics\Add.cshtml" />
+    <Content Include="Views\BaseDataDics\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

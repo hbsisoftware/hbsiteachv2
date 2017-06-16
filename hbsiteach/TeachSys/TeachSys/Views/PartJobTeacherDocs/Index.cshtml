@@ -4,301 +4,226 @@
 
 <!DOCTYPE html>
 
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="~/uploadify/uploadify.css" rel="stylesheet" />
     <link href="~/Content/globals.css" rel="stylesheet" />
     <link href="~/jquery-easyui-1.5.1/themes/default/easyui.css" rel="stylesheet" />
     <link href="~/jquery-easyui-1.5.1/themes/icon.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-2.2.1.js"></script>
-    <script src="~/jquery-easyui-1.5.1/jquery.min.js"></script>
     <script src="~/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
-
+    <script src="~/uploadify/jquery.uploadify.js"></script>
+    <script src="~/uploadify/jquery.uploadify.min.js"></script>
     <script>
-
-
         $(function () {
-            var tb = [
-                           {
-                               text: '添加',
-                               iconCls: 'icon-add',
-                               handler: function () {
+            $('#tb').datagrid({
+                url: '/PartJobTeacherDocs/GetDocs',
+                width: 400,
+                height: 400,
 
-                                   var url = "/partjobteacher/add";
-                                   $("#tb1").dialog({
-                                       title: "教师添加--",
-                                       iconCls: 'icon-add',
-                                       modal: true,
-                                       width: 600,
-                                       height: 350,
-                                       href: url,
-                                       buttons: [
-                              {
-                                  text: '保存',
-                                  iconCls: 'icon-save',
-                                  handler: function () {
-
-
-                                      var name = $("#name").textbox("getValue");
-                                      var jianzhi = $("#PJTD_add_PJTeacher").combobox("getValue");
-                                      var xueli = $("#xueli").combobox("getValue");
-                                      var zhicheng = $("#zhicheng").combobox("getValue");
-                                      var riqi = $("#riqi").val();
-
-                                      var sex = $("#sex").combobox("getValue");
-                                      var time = $("#time").val();
-                                      var tel = $("#tel").textbox("getValue");
-                                      var lianxi = $("#lianxi").textbox("getValue");
-                                      var renke = $("#renke").val();
-                                      var beizhu = $("#beizhu").textbox("getValue");
-                                      var danwei = $("#danwei").textbox("getValue");
-                                      var pingjia = $("#pingjia").textbox("getValue");
-                                      $.get("/partjobteacher/AddPartJobTeachers", { Name: name, Sex: sex, UnitName: danwei, TypeID: zhicheng, EduID: xueli, Birthday: riqi, InTime: time, ContactName: lianxi, LastTime: renke, Memo: beizhu, TitleID: jianzhi, Status: 0, JudgeText: pingjia, Tel: tel }
-                                           , function (data) {
-                                               if (data == "ok") {
-                                                   //alert("成功");
-                                                   $.messager.show({
-                                                       title: '提示',
-                                                       msg: '成功',
-                                                       showType: 'show'
-                                                   });
-                                                   $("#tb1").dialog("close");
-                                                   $("#tb").datagrid("reload");
-
-                                               }
-                                               else { alert("失败"); }
-
-                                           }, "text")
-
-                                  }
-                              },
-                              {
-                                  text: '取消',
-                                  iconCls: 'icon-cancel',
-                                  handler: function () {
-                                      $("#tb1").dialog("close");
-                                  }
-                              }
-                                       ]
-                                   });
-                               }
-                           },
-                                 {
-                                     text: '修改',
-                                     iconCls: 'icon-edit',
-                                     handler: function () {
-                                         var row = $("#tb").datagrid("getSelected");
-                                         if (row == null) {
-                                             $.messager.alert("提示...", "请选择行!", "warning");
-                                             return;
-                                         }
-                                         var id = row.id;
-
-                                         url = "/partjobteacher/Edit/" + id;
-                                         $("#tb1").dialog({
-                                             title: "教师修改--",
-                                             iconCls: 'icon-Edit',
-
-                                             modal: true,
-                                             width: 600,
-                                             height: 350,
-                                             href: url,
-                                             buttons: [
-                                                 {
-                                                     text: '确定',
-                                                     iconCls: 'icon-ok',
-
-                                                     handler: function () {
-                                                         var id = $("#edit-id").val();
-                                                         var xueli = $("#xueli").combobox("getValue");
-                                                         var name = $("#name").textbox("getValue");
-                                                         var jianzhi = $("#PJTD_add_PJTeacher").combobox("getValue");
-
-                                                         var zhicheng = $("#zhicheng").combobox("getValue");
-                                                         var sex = $("#sex").val();
-                                                         var riqi = $("#riqi").val();
-                                                         var pingjia = $("#pingjia").textbox("getValue");
-
-
-                                                         var time = $("#time").val();
-                                                         var tel = $("#tel").textbox("getValue");
-                                                         var lianxi = $("#lianxi").textbox("getValue");
-                                                         var renke = $("#renke").val();
-                                                         var beizhu = $("#beizhu").textbox("getValue");
-                                                         var danwei = $("#danwei").textbox("getValue");
-
-
-
-                                                         $.get("/partjobteacher/EditPartJobTeachers", { id: id, name: name, typeid: zhicheng, eduid: xueli, titleid: jianzhi, tel: tel, uname: danwei, cname: lianxi, jtext: pingjia, memo: beizhu, status: 0 }
-                                                             , function (das) {
-                                                                 if (das == "ok") {
-                                                                     //alert("成功");
-                                                                     $.messager.show({
-                                                                         title: '提示',
-                                                                         msg: '修改成功',
-                                                                         showType: 'show'
-                                                                     });
-                                                                     $("#tb1").dialog("close");
-                                                                     $("#tb").datagrid("reload");
-
-                                                                 }
-                                                                 else
-                                                                     $.messager.show({
-                                                                         title: '提示...',
-                                                                         msg: '修改失败',
-                                                                         showType: 'show'
-                                                                     });
-
-                                                             }, "text");
-                                                     }
-
-
-                                                 },
-                                      {
-                                          text: '取消',
-                                          iconCls: 'icon-cancel',
-                                          handler: function () {
-                                              $("#tb1").dialog("close");
-                                          }
-                                      }
-                                             ]
-                                         });
-                                     }
-                                 }, '-',
-                                 {
-                                     text: '删除',
-                                     iconCls: 'icon-remove',
-                                     handler: function () {
-                                         // var id = $("#tb").datagrid("getSelected").id;
-                                         var row = $("#tb").datagrid("getSelected");
-                                         if (row == null) {
-                                             $.messager.alert("提示...", "请选中行!", "warning");
-                                             return;
-                                         }
-                                         $.messager.confirm("Tip", "你确定要删除" + row.name + "？", function (r) {
-                                             if (r) {
-                                                 url = "/partjobteacher/deletepartjobteachers"
-                                                 $.post(url, { id: row.id }, function (das) {
-                                                     if (das == "ok") {
-                                                         $("#tb").datagrid("reload");
-                                                         $.messager.show({
-                                                             title: '提示',
-                                                             msg: '成功',
-                                                             showType: 'show'
-                                                         });
-
-
-                                                     }
-                                                     else {
-                                                         $.messager.show({
-                                                             title: '提示...',
-                                                             msg: '删除失败！',
-                                                             showType: 'show'
-                                                         });
-                                                     }
-                                                 }, "text")
-
-                                             }
-                                         })
-
-                                     }
-                                 }
-
-
-            ];
-
-
-
-            $("#tb").datagrid({
-                url: '/partjobteacher/getpartjobteachers/',
-
-                width: 840,
-                height: 460,
                 fitColumns: true,
                 singleSelect: true,
+                toolbar: [{
+                    text: '添加',
+                    iconCls: 'icon-add',
+                    handler: function () {
+                        $("#PJTD_add_dig").dialog({
+                            title: "类型添加---",
+                            iconCls: 'icon-add',
+                            closed: false,
+                            modal: true,
+                            href: '/PartJobTeacherDocs/Add',
+                            width: 300,
+                            height: 300,
+                            buttons: [
+                                {
+                                    text: '保存',
+                                    iconCls: 'icon-save',
+                                    handler: function () {
+                                        var dep = $("#pt_add").serialize();
+                                        var PJTeacherID = $("#PJTD_add_PJTeacherID").val();
+                                        var url = $("#a").val();
+                                        var doc = $("#PJTD_add_Doc").val();
+                                        var time = $("#PJTD_add_Time").val();
+                                        $.get("/PartJobTeacherDocs/AddDocs", { PJTeacherID: PJTeacherID, Url: url, DocTypeID: doc, UploadTime: time, Status: 0 }, function (data) {
 
-                toolbar: tb,
-                columns: [[
+                                            if (data == "ok") {
+                                                $.messager.show({
+                                                    title: '提示...',
+                                                    msg: '保存成功',
+                                                    showType: 'show'
+                                                })
+                                                $("#PJTD_add_dig").dialog("close");
+                                                $("#tb").datagrid("reload");
 
-                    { field: 'name', title: '教师姓名' },
+                                            }
 
-                       {
-                           field: 'sex', title: '性别 ',
-                           formatter: function (val, row) {
-                               if (val == "1")
-                               { return "<span>男</span>"; }
-                               else
-                               { return "<span>女</span>"; }
-                           }
+                                            else {
+                                                alert("出错");
+                                            }
 
-                       },
-                        {
-                            field: 'brithday', title: '教师生日', formatter: function (date) {
-                                var pa = /.*\((.*)\)/;
-                                var timel = date.match(pa)[1].substring(0, 10);
-                                return getTime(timel);
 
-                            }
-                        },
+                                        }, "text")
+                                    }
 
-                       { field: 'uname', title: '工作单位' },
-                        { field: 'eduname', title: '职称 ' },
 
-                          {
-                              field: 'intime', title: '入职时间 ',
-                              formatter: function (date) {
-                                  var pa = /.*\((.*)\)/;
-                                  var timel = date.match(pa)[1].substring(0, 10);
-                                  return getTime(timel);
+                                }, {
+                                    text: '取消',
+                                    iconCls: 'icon-cancel',
+                                    handler: function () {
+                                        $("#PJTD_add_dig").dialog("close");
 
-                              }
-                          },
-                           { field: 'tel', title: '联系电话' },
-                           { field: 'titlename', title: '兼职类型 ' },
-                            { field: 'typename', title: '学历 ' },
-                             { field: 'cname', title: '校内联系人 ' },
-                              { field: 'jtext', title: '历年评价 ' },
-                               { field: 'memo', title: '备注 ' },
+                                    }
+
+                                }
+                            ]
+
+                        });
+                    }
+                },
+
                 {
-                    field: 'ltime', title: '最近一年任课 ',
-                    formatter: function (date) {
-                        var pa = /.*\((.*)\)/;
-                        var timel = date.match(pa)[1].substring(0, 10);
-                        return getTime(timel);
+                    text: '修改',
+                    iconCls: 'icon-edit',
+                    handler: function () {
+                        var id = $("#tb").datagrid("getSelected").ID;
+                        var url = "/PartJobTeacherDocs/Edit?id=" + id;
+                        $("#PJTD_edit_dig").dialog({
+                            title: "类型修改---",
+                            iconCls: 'icon-edit',
+
+                            modal: true,
+                            width: 300,
+                            height: 250,
+                            href: url,
+                            buttons: [
+                                {
+                                    text: '修改',
+                                    iconCls: 'icon-edit',
+                                    handler: function () {
+                                        var dep = $("#pt_add").serialize();
+                                        var id = $("#id").val();
+                                        var PJTeachersID = $("#PJTD_edit_PJTeacherID").val();
+
+                                        var urls = $("#fileuploads").val();
+                                        var docs = $("#PJTD_edit_Doc").val();
+
+                                        var typeids = $("#PJTD_edit_Time").val();
+
+                                        $.get("/PartJobTeacherDocs/EditDocs", { id: id, PJTeacherID: PJTeachersID, url: urls, DocTypeID: docs }, function (data) {
+                                            
+                                            if (data == "ok") {
+                                                $.messager.show({
+                                                    title: '提示...',
+                                                    msg: '修改成功',
+                                                    showType: 'show'
+                                                })
+
+                                                $("#tb").datagrid("reload");
+                                                $("#PJTD_edit_dig").dialog("close");
+                                            }
+                                            else { alert("失败"); }
+
+                                        }, "text")
+
+                                    }
+
+
+                                }, {
+                                    text: '取消',
+                                    iconCls: 'icon-cancel',
+                                    handler: function () {
+                                        $("#PJTD_edit_dig").dialog("close");
+
+                                    }
+
+                                }
+                            ]
+
+                        });
 
                     }
 
-                }
+                }, '-', {
+                    text: '删除',
+                    iconCls: 'icon-remove',
+                    handler: function () {
+                        //var id = $("#tb").datagrid("getSelected").ID;
+                        //del(id);
+                        var row = $("#tb").datagrid("getSelected")
+                        if (row != null) {
+                            var name = row.PJTeacherID;
+                            $.messager.confirm("提示...", "确定要删除吗？", function (retult) {
+                                if (retult) {
+                                    var id = row.ID;
+                                    $.get("/PartJobTeacherDocs/DeleteDocs/", { id: id }, function (data) {
+                                        if (data == "ok") {
+                                            $("#tb").datagrid("reload");
+
+                                            $.messager.show({
+                                                title: '提示...',
+                                                msg: '删除成功',
+                                                showType: 'show'
+
+                                            })
+                                        }
+
+                                        else
+                                            $.messager.show({
+                                                title: '提示...',
+                                                msg: '删除失败',
+                                                showType: 'show'
+
+                                            })
 
 
+                                    }, "text")
+                                }
+                            })
+
+                        }
+                    }
+                }],
+
+                columns: [[
+
+                    { field: 'PName', title: '兼职教师', width: 100 },
+                      { field: 'Url', title: '文档路径', width: 150 },
+                       { field: 'DocTypeId', title: '文档类型', width: 150 },
+                      {
+                          field: 'UploadTime', title: '上传日期', width: 120,
+                          formatter: function (date) {
+                              var pa = /.*\((.*)\)/;
+                              var timel = date.match(pa)[1].substring(0, 10);
+                              return getTime(timel);
+                          }
+                      }
                 ]]
-            });
 
-
-        });
-        function query() {
-            $("#tb").datagrid("load", {
-                Unitname: $("#majors").combobox("getValue"
-
-               )
-            });
-        }
+            })
+        })
 
     </script>
+    <style>
+        .uploadify {
+            margin: -15px 0px 0px 100px;
+        }
+
+        .lujin {
+            margin-top: 8px;
+        }
+    </style>
 </head>
 <body>
-    <div>
-
-        <table id="tb"></table>
-    </div>
-    <div id="tb1"></div>
-
+    <table id="tb"></table>
+    <div id="PJTD_add_dig">  </div>
+    <div id="PJTD_edit_dig"></div>
     <script>
         function getTime(/**?timestamp=0?**/) {
             var ts = arguments[0] || 0;
-            var t, y, m, d;
+            var t, y, m, d, h, i, s;
             t = ts ? new Date(ts * 1000) : new Date();
             y = t.getFullYear();
             m = t.getMonth() + 1;
