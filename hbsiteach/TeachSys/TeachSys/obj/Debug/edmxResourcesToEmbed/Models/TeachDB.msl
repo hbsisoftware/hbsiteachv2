@@ -180,6 +180,7 @@
     <EntitySetMapping Name="View_BookUsed">
       <EntityTypeMapping TypeName="TeachDBModel.View_BookUsed">
         <MappingFragment StoreEntitySet="View_BookUsed">
+          <ScalarProperty Name="Term" ColumnName="Term" />
           <ScalarProperty Name="BookID" ColumnName="BookID" />
           <ScalarProperty Name="CoursesName" ColumnName="CoursesName" />
           <ScalarProperty Name="CourseID" ColumnName="CourseID" />

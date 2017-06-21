@@ -8,6 +8,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Add</title>
+
 </head>
 <body>
     <div>
@@ -17,7 +18,12 @@
 
             <div class="input_line"><label class="leftlabel">教师名称:</label><input id="teacher" class="easyui-vaildatebox" data-options="required:true" name="TeacherID" /></div>
 
-            <div class="input_line"><label class="leftlabel">教材名称:</label><input id="book" class="easyui-vaildatebox" data-options="required:true" name="BookID" /></div>
+            <div class="input_line"><label class="leftlabel">教材名称:</label><input id="book" class="easyui-vaildatebox" data-options="required:true" name="Book" />
+                <input id="bookID" type="hidden" name="BookID">
+            <div id="select" style="position:absolute;left:100px;z-index:160;">
+                        <table id="tx"></table>
+                   </div>
+            </div>
 
             <div class="input_line"><label class="leftlabel">班级名称:</label><input id="class" class="easyui-vaildatebox" data-options="required:true" name="ClassID" /></div>
             <input type="hidden" name="Status" value="0" />
@@ -37,8 +43,6 @@
                     message: '请输入正整数'
                 }
             });
-
-
             //添加课程
             $("#courses").combobox({
                 url: '/Courses/Courses',
@@ -54,11 +58,29 @@
                 editable: false
             });
             //添加教材
-            $("#book").combobox({
-                url: '/Books/getBooks',
-                valueField: 'ID',
-                textField: 'Name',
-                editable: false
+            $("#book").searchbox({
+                prompt:'请输入书名',
+                searcher: function (value, name) {
+                    $("#tx").datagrid({
+                        url: '/Books/getBooksss?name=' + value,
+                        singleSelect: true,
+                        width: 150,
+                        fitColums: true,
+                        columns: [[
+                            {field:'ID',hidden:'true'},
+                            { field: 'Name', width: 150 }
+                        ]],
+                        onClickRow: function () {//鼠标单击datagrid中的一行时触发的事件
+                            var text = $("#tx").datagrid("getSelected");
+                            $("#book").searchbox("setValue", text.Name);
+                            $("#bookID").val(text.ID);
+                            $("#select").hide();
+                        }
+                    });
+                    //控制搜索框的下拉列表的隐藏与显示
+                    var display = $("#select").css("display");
+                    dis(display);
+                }
             })
             //添加班级
             $("#class").combobox({
@@ -68,6 +90,17 @@
                 editable: false
             })
         })
+        function dis(display) {//控制搜索框的下拉列表的隐藏与显示
+            if (display == "none") {
+                $("#select").show();
+            }
+            else {
+                $("#select").hide();
+            }
+        }
+        function hide() {
+            $("#select").hide();
+        }
     </script>
 </body>
 </html>

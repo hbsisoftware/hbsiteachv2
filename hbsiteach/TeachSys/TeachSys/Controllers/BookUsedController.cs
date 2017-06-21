@@ -16,26 +16,74 @@ namespace TeachSys.Controllers
             return View();
         }
         /// <summary>
-        /// 获取数据
+        /// 根据学期查询，并分页
         /// </summary>
         /// <returns></returns>
-        public ActionResult getBookUsed()
+        public ActionResult getBookUsed(int page, int rows, string e)
         {
-            var bookuse = from bu in tdb.View_BookUsed
-                          select new
-                          {
-                              ID = bu.ID,
-                              BookID = bu.BookID,
-                              Name = bu.Name,
-                              CourseID = bu.CourseID,
-                              CoursesName = bu.CoursesName,
-                              TeacherID = bu.TeacherID,
-                              TeacherName = bu.TeachName,
-                              StuBookNums = bu.StuBookNums,
-                              TeaBookNums = bu.TeaBookNums,
-                          };
-            return Json(bookuse, JsonRequestBehavior.AllowGet);
+            int nums = tdb.View_BookUsed.Count();
+            var bookuse = (from bu in tdb.View_BookUsed
+                           orderby bu.ID descending
+                           select new
+                           {
+                               ID = bu.ID,
+                               BookID = bu.BookID,
+                               Name = bu.Name,
+                               CourseID = bu.CourseID,
+                               CoursesName = bu.CoursesName,
+                               TeacherID = bu.TeacherID,
+                               TeacherName = bu.TeachName,
+                               StuBookNums = bu.StuBookNums,
+                               TeaBookNums = bu.TeaBookNums,
+                               term = bu.Term,
+                           }).Skip((page - 1) * rows).Take(rows);
+            if (!string.IsNullOrEmpty(e))
+            {
+                bookuse = bookuse.Where(t => t.term.Contains(e));
+            }
+            return Json(new { total = nums, rows = bookuse }, JsonRequestBehavior.AllowGet);
         }
+        /// <summary>
+        /// 显示学期
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Term()
+        {
+            var term = from t in tdb.Courses
+                       select new
+                       {
+                           ID = t.ID,
+                           termName = t.Term
+                       };
+
+            return Json(term, JsonRequestBehavior.AllowGet);
+        }
+        /// <summary>
+        /// 获取书的信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult getBooksContent(string name)
+        {
+            var books = from b in tdb.View_Books
+                        where b.Name==name
+                        select new
+                        {
+                            ID = b.ID,
+                            Name = b.Name,
+                            Author = b.Author,
+                            pubName = b.publisherName,
+                            PubYear = b.PubYear,
+                            ISBN = b.ISBN,
+                            Price = b.Price,
+                            BPN = b.BookProertyName,
+                            BTN = b.BookTypeName,
+                            LastTime = b.LastTime,
+                            DisabledTime = b.DisabledTime,
+                        };
+            return Json(books, JsonRequestBehavior.AllowGet);
+        }
+      
         public ActionResult Add()
         {
             return View();

@@ -13,37 +13,125 @@ namespace TeachSys.Controllers
         Models.TeachDBEntities1 tdb = new Models.TeachDBEntities1();
         public ActionResult Index()
         {
-           
+
             return View();
         }
-      /// <summary>
-      /// ***Books
-      /// </summary>
-      /// <returns></returns>
-        public ActionResult getBooks()
+
+        /// <summary>
+        /// 查询书名,作者，出版社
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="rows"></param>
+        /// <returns></returns>
+
+        public ActionResult getBookss(int page, int rows, string name, string author, string pub)
+        {
+
+            int nums = tdb.Books.Count();
+            var books = (from b in tdb.View_Books
+                         orderby b.ID descending
+                         select new
+                         {
+                             ID = b.ID,
+                             Name = b.Name,
+                             Author = b.Author,
+                             pubName = b.publisherName,
+                             PubYear = b.PubYear,
+                             ISBN = b.ISBN,
+                             Price = b.Price,
+                             BPN = b.BookProertyName,
+                             BTN = b.BookTypeName,
+                             LastTime = b.LastTime,
+                             DisabledTime = b.DisabledTime,
+                         }
+                             );//.Skip((page - 1) * rows).Take(rows);
+
+            if (!string.IsNullOrEmpty(name) && string.IsNullOrEmpty(author) && string.IsNullOrEmpty(pub))
+            {
+                books = books.Where(t => t.Name.Contains(name));
+            }
+            else if (!string.IsNullOrEmpty(author) && string.IsNullOrEmpty(name) && string.IsNullOrEmpty(pub))
+            {
+                books = books.Where(t => t.Author.Contains(author));
+            }
+            else if (!string.IsNullOrEmpty(pub) && string.IsNullOrEmpty(name) && string.IsNullOrEmpty(author))
+            {
+                books = books.Where(t => t.pubName.Contains(pub));
+            }
+            else if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(author) && string.IsNullOrEmpty(pub))
+            {
+                books = books.Where(t => t.Name.Contains(name) && t.Author.Contains(author));
+            }
+            else if (string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(author) && !string.IsNullOrEmpty(pub))
+            {
+                books = books.Where(t => t.pubName.Contains(pub) && t.Author.Contains(author));
+            }
+            else if (!string.IsNullOrEmpty(name) && string.IsNullOrEmpty(author) && !string.IsNullOrEmpty(pub))
+            {
+                books = books.Where(t => t.Name.Contains(name) && t.pubName.Contains(pub));
+            }
+            else if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(author) && !string.IsNullOrEmpty(pub))
+            {
+                books = books.Where(t => t.Name.Contains(name) && t.pubName.Contains(pub) && t.Author.Contains(author));
+            }
+            //else if (string.IsNullOrEmpty(name) && string.IsNullOrEmpty(author) && string.IsNullOrEmpty(pub))
+            var bb = books.Skip((page - 1) * rows).Take(rows);
+            return Json(new { total = nums, rows = bb }, JsonRequestBehavior.AllowGet);
+        }
+        ////}
+        /// <summary>
+        /// ***Books
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult getBooks(int page, int rows)
+        {
+            int nums = tdb.Books.Count();
+            var books = (from b in tdb.View_Books
+                         orderby b.ID descending
+                         select new
+                         {
+                             ID = b.ID,
+                             Name = b.Name,
+                             Author = b.Author,
+                             pubName = b.publisherName,
+                             PubYear = b.PubYear,
+                             ISBN = b.ISBN,
+                             Price = b.Price,
+                             BPN = b.BookProertyName,
+                             BTN = b.BookTypeName,
+                             LastTime = b.LastTime,
+                             DisabledTime = b.DisabledTime,
+                         }).Skip((page - 1) * rows).Take(rows);
+            return Json(new { total = nums, rows = books }, JsonRequestBehavior.AllowGet);
+        }
+        /// <summary>
+        /// ***Books
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult getBooksss(string name)
         {
             var books = from b in tdb.View_Books
                         select new
                         {
                             ID = b.ID,
                             Name = b.Name,
-                            Author = b.Author,
-                            pubName = b.publisherName,
-                            PubYear = b.PubYear,
-                            ISBN = b.ISBN,
-                            Price = b.Price,
-                            BPN = b.BookProertyName,
-                            BTN = b.BookTypeName,
-                            LastTime = b.LastTime,
-                            DisabledTime = b.DisabledTime,
                         };
+            if (!string.IsNullOrEmpty(name))
+            {
+                books = books.Where(t => t.Name.Contains(name));
+            }
+            return Json(books, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult getBooksbyID(int id)
+        {
+            var books = tdb.Books.Single((t => t.ID == id));
             return Json(books, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Add()
         {
             return View();
         }
-      
+
         public ActionResult AddBooks(Models.Books bdd)
         {
             try
@@ -97,7 +185,7 @@ namespace TeachSys.Controllers
                 tdb.SaveChanges();
                 return Content("ok");
             }
-            catch 
+            catch
             {
                 return Content("err");
             }
@@ -120,6 +208,6 @@ namespace TeachSys.Controllers
                         };
             return Json(press, JsonRequestBehavior.AllowGet);
         }
-       
+
     }
 }

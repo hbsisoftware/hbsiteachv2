@@ -23,5 +23,6 @@ namespace TeachSys.Models
         public int TeaBookNums { get; set; }
         public int ID { get; set; }
         public string Name { get; set; }
+        public string Term { get; set; }
     }
 }

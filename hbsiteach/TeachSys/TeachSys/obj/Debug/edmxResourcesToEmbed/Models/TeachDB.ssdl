@@ -198,6 +198,7 @@
     <Property Name="TeaBookNums" Type="int" Nullable="false" />
     <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Term" Type="nvarchar" MaxLength="30" />
   </EntityType>
   <!--生成过程中发现错误:
 警告 6002: 表/视图“TeachDB.dbo.View_PartJobTeachers”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -389,7 +390,8 @@ FROM [dbo].[View_Books] AS [View_Books]</DefiningQuery>
 [View_BookUsed].[StuBookNums] AS [StuBookNums], 
 [View_BookUsed].[TeaBookNums] AS [TeaBookNums], 
 [View_BookUsed].[ID] AS [ID], 
-[View_BookUsed].[Name] AS [Name]
+[View_BookUsed].[Name] AS [Name], 
+[View_BookUsed].[Term] AS [Term]
 FROM [dbo].[View_BookUsed] AS [View_BookUsed]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="View_PartJobTeachers" EntityType="Self.View_PartJobTeachers" store:Type="Views" store:Schema="dbo">

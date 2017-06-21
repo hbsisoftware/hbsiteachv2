@@ -27,7 +27,7 @@
                         title: '教材添加---',
                         iconCls: 'icon-add',
                         width: 350,
-                        height: 430,
+                        height: 350,
                         href: url,
                         modal: true,//窗口是否可模式化
                         buttons: [{
@@ -157,12 +157,56 @@
                     });
                 }
             }]
+                $("#tb").datagrid({
+                    url: '/books/getBooks',
+                    width: 1000,
+                    height: 370,
+                    pagination: true,
+                    singleSelect: true,//能否多选
+                    fitColums: true,
+                    toolbar: tb,//工具栏
+                    columns: [[
+                        { field: 'Name', title: '书名', width: 150 },
+                        { field: 'Author', title: '作者', width: 100 },
+                        { field: 'pubName', title: '出版社', width: 100 },
+                        { field: 'Price', title: '价格', width: 50 },
+                        { field: 'ISBN', title: 'ISBN码', width: 100 },
+                        { field: 'PubYear', title: '出版年份', width: 100 },
+                        { field: 'BPN', title: '教材性质', width: 100 },
+                        { field: 'BTN', title: '教材类别', width: 100 },
+                        { field: 'LastTime', title: '最后一次使用时间', width: 100 },
+                        { field: 'DisabledTime', title: '停止印刷时间', width: 100 }
+                    ]]
+                });
+        });
+    </script>
+    <style scoped="scoped">
+        .textbox {
+            height: 20px;
+            margin: 0;
+            padding: 0 2px;
+            box-sizing: content-box;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label>书名:</label><input id="bookname" class="easyui-textbox" />
+        <label>作者:</label><input id="author" class="easyui-textbox" />
+        <label>出版社:</label><input id="publisher" class="easyui-textbox" />
+        <a class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="query();">查询</a>
+    </div>
+    <div>
+        <table id="tb"></table>
+     </div>
+        <div id="books-dlg"></div>
+    <script>
+        function bind(url) {
             $("#tb").datagrid({
-                url: '/books/getBooks',
-                queryPatams: {//向后台传递参数
-
-                },
+                url: url,
                 width: 1000,
+                height: 370,
+                pagination: true,
                 singleSelect: true,//能否多选
                 fitColums: true,
                 toolbar: tb,//工具栏
@@ -179,21 +223,24 @@
                     { field: 'DisabledTime', title: '停止印刷时间', width: 100 }
                 ]]
             });
-        });
-    </script>
-    <style scoped="scoped">
-        .textbox {
-            height: 20px;
-            margin: 0;
-            padding: 0 2px;
-            box-sizing: content-box;
         }
-    </style>
-</head>
-<body>
-    <div>
-        <table id="tb"></table>
-    </div>
-    <div id="books-dlg"></div>
+        
+        function query() {
+            var bn = $("#bookname").val();
+            var at = $("#author").val();
+            var pb = $("#publisher").val();
+            if (((bn == "") && (at == "")) && (pb == "")) {
+                bind('/books/getBooks');
+                $.messager.show({
+                    title: '提示...',
+                    msg: '请在书名，作者或出版社中输入之后在点击查询！！',
+                    showtype: 'show'
+                });
+            }
+            else {
+                bind('/books/getBookss?name=' + bn + '&author=' + at + '&pub=' + pb);
+            }
+        }
+    </script>
 </body>
 </html>

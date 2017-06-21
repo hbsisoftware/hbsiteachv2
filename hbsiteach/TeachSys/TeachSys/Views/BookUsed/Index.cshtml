@@ -26,7 +26,7 @@
                         title: '教材选用添加',
                         iconCls: 'icon-add',
                         width: 350,
-                        height: 350,
+                        height: 250,
                         href: url,
                         modal: true,
                         buttons: [{
@@ -36,7 +36,6 @@
                                 $("#BookUsed-add-form").form({
                                     url: '/BookUsed/BookUseAdd/',
                                     success: function (data) {
-                                        console.log(data);
                                         if (data == "ok") {
                                             $.messager.show({
                                                 title: '提示...',
@@ -82,7 +81,7 @@
                         title: '教材选用修改',
                         iconCls: 'icon-add',
                         width: 350,
-                        height: 350,
+                        height: 250,
                         href: url,
                         modal: true,
                         buttons: [{
@@ -127,7 +126,6 @@
                 iconCls: 'icon-remove',
                 handler: function () {
                     var row = $("#tb").datagrid("getSelected");
-                    console.log(row)
                     if (row == null) {
                         $.messager.alert("提示...", "请选中行!!", "wraning");
                         return;
@@ -160,16 +158,66 @@
             $("#tb").datagrid({
                 url: '/BookUsed/getBookUsed',
                 singleSelect: true,
+                width: 600,
+                pagination: true,
                 fitColums: true,
                 toolbar: tb,
-                columns: [[{ field: 'CoursesName', title: '课程名称', width: 150 },
+                columns: [[
+                           { field: 'CoursesName', title: '课程名称', width: 150 },
                            { field: 'TeacherName', title: '教师名称', width: 100 },
-                           { field: 'Name', title: '教材名称', width: 150 },
+                           { field: 'Name', title: '教材名称', width: 150 ,formatter:a},
                            { field: 'StuBookNums', title: '学生用书数量', width: 80 },
                            { field: 'TeaBookNums', title: '教师用书数量', width: 80 }
-                ]]
+                         ]]
+            })
+            $("#term").combobox({
+                url: '/bookused/Term',
+                valueField: 'ID',
+                textField: "termName",
+                editable: false
             })
         });
+        function a(value, row, index) {
+            return "<a href='javascript:;' target='_blank' onclick='ByValue(&apos;" + value + "&apos;)'>" + value + "</a>";
+        };
+        function ByValue(name) {
+            $("#dialog").dialog({
+                title: '教材详细信息',
+                iconCls: 'icon-add',
+                width: 590,
+                
+                modal: true,
+                onOpen: function () {
+                    $("#BookInformation").datagrid({
+                        url: '/BookUsed/getBooksContent?name=' + name,
+                        singleSelect: true,
+                        width: 575,
+                        fitColums: true,
+                        columns: [[
+                                   { field: 'Name', title: '名称', width: 150 },
+                                   { field: 'pubName', title: '出版社', width: 100 },
+                                   { field: 'PubYear', title: '出版年份', width: 80 },
+                                   { field: 'Price', title: '价格', width: 80 },
+                                   { field: 'BPN', title: '教材性质', width: 80 },
+                                   { field: 'BTN', title: '教材类别', width: 80 }
+                        ]]
+                    })
+                },
+                buttons: [{
+                    text: '关闭',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        $("#dialog").dialog("close");
+                    }
+                }]
+            })
+        }
+        function query() {
+            
+            $("#tb").datagrid("load", {
+                e: $("#term").combobox("getText")
+            })
+        }
     </script>
     <style scoped="scoped">
         .textbox {
@@ -182,7 +230,13 @@
 </head>
 <body>
     <div>
+        <label>学期:</label><input id="term" class="easyui-combobox"/>
+        <a class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="query();">查询</a>
+      
         <table id="tb"></table>
+        <div id="dialog">
+            <table id="BookInformation"></table>
+        </div>
     </div>
     <div id="BookUsed-dlg"></div>
 </body>
