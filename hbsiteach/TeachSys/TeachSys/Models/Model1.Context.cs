@@ -16,10 +16,10 @@ namespace TeachSys.Models
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class TeachDBEntities1 : DbContext
+    public partial class TeachDBEntities : DbContext
     {
-        public TeachDBEntities1()
-            : base("name=TeachDBEntities1")
+        public TeachDBEntities()
+            : base("name=TeachDBEntities")
         {
         }
     
@@ -40,11 +40,11 @@ namespace TeachSys.Models
         public DbSet<Students> Students { get; set; }
         public DbSet<TeacherClasses> TeacherClasses { get; set; }
         public DbSet<Teachers> Teachers { get; set; }
+        public DbSet<Type> Type { get; set; }
         public DbSet<View_Books> View_Books { get; set; }
         public DbSet<View_BookUsed> View_BookUsed { get; set; }
-        public DbSet<View_TeacherClasses> View_TeacherClasses { get; set; }
-        public DbSet<Type> Type { get; set; }
         public DbSet<View_PartJobTeachers> View_PartJobTeachers { get; set; }
+        public DbSet<View_TeacherClasses> View_TeacherClasses { get; set; }
     
         public virtual int AddClasses(Nullable<int> majorID, string name, Nullable<int> teacherID)
         {
@@ -61,6 +61,11 @@ namespace TeachSys.Models
                 new ObjectParameter("TeacherID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddClasses", majorIDParameter, nameParameter, teacherIDParameter);
+        }
+    
+        public virtual ObjectResult<string> DTerm()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("DTerm");
         }
     
         public virtual ObjectResult<Nullable<int>> EditBookUsed(Nullable<int> coursesID, Nullable<int> bookID, Nullable<int> teacherID, Nullable<int> status, Nullable<int> iD, Nullable<int> teacherNums, Nullable<int> studentNums)

@@ -2,14 +2,12 @@
 }
 .leftlabel{
     display:inline-block;
-    width:80px;
+    width:50%;
     text-align:right;
-}
-.leftlabelext{
-    display:inline-block;
-    width:160px;
-    text-align:right;
+    margin-left:-25%;
 }
 .input_line{
+    width:100%;
+    height:100%;
     padding:5px;
 }

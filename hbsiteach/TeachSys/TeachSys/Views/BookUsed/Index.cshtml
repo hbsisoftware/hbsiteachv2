@@ -8,11 +8,17 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/globals.css" rel="stylesheet" />
+    <link href="~/Content/selectcss.css" rel="stylesheet" />
     <link href="~/jquery-easyui-1.5.1/themes/default/easyui.css" rel="stylesheet" />
+    
     <link href="~/jquery-easyui-1.5.1/themes/icon.css" rel="stylesheet" />
+
+    
     <script src="~/jquery-easyui-1.5.1/jquery.min.js"></script>
     <script src="~/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
     <script src="~/jquery-easyui-1.5.1/locale/easyui-lang-zh_CN.js"></script>
+    <script src="~/exportExcel/Excel.js"></script>
+   
     <title>Index</title>
     <script>
         $(function () {
@@ -21,11 +27,12 @@
                 text: '添加',
                 iconCls: 'icon-add',
                 handler: function () {
-                    url = "/BookUsed/add"
+                    
+                    url = "/BookUsed/add";
                     $("#BookUsed-dlg").dialog({
                         title: '教材选用添加',
                         iconCls: 'icon-add',
-                        width: 350,
+                        width: 550,
                         height: 250,
                         href: url,
                         modal: true,
@@ -80,7 +87,7 @@
                     $("#BookUsed-dlg").dialog({
                         title: '教材选用修改',
                         iconCls: 'icon-add',
-                        width: 350,
+                        width: 550,
                         height: 250,
                         href: url,
                         modal: true,
@@ -170,12 +177,6 @@
                            { field: 'TeaBookNums', title: '教师用书数量', width: 80 }
                          ]]
             })
-            $("#term").combobox({
-                url: '/bookused/Term',
-                valueField: 'ID',
-                textField: "termName",
-                editable: false
-            })
         });
         function a(value, row, index) {
             return "<a href='javascript:;' target='_blank' onclick='ByValue(&apos;" + value + "&apos;)'>" + value + "</a>";
@@ -184,14 +185,14 @@
             $("#dialog").dialog({
                 title: '教材详细信息',
                 iconCls: 'icon-add',
-                width: 590,
-                
+                width: 575,
+                fitColums: true,
                 modal: true,
                 onOpen: function () {
                     $("#BookInformation").datagrid({
                         url: '/BookUsed/getBooksContent?name=' + name,
                         singleSelect: true,
-                        width: 575,
+                        width: 800,
                         fitColums: true,
                         columns: [[
                                    { field: 'Name', title: '名称', width: 150 },
@@ -213,10 +214,14 @@
             })
         }
         function query() {
-            
             $("#tb").datagrid("load", {
-                e: $("#term").combobox("getText")
-            })
+                e: $("#term").val()
+            });
+            $.get("/BookUsed/getBookUseds", { e: $("#term").val() }, function (data) {
+                $(data).each(function (index, da) {
+                    $("#Excel-body").append("<tr><td>" + da.CoursesName + "</td><td>" + da.TeacherName + "</td><td>" + da.Name + "</td><td>" + da.StuBookNums + "</td><td>" + da.TeaBookNums + "</td></tr>")
+                })
+            }, "json");
         }
     </script>
     <style scoped="scoped">
@@ -230,15 +235,43 @@
 </head>
 <body>
     <div>
-        <label>学期:</label><input id="term" class="easyui-combobox"/>
-        <a class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="query();">查询</a>
-      
+        <label>学期:</label>@*<select id="term" class="select" ></select>*@
+        <a id="s" href="javascript:void(0)" class="sel_mask">
+            <span id="sl" style="color:black;font-size:10px;">请选择</span>
+            <img src="~/jquery-easyui-1.5.1/themes/default/images/combo_arrow.png" />
+            <select id="term" class="sel" onchange="s()"></select>
+        </a>
+        <a id="search" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="query()">查询</a>
+        <a id="export" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="getImport('Excel')">导出</a>
         <table id="tb"></table>
+        <table id="Excel" border="1">
+            <thead>
+                <tr><th>课程名称</th><th>教师名称</th><th>教材名称</th><th>学生用书数量</th><th>教师用书数量</th></tr>
+            </thead>
+            <tbody id="Excel-body">
+            </tbody>
+        </table>
         <div id="dialog">
             <table id="BookInformation"></table>
         </div>
     </div>
     <div id="BookUsed-dlg"></div>
+    <script>
+        function s() {
+            var text = $("#term").val()
+            $("#sl").text(text)
+        }
+        $(function () {
+            $("#Excel").hide();
+            
+            $.get("/bookused/Term", function (data) {
+                $(data).each(function (index, da) {
+                    $("#term").append("<option>" + da.termName + "</option>")
+                })
+            }, "json");
+            
+        });
+    </script>
 </body>
 </html>
 

@@ -147,6 +147,89 @@
     <Property Name="IsLogin" Type="int" Nullable="false" />
     <Property Name="Status" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“TeachDB.dbo.View_Books”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="View_Books">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Author" />
+      <PropertyRef Name="PubYear" />
+      <PropertyRef Name="ISBN" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Author" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="publisherName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PubYear" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="ISBN" Type="char" MaxLength="13" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="BookProertyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookTypeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastTime" Type="char" MaxLength="10" />
+    <Property Name="DisabledTime" Type="char" MaxLength="10" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“TeachDB.dbo.View_BookUsed”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="View_BookUsed">
+    <Key>
+      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="TeacherID" />
+      <PropertyRef Name="StuBookNums" />
+      <PropertyRef Name="TeaBookNums" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="BookID" Type="int" />
+    <Property Name="CoursesName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CourseID" Type="int" Nullable="false" />
+    <Property Name="TeacherID" Type="int" Nullable="false" />
+    <Property Name="TeachName" Type="nvarchar" MaxLength="10" />
+    <Property Name="StuBookNums" Type="int" Nullable="false" />
+    <Property Name="TeaBookNums" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Term" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“TeachDB.dbo.View_PartJobTeachers”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="View_PartJobTeachers">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="InTime" />
+      <PropertyRef Name="Tel" />
+      <PropertyRef Name="UnitName" />
+      <PropertyRef Name="ContactName" />
+      <PropertyRef Name="JudgeText" />
+      <PropertyRef Name="LastTime" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Birthday" Type="datetime" />
+    <Property Name="Sex" Type="bit" Nullable="false" />
+    <Property Name="InTime" Type="datetime" Nullable="false" />
+    <Property Name="Tel" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="UnitName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContactName" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="JudgeText" Type="nvarchar" MaxLength="2000" Nullable="false" />
+    <Property Name="LastTime" Type="datetime" Nullable="false" />
+    <Property Name="Memo" Type="nvarchar" MaxLength="200" />
+    <Property Name="Status" Type="int" />
+    <Property Name="EduName" Type="nvarchar" MaxLength="50" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="TitleName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <!--生成过程中发现错误:
 警告 6002: 表/视图“TeachDB.dbo.View_TeacherClasses”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
   <EntityType Name="View_TeacherClasses">
@@ -251,6 +334,24 @@
     <Parameter Name="Name" Type="nvarchar" Mode="In" />
     <Parameter Name="TeacherID" Type="int" Mode="In" />
   </Function>
+  <Function Name="DTerm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="EditBookUsed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CoursesID" Type="int" Mode="In" />
+    <Parameter Name="BookID" Type="int" Mode="In" />
+    <Parameter Name="TeacherID" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="TeacherNums" Type="int" Mode="In" />
+    <Parameter Name="StudentNums" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetStudentNums" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CoursesID" Type="int" Mode="In" />
+    <Parameter Name="ClassID" Type="int" Mode="In" />
+    <Parameter Name="BookID" Type="int" Mode="In" />
+    <Parameter Name="TeacherID" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="TeacherNums" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="TeachDBModelStoreContainer">
     <EntitySet Name="BaseDataDics" EntityType="Self.BaseDataDics" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
@@ -264,6 +365,55 @@
     <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TeacherClasses" EntityType="Self.TeacherClasses" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="View_Books" EntityType="Self.View_Books" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[View_Books].[Name] AS [Name], 
+[View_Books].[Author] AS [Author], 
+[View_Books].[publisherName] AS [publisherName], 
+[View_Books].[PubYear] AS [PubYear], 
+[View_Books].[ISBN] AS [ISBN], 
+[View_Books].[Price] AS [Price], 
+[View_Books].[BookProertyName] AS [BookProertyName], 
+[View_Books].[BookTypeName] AS [BookTypeName], 
+[View_Books].[LastTime] AS [LastTime], 
+[View_Books].[DisabledTime] AS [DisabledTime], 
+[View_Books].[ID] AS [ID]
+FROM [dbo].[View_Books] AS [View_Books]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_BookUsed" EntityType="Self.View_BookUsed" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[View_BookUsed].[BookID] AS [BookID], 
+[View_BookUsed].[CoursesName] AS [CoursesName], 
+[View_BookUsed].[CourseID] AS [CourseID], 
+[View_BookUsed].[TeacherID] AS [TeacherID], 
+[View_BookUsed].[TeachName] AS [TeachName], 
+[View_BookUsed].[StuBookNums] AS [StuBookNums], 
+[View_BookUsed].[TeaBookNums] AS [TeaBookNums], 
+[View_BookUsed].[ID] AS [ID], 
+[View_BookUsed].[Name] AS [Name], 
+[View_BookUsed].[Term] AS [Term]
+FROM [dbo].[View_BookUsed] AS [View_BookUsed]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_PartJobTeachers" EntityType="Self.View_PartJobTeachers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[View_PartJobTeachers].[ID] AS [ID], 
+[View_PartJobTeachers].[Name] AS [Name], 
+[View_PartJobTeachers].[Birthday] AS [Birthday], 
+[View_PartJobTeachers].[Sex] AS [Sex], 
+[View_PartJobTeachers].[InTime] AS [InTime], 
+[View_PartJobTeachers].[Tel] AS [Tel], 
+[View_PartJobTeachers].[UnitName] AS [UnitName], 
+[View_PartJobTeachers].[ContactName] AS [ContactName], 
+[View_PartJobTeachers].[JudgeText] AS [JudgeText], 
+[View_PartJobTeachers].[LastTime] AS [LastTime], 
+[View_PartJobTeachers].[Memo] AS [Memo], 
+[View_PartJobTeachers].[Status] AS [Status], 
+[View_PartJobTeachers].[EduName] AS [EduName], 
+[View_PartJobTeachers].[TypeName] AS [TypeName], 
+[View_PartJobTeachers].[TitleName] AS [TitleName]
+FROM [dbo].[View_PartJobTeachers] AS [View_PartJobTeachers]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="View_TeacherClasses" EntityType="Self.View_TeacherClasses" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [View_TeacherClasses].[ID] AS [ID], 

@@ -39,7 +39,8 @@
                                             var name = $("#BaseDataDics_add_name").val();
 
 
-
+                                            alert(typeno);
+                                            alert(name);
                                             $.get("/BaseDataDics/AddDatabase", { Name: name, typeno: typeno, Status: 0 }, function (das) {
                                                 if (das == "ok") {
                                                     //alert("成功");
@@ -168,7 +169,7 @@
                    $("#tb").datagrid("reload");
                },
                 url: "/Type/GetType",
-                valueField: 'id',
+                valueField: 'typid',
                 textField: "name",
 
             });

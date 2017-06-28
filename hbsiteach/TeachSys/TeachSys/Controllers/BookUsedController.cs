@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,7 +11,7 @@ namespace TeachSys.Controllers
     {
         //
         // GET: /BookUsed/
-        Models.TeachDBEntities1 tdb = new Models.TeachDBEntities1();
+        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
         public ActionResult Index()
         {
             return View();
@@ -21,7 +22,33 @@ namespace TeachSys.Controllers
         /// <returns></returns>
         public ActionResult getBookUsed(int page, int rows, string e)
         {
-            int nums = tdb.View_BookUsed.Count();
+                int nums = tdb.View_BookUsed.Count();
+                var bookuse = (from bu in tdb.View_BookUsed
+                               orderby bu.ID descending
+                               select new
+                               {
+                                   ID = bu.ID,
+                                   BookID = bu.BookID,
+                                   Name = bu.Name,
+                                   CourseID = bu.CourseID,
+                                   CoursesName = bu.CoursesName,
+                                   TeacherID = bu.TeacherID,
+                                   TeacherName = bu.TeachName,
+                                   StuBookNums = bu.StuBookNums,
+                                   TeaBookNums = bu.TeaBookNums,
+                                   term = bu.Term,
+                               }).Skip((page - 1) * rows).Take(rows);
+                if (!string.IsNullOrEmpty(e))
+                {
+                    bookuse = bookuse.Where(t => t.term.Contains(e));
+                }
+                return Json(new { total = nums, rows = bookuse }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult getBookUseds(string e)
+        {
+
+            //int nums = tdb.View_BookUsed.Count();
             var bookuse = (from bu in tdb.View_BookUsed
                            orderby bu.ID descending
                            select new
@@ -36,12 +63,12 @@ namespace TeachSys.Controllers
                                StuBookNums = bu.StuBookNums,
                                TeaBookNums = bu.TeaBookNums,
                                term = bu.Term,
-                           }).Skip((page - 1) * rows).Take(rows);
+                           });
             if (!string.IsNullOrEmpty(e))
             {
                 bookuse = bookuse.Where(t => t.term.Contains(e));
             }
-            return Json(new { total = nums, rows = bookuse }, JsonRequestBehavior.AllowGet);
+            return Json(bookuse,JsonRequestBehavior.AllowGet);
         }
         /// <summary>
         /// 显示学期
@@ -49,13 +76,12 @@ namespace TeachSys.Controllers
         /// <returns></returns>
         public ActionResult Term()
         {
-            var term = from t in tdb.Courses
-                       select new
-                       {
-                           ID = t.ID,
-                           termName = t.Term
-                       };
-
+            var term = (from t in tdb.Courses
+                        select new
+                        {
+                            
+                            termName = t.Term
+                        }).Distinct();
             return Json(term, JsonRequestBehavior.AllowGet);
         }
         /// <summary>
@@ -107,6 +133,39 @@ namespace TeachSys.Controllers
                 return Content("err");
             }
         }
+        //public ActionResult coursesAdd(Models.Courses c)
+        //{
+        //    try
+        //    {
+        //        char[] a = { '{', '}', 'T', 'e', 'r', 'm', '=', ' ' };
+        //        foreach (var item in (from m in tdb.Courses select new { m.Term }))
+        //        {
+
+        //            string[] s = item.ToString().Split(a, StringSplitOptions.RemoveEmptyEntries);
+        //            //string str = String.Empty;
+        //            //foreach (string tempStr in s)
+        //            //{
+        //            //    str += tempStr;
+        //            //} 
+        //            if (String.Join("", s) == c.Term.ToString())
+        //            {
+        //                return Content("输入的学期重复了");
+        //            }
+        //        }
+        //        tdb.Courses.Add(c);
+        //        if (c.Nums <= 0)
+        //        {
+        //            return Content("nums err");
+        //        }
+        //        tdb.SaveChanges();
+        //        return Content("ok");
+        //    }
+        //    catch
+        //    {
+        //        return Content("err");
+        //    }
+
+        //}
         public ActionResult Edit(int id)
         {
             var book = new Models.BookUsed();
@@ -151,5 +210,25 @@ namespace TeachSys.Controllers
 
         }
 
+
+        /// <summary>
+        /// Excel导入
+        /// </summary>
+        /// <returns></returns>
+        //public ActionResult ExportExcel()
+        //{
+        //    string json = Request.Params["data"];
+        //    try
+        //    {
+        //        DataTable dt = ExcelHelper.JsonToDataTable(json);
+        //        string pathDestop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        //        ExcelHelper.GridToExcelByNPOI(dt, pathDestop + "\\" + "销售订单-" + DateTime.Now.ToString("yyyy-MM-dd") + "导出" + ".xls");
+        //        return Content("1");
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return Content("-1");
+        //    }
+        //}
     }
 }

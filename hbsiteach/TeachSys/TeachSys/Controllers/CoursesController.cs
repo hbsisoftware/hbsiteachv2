@@ -8,7 +8,7 @@ namespace TeachSys.Controllers
 {
     public class CoursesController : Controller
     {
-        Models.TeachDBEntities1 tdb = App_Start.Helper.tdb;
+        Models.TeachDBEntities tdb = App_Start.Helper.tdb;
         //
         // GET: /Courses/
 
@@ -31,9 +31,24 @@ namespace TeachSys.Controllers
         /// ***课程列表
         /// </summary>
         /// <returns></returns>
-        public ActionResult Courses()
+        //public ActionResult Courses()
+        //{
+        //    var courses = from c in tdb.Courses
+        //                  select new
+        //                  {
+        //                      ID = c.ID,
+        //                      Name = c.Name,
+        //                  };
+        //    return Json(courses, JsonRequestBehavior.AllowGet);
+        //}
+        /// <summary>
+        /// ***课程列表,修改过后
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Courses(string e)
         {
             var courses = from c in tdb.Courses
+                          where c.Term == e
                           select new
                           {
                               ID = c.ID,

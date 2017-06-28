@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+  
+    <script src="Scripts/jquery-2.2.1.js"></script>
+    
+    <script src="exportExcel/Excel.js"></script>
+    
+</head>
+<body>
+    <table id="Excel" border="1">
+        <thead>
+            <tr><th>课程名称</th><th>教师名称</th></tr>
+        </thead>
+       <tbody id="excel-body">
+
+       </tbody>
+    </table>
+    <input type="button" value="导出" onclick="getImport('Excel')"/>
+    <script>
+        $(function () {
+            $.get("/classes/GetClassesList",  function (data) {
+                alert(data);
+                $(data).each(function (index, da) {
+                    //$("#Excel").append("<tr><td>" + da.CoursesName + "</td><td>" + da.TeacherName + "</td><td>" + da.Name + "</td><td>" + da.StuBookNums + "</td><td>" + da.TeaBookNums + "</td></tr>")
+                    $("#excel-body").append("<tr><td>" + da.ID + "</td><td>" + da.Name + "</td></tr>")
+                })
+            }, "json");
+            //$.ajax({
+            //    url: "/BookUsed/getBookUsed",
+            //    async: false,//这一步是非常重要的，作用是设置为同步执行  
+            //    type: "get",
+            //    data: { 'e': $("#term").val() },
+            //    dataType: "json",
+            //    success: function (data) {
+            //        $(data).each(function (index, da) {
+            //            $("#Excel").append("<tr><td>" + da.CoursesName + "</td><td>" + da.TeacherName + "</td><td>" + da.Name + "</td><td>" + da.StuBookNums + "</td><td>" + da.TeaBookNums + "</td></tr>")
+            //        })
+            //    }
+            //});
+        })
+   
+    </script>
+</body>
+</html>

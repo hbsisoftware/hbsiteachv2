@@ -160,6 +160,70 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Type">
+      <EntityTypeMapping TypeName="TeachDBModel.Type">
+        <MappingFragment StoreEntitySet="Type">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Books">
+      <EntityTypeMapping TypeName="TeachDBModel.View_Books">
+        <MappingFragment StoreEntitySet="View_Books">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="publisherName" ColumnName="publisherName" />
+          <ScalarProperty Name="PubYear" ColumnName="PubYear" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="BookProertyName" ColumnName="BookProertyName" />
+          <ScalarProperty Name="BookTypeName" ColumnName="BookTypeName" />
+          <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+          <ScalarProperty Name="DisabledTime" ColumnName="DisabledTime" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_BookUsed">
+      <EntityTypeMapping TypeName="TeachDBModel.View_BookUsed">
+        <MappingFragment StoreEntitySet="View_BookUsed">
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="CoursesName" ColumnName="CoursesName" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="TeachName" ColumnName="TeachName" />
+          <ScalarProperty Name="StuBookNums" ColumnName="StuBookNums" />
+          <ScalarProperty Name="TeaBookNums" ColumnName="TeaBookNums" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_PartJobTeachers">
+      <EntityTypeMapping TypeName="TeachDBModel.View_PartJobTeachers">
+        <MappingFragment StoreEntitySet="View_PartJobTeachers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="InTime" ColumnName="InTime" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="JudgeText" ColumnName="JudgeText" />
+          <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+          <ScalarProperty Name="Memo" ColumnName="Memo" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="EduName" ColumnName="EduName" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="View_TeacherClasses">
       <EntityTypeMapping TypeName="TeachDBModel.View_TeacherClasses">
         <MappingFragment StoreEntitySet="View_TeacherClasses">
@@ -174,5 +238,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="AddClasses" FunctionName="TeachDBModel.Store.AddClasses" />
+    <FunctionImportMapping FunctionImportName="DTerm" FunctionName="TeachDBModel.Store.DTerm" />
+    <FunctionImportMapping FunctionImportName="EditBookUsed" FunctionName="TeachDBModel.Store.EditBookUsed" />
+    <FunctionImportMapping FunctionImportName="GetStudentNums" FunctionName="TeachDBModel.Store.GetStudentNums" />
   </EntityContainerMapping>
 </Mapping>

@@ -10,7 +10,7 @@ namespace TeachSys.Controllers
     {
         //
         // GET: /Books/
-        Models.TeachDBEntities1 tdb = new Models.TeachDBEntities1();
+        Models.TeachDBEntities tdb = new Models.TeachDBEntities();
         public ActionResult Index()
         {
 
@@ -115,6 +115,14 @@ namespace TeachSys.Controllers
                         {
                             ID = b.ID,
                             Name = b.Name,
+                            Author = b.Author,
+                            pubName = b.publisherName,
+                            PubYear = b.PubYear,
+                            ISBN = b.ISBN,
+                            Price = b.Price,
+                            BPN = b.BookProertyName,
+                            BTN = b.BookTypeName,
+                            LastTime = b.LastTime
                         };
             if (!string.IsNullOrEmpty(name))
             {

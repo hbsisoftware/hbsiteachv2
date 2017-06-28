@@ -161,6 +161,83 @@
     <NavigationProperty Name="Departments" Relationship="Self.FK_Teachers_Departments" FromRole="Teachers" ToRole="Departments" />
     <NavigationProperty Name="TeacherClasses" Relationship="Self.FK_TeacherClasses_Teachers" FromRole="Teachers" ToRole="TeacherClasses" />
   </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TypeId" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_Books">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Author" />
+      <PropertyRef Name="PubYear" />
+      <PropertyRef Name="ISBN" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="publisherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PubYear" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ISBN" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="BookProertyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastTime" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="DisabledTime" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_BookUsed">
+    <Key>
+      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="TeacherID" />
+      <PropertyRef Name="StuBookNums" />
+      <PropertyRef Name="TeaBookNums" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="BookID" Type="Int32" />
+    <Property Name="CoursesName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <Property Name="TeacherID" Type="Int32" Nullable="false" />
+    <Property Name="TeachName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="StuBookNums" Type="Int32" Nullable="false" />
+    <Property Name="TeaBookNums" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Term" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="View_PartJobTeachers">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="InTime" />
+      <PropertyRef Name="Tel" />
+      <PropertyRef Name="UnitName" />
+      <PropertyRef Name="ContactName" />
+      <PropertyRef Name="JudgeText" />
+      <PropertyRef Name="LastTime" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <Property Name="Sex" Type="Boolean" Nullable="false" />
+    <Property Name="InTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Tel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContactName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="JudgeText" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Memo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="EduName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TitleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="View_TeacherClasses">
     <Key>
       <PropertyRef Name="ID" />
@@ -271,6 +348,10 @@
     <EntitySet Name="Students" EntityType="Self.Students" />
     <EntitySet Name="TeacherClasses" EntityType="Self.TeacherClasses" />
     <EntitySet Name="Teachers" EntityType="Self.Teachers" />
+    <EntitySet Name="Type" EntityType="Self.Type" />
+    <EntitySet Name="View_Books" EntityType="Self.View_Books" />
+    <EntitySet Name="View_BookUsed" EntityType="Self.View_BookUsed" />
+    <EntitySet Name="View_PartJobTeachers" EntityType="Self.View_PartJobTeachers" />
     <EntitySet Name="View_TeacherClasses" EntityType="Self.View_TeacherClasses" />
     <AssociationSet Name="FK_Classes_Majors" Association="Self.FK_Classes_Majors">
       <End Role="Majors" EntitySet="Majors" />
@@ -304,6 +385,24 @@
       <Parameter Name="majorID" Mode="In" Type="Int32" />
       <Parameter Name="Name" Mode="In" Type="String" />
       <Parameter Name="TeacherID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DTerm" ReturnType="Collection(String)" />
+    <FunctionImport Name="EditBookUsed" ReturnType="Collection(Int32)">
+      <Parameter Name="CoursesID" Mode="In" Type="Int32" />
+      <Parameter Name="BookID" Mode="In" Type="Int32" />
+      <Parameter Name="TeacherID" Mode="In" Type="Int32" />
+      <Parameter Name="Status" Mode="In" Type="Int32" />
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="TeacherNums" Mode="In" Type="Int32" />
+      <Parameter Name="StudentNums" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetStudentNums" ReturnType="Collection(Int32)">
+      <Parameter Name="CoursesID" Mode="In" Type="Int32" />
+      <Parameter Name="ClassID" Mode="In" Type="Int32" />
+      <Parameter Name="BookID" Mode="In" Type="Int32" />
+      <Parameter Name="TeacherID" Mode="In" Type="Int32" />
+      <Parameter Name="Status" Mode="In" Type="Int32" />
+      <Parameter Name="TeacherNums" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
 </Schema>
